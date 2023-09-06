@@ -1,10 +1,9 @@
 "use client"
 
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useContext } from 'react';
 import { CategoryProps } from './category-props';
 import { PortionsGroup } from '../portions-group';
 import { Veggies } from '../../portion/type/veggies';
-import { useContext } from 'react';
 import { FoodContext } from '../../../../context/food-context'
 
 export const VeggiesGroup: FunctionComponent<CategoryProps> = (props) => {

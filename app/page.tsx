@@ -51,12 +51,12 @@ export default function Home() {
         <div className="ProgressBar__calories">0 k</div>
       </div>
       {/* <FoodContext.Provider value={imageSize}> */}
-        <FruitGroup count={3}/>
-        <VeggiesGroup count={4}/>
-        <CarbsGroup count={4}/>
-        <ProtsGroup count={3}/>
-        <FatsGroup count={3}/>
-        <SweetsGroup count={1}/>
+        <FruitGroup/>
+        <VeggiesGroup/>
+        <CarbsGroup/>
+        <ProtsGroup/>
+        <FatsGroup/>
+        <SweetsGroup/>
       {/* </FoodContext.Provider> */}
     </div>
   </>
