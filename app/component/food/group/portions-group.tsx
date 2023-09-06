@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-export const PortionGroup: FunctionComponent<PortionGroupProps> = (props) => {
+export const PortionsGroup: FunctionComponent<PortionsGroupProps> = (props) => {
     return (
         <div className="PortionsGroup-cell">
             <div className="PortionsGroup-card">
@@ -18,7 +18,7 @@ export const PortionGroup: FunctionComponent<PortionGroupProps> = (props) => {
     )  
 }
 
-export interface PortionGroupProps {
+export interface PortionsGroupProps {
     count: number,
     caloriesHint: string,
     title: string,

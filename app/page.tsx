@@ -8,12 +8,13 @@ import './component/food/group/portions-group.css'
 import './nav-bar.css'
 import './portions-page.css'
 import './component/food/portion/portion.css'
-import { FruitCategory } from './component/food/group/category/fruit-category'
-import { VeggiesCategory } from './component/food/group/category/veggies-category'
-import { CarbsCategory } from './component/food/group/category/carbs-category'
-import { ProtsCategory } from './component/food/group/category/prots-category'
-import { FatsCategory } from './component/food/group/category/fats-category'
-import { SweetsCategory } from './component/food/group/category/sweets-category'
+import { FruitGroup } from './component/food/group/category/fruit-group'
+import { VeggiesGroup } from './component/food/group/category/veggies-group'
+import { CarbsGroup } from './component/food/group/category/carbs-group'
+import { ProtsGroup } from './component/food/group/category/prots-group'
+import { FatsGroup } from './component/food/group/category/fats-group'
+import { SweetsGroup } from './component/food/group/category/sweets-group'
+// import { FoodContext } from './context/food-context'
 
 export default function Home() {
   return (
@@ -49,12 +50,14 @@ export default function Home() {
         <div className="ProgressBar__exceeded"></div>
         <div className="ProgressBar__calories">0 k</div>
       </div>
-      <FruitCategory count={1}/>
-      <VeggiesCategory count={1}/>
-      <CarbsCategory count={1}/>
-      <ProtsCategory count={1}/>
-      <FatsCategory count={1}/>
-      <SweetsCategory count={1}/>
+      {/* <FoodContext.Provider value={imageSize}> */}
+        <FruitGroup count={3}/>
+        <VeggiesGroup count={4}/>
+        <CarbsGroup count={4}/>
+        <ProtsGroup count={3}/>
+        <FatsGroup count={3}/>
+        <SweetsGroup count={1}/>
+      {/* </FoodContext.Provider> */}
     </div>
   </>
 
