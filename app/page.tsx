@@ -1,95 +1,85 @@
 import Image from 'next/image'
 import styles from './page.module.css'
+import './progress-bar.css'
+import './progress-completed.css'
+import './progress-exceeded.css'
+import './progress-target.css'
+import './component/food/group/portions-group.css'
+import './nav-bar.css'
+import './portions-page.css'
+import './component/food/portion/portion.css'
+import { FruitCategory } from './component/food/group/category/fruit-category'
+import { VeggiesCategory } from './component/food/group/category/veggies-category'
+import { CarbsCategory } from './component/food/group/category/carbs-category'
+import { ProtsCategory } from './component/food/group/category/prots-category'
+import { FatsCategory } from './component/food/group/category/fats-category'
+import { SweetsCategory } from './component/food/group/category/sweets-category'
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+  <>
+    <header>
+      <div className="app-title">
+        <span className="icon"></span>
+        <h1> My Diet</h1>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <button className="menu-toggle" id="menu-toggle">
+        <span className="hamburger"></span>
+      </button>
+      <div className="menu">
+        <ul className="menu__list">
+          <li className="menu__item">
+            <a className="menu__link" href="#/">Main</a>
+          </li>
+          <li className="menu__item">
+            <a className="menu__link" href="#/calories">Calories</a>
+          </li>
+          <li className="menu__item">
+            <a className="menu__link" href="#/settings">Settings</a>
+          </li>
+          <li className="menu__item">
+            <span className="menu__link">Clear Portions</span>
+          </li>
+        </ul>
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+    </header>
+    <div className="PortionsPage">
+      <div className="ProgressBar">
+        <div className="ProgressBar__completed"></div>
+        <div className="ProgressBar__exceeded"></div>
+        <div className="ProgressBar__calories">0 k</div>
       </div>
-    </main>
+      <FruitCategory count={1}/>
+      <VeggiesCategory count={1}/>
+      <CarbsCategory count={1}/>
+      <ProtsCategory count={1}/>
+      <FatsCategory count={1}/>
+      <SweetsCategory count={1}/>
+    </div>
+  </>
+
+      // {/* <div className={styles.description}>
+      //   <p>
+      //     Get started by editing&nbsp;
+      //     <code className={styles.code}>app/page.tsx</code>
+      //   </p>
+      //   <div>
+      //     <a
+      //       href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+      //       target="_blank"
+      //       rel="noopener noreferrer"
+      //     >
+      //       By{' '}
+      //       <Image
+      //         src="/vercel.svg"
+      //         alt="Vercel Logo"
+      //         className={styles.vercelLogo}
+      //         width={100}
+      //         height={24}
+      //         priority
+      //       />
+      //     </a>
+      //   </div>
+      // </div> */}
   )
 }
