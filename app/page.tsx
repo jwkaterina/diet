@@ -17,10 +17,10 @@ import { ProtsGroup } from './component/food/group/category/prots-group'
 import { FatsGroup } from './component/food/group/category/fats-group'
 import { SweetsGroup } from './component/food/group/category/sweets-group'
 import { useState, useContext } from 'react'
-import { FoodContext, PortionsCheckedContext, PortionsChecked } from './context/food-context'
+import { PortionsNumberContext, PortionsCheckedContext, Portions } from './context/food-context'
 
 export default function Home() {
-  const [portionsChecked, setPortionsChecked] = useState<PortionsChecked>({
+  const [portionsChecked, setPortionsChecked] = useState<Portions>({
     fruit: 0, 
     veggies: 0,
     carbs: 0,

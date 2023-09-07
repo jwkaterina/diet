@@ -2,16 +2,7 @@
 
 import { createContext } from 'react';
 
-export const FoodContext = createContext({
-    fruit: 3,
-    veggies: 4,
-    carbs: 4,
-    prots: 4,
-    fats: 3,
-    sweets: 1
-})
-
-export interface PortionsChecked {
+export interface Portions {
     fruit: number;
     veggies: number;
     carbs: number;
@@ -19,6 +10,15 @@ export interface PortionsChecked {
     fats: number;
     sweets: number;
 }
+
+export const PortionsNumberContext = createContext<Portions>({
+    fruit: 3,
+    veggies: 4,
+    carbs: 4,
+    prots: 4,
+    fats: 3,
+    sweets: 1
+})
 
 export const PortionsCheckedContext = createContext({
     portionsChecked: {
@@ -32,6 +32,6 @@ export const PortionsCheckedContext = createContext({
 } as PortionsCheckedContextProperty);
 
 export interface PortionsCheckedContextProperty {
-    portionsChecked: PortionsChecked;
-    setPortionsChecked: (newValue: PortionsChecked) => void;
+    portionsChecked: Portions;
+    setPortionsChecked: (newValue: Portions) => void;
 };
