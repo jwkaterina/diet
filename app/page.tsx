@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import styles from './page.module.css'
 import './progress-bar.css'
@@ -14,9 +16,19 @@ import { CarbsGroup } from './component/food/group/category/carbs-group'
 import { ProtsGroup } from './component/food/group/category/prots-group'
 import { FatsGroup } from './component/food/group/category/fats-group'
 import { SweetsGroup } from './component/food/group/category/sweets-group'
-// import { FoodContext } from './context/food-context'
+import { useState, useContext } from 'react'
+import { FoodContext, PortionsCheckedContext, PortionsChecked } from './context/food-context'
 
 export default function Home() {
+  const [portionsChecked, setPortionsChecked] = useState<PortionsChecked>({
+    fruit: 0, 
+    veggies: 0,
+    carbs: 0,
+    prots: 0,
+    fats: 0,
+    sweets: 0
+  })
+
   return (
   <>
     <header>
@@ -50,14 +62,14 @@ export default function Home() {
         <div className="ProgressBar__exceeded"></div>
         <div className="ProgressBar__calories">0 k</div>
       </div>
-      {/* <FoodContext.Provider value={imageSize}> */}
+      <PortionsCheckedContext.Provider value={{portionsChecked, setPortionsChecked}}>
         <FruitGroup/>
         <VeggiesGroup/>
         <CarbsGroup/>
         <ProtsGroup/>
         <FatsGroup/>
         <SweetsGroup/>
-      {/* </FoodContext.Provider> */}
+      </PortionsCheckedContext.Provider>
     </div>
   </>
 

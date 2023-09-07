@@ -1,7 +1,8 @@
+import { PortionsChecked } from '@/app/context/food-context';
 import React, { FunctionComponent } from 'react';
 
 export const Portion: FunctionComponent<PortionProps> = (props) => {
-    return <svg width={props.width} height={props.height} viewBox={`0 0 ${props.width} ${props.height}`} className="portion-svg" onClick={props.onclick}>
+    return <svg width={props.width} height={props.height} viewBox={`0 0 ${props.width} ${props.height}`} className={props.checked ? "portion-svg checked" : "portion-svg"} onClick={props.onclick}>
 
         {props.children}
 
@@ -13,5 +14,6 @@ export interface PortionProps {
     width: number,
     height: number,
     children: React.ReactNode,
-    onclick: () => void
+    onclick: () => void,
+    checked: boolean
 }

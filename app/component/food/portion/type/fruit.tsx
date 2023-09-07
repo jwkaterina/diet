@@ -1,14 +1,18 @@
 import React, { FunctionComponent } from 'react';
 import { PortionTypeProps } from './portion-type-props';
 import { Portion } from '../portion';
+import { PortionsCheckedContext } from '../../../../context/food-context';
 
 export const Fruit: FunctionComponent<PortionTypeProps> = (props) => {
+    const {portionsChecked, setPortionsChecked} = React.useContext(PortionsCheckedContext);
+
     const width = 118;
     const height = 202;
     const handleClick = () => {
+        setPortionsChecked({...portionsChecked, fruit: props.index});
         console.log('fruit');
     };
-    return <Portion width={width} height={height} onclick={handleClick}>
+    return <Portion width={width} height={height} onclick={handleClick} checked={portionsChecked.fruit >= props.index}>
         <g className="portion">
             <g className="portion-left">
                 <path d="M58.7561 44V54.7575L68.4261 44H58.7561Z"/>
