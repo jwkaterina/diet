@@ -1,23 +1,16 @@
 'use client'
 
-import Image from 'next/image'
-import styles from './page.module.css'
-import './progress-bar.css'
-import './progress-completed.css'
-import './progress-exceeded.css'
-import './progress-target.css'
-import './component/food/group/portions-group.css'
-import './nav-bar.css'
 import './portions-page.css'
-import './component/food/portion/portion.css'
+import { useState } from 'react'
+import { PortionsCheckedContext, Portions } from './context/food-context'
 import { FruitGroup } from './component/food/group/category/fruit-group'
 import { VeggiesGroup } from './component/food/group/category/veggies-group'
 import { CarbsGroup } from './component/food/group/category/carbs-group'
 import { ProtsGroup } from './component/food/group/category/prots-group'
 import { FatsGroup } from './component/food/group/category/fats-group'
 import { SweetsGroup } from './component/food/group/category/sweets-group'
-import { useState, useContext } from 'react'
-import { PortionsNumberContext, PortionsCheckedContext, Portions } from './context/food-context'
+import { ProgressBar } from './component/calories/progress/progress'
+import { NavBar } from './layout/nav/nav-bar'
 
 export default function Home() {
   const [portionsChecked, setPortionsChecked] = useState<Portions>({
@@ -31,37 +24,9 @@ export default function Home() {
 
   return (
   <>
-    <header>
-      <div className="app-title">
-        <span className="icon"></span>
-        <h1> My Diet</h1>
-      </div>
-      <button className="menu-toggle" id="menu-toggle">
-        <span className="hamburger"></span>
-      </button>
-      <div className="menu">
-        <ul className="menu__list">
-          <li className="menu__item">
-            <a className="menu__link" href="#/">Main</a>
-          </li>
-          <li className="menu__item">
-            <a className="menu__link" href="#/calories">Calories</a>
-          </li>
-          <li className="menu__item">
-            <a className="menu__link" href="#/settings">Settings</a>
-          </li>
-          <li className="menu__item">
-            <span className="menu__link">Clear Portions</span>
-          </li>
-        </ul>
-      </div>
-    </header>
+    <NavBar/>
     <div className="PortionsPage">
-      <div className="ProgressBar">
-        <div className="ProgressBar__completed"></div>
-        <div className="ProgressBar__exceeded"></div>
-        <div className="ProgressBar__calories">0 k</div>
-      </div>
+      <ProgressBar/>
       <PortionsCheckedContext.Provider value={{portionsChecked, setPortionsChecked}}>
         <FruitGroup/>
         <VeggiesGroup/>

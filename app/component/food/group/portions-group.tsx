@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import './portions-group.css'
 
 export const PortionsGroup: FunctionComponent<PortionsGroupProps> = (props) => {
     return (

@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import './portion.css'
 
 export const Portion: FunctionComponent<PortionProps> = (props) => {
 
