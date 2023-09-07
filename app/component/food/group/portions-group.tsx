@@ -7,7 +7,7 @@ export const PortionsGroup: FunctionComponent<PortionsGroupProps> = (props) => {
             <div className="PortionsGroup-card">
                 <div className="PortionsGroup-header">
                     <h3 className="PortionsGroup__count">{props.count}</h3>
-                    <h3 className="PortionsGroup__calories-hint">{props.caloriesHint}</h3>
+                    <h3 className="PortionsGroup__calories-hint">x{props.calories}k</h3>
                     <h3>{props.title}</h3>
                     <div className="plus-btn"></div>
                 </div>         
@@ -21,7 +21,7 @@ export const PortionsGroup: FunctionComponent<PortionsGroupProps> = (props) => {
 
 export interface PortionsGroupProps {
     count: number,
-    caloriesHint: string,
+    calories: number,
     title: string,
     children: React.ReactNode
 }

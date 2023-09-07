@@ -35,3 +35,12 @@ export interface PortionsCheckedContextProperty {
     portionsChecked: Portions;
     setPortionsChecked: (newValue: Portions) => void;
 };
+
+export const CaloriesContext = createContext<Portions>({
+    fruit: 60,
+    veggies: 25,
+    carbs: 70,
+    prots: 110,
+    fats: 45,
+    sweets: 75,
+})
