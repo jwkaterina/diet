@@ -10,7 +10,11 @@ export const Carbs: FunctionComponent<PortionTypeProps> = (props) => {
     const height = 51;
     const handleClick = () => {
         console.log('carbs');
-        setPortionsChecked({...portionsChecked, carbs: props.index});
+        if(props.index <= portionsChecked.carbs) {
+            setPortionsChecked({...portionsChecked, carbs: props.index - 1});
+        } else {
+            setPortionsChecked({...portionsChecked, carbs: props.index});
+        }
     };
     return <Portion width={width} height={height} onclick={handleClick} checked={portionsChecked.carbs >= props.index}>
         <g className="portion">
