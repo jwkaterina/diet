@@ -12,7 +12,7 @@ export const FatsGroup: FunctionComponent<CategoryProps> = (props) => {
     const count = useContext(FoodContext).fats;
     let fatsArr = [];
     for(let i = 0; i < count; i++) {
-        fatsArr.push(<Fats index={ i + 1 }/>);
+        fatsArr.push(<Fats key={ i + 1 } index={ i + 1 }/>);
     }
     return <PortionsGroup caloriesHint={caloriesHint} title={title} count={count}>
         {fatsArr}
