@@ -5,7 +5,10 @@ import { Portion } from '../portion';
 export const Sweets: FunctionComponent<PortionTypeProps> = (props) => {
     const width = 72;
     const height = 92;
-    return <Portion width={width} height={height}>
+    const handleClick = () => {
+        console.log('sweets');
+    };
+    return <Portion width={width} height={height} onclick={handleClick}>
         <g className="portion">
             <g className="portion-left">
                 <path d="M36.4 65.0464V91H20.6C17.2 91 14.2 88.9 12.9 85.8L4.4 64.7C5.2 64.9 6 65 6.8 65C9.8 65 12.6 63.5 14.2 61C14.8 62 15.7 62.9 16.8 63.6C20.9 66.3 26.4 65.1 29 61C29.6 62 30.5 62.9 31.6 63.6C33.0845 64.5776 34.7525 65.0439 36.4 65.0464Z"/>

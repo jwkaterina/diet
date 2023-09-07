@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
 export const Portion: FunctionComponent<PortionProps> = (props) => {
-    return <svg width={props.width} height={props.height} viewBox={`0 0 ${props.width} ${props.height}`} className="portion-svg">
+    return <svg width={props.width} height={props.height} viewBox={`0 0 ${props.width} ${props.height}`} className="portion-svg" onClick={props.onclick}>
 
         {props.children}
 
@@ -12,5 +12,6 @@ export const Portion: FunctionComponent<PortionProps> = (props) => {
 export interface PortionProps {
     width: number,
     height: number,
-    children: React.ReactNode
+    children: React.ReactNode,
+    onclick: () => void
 }
