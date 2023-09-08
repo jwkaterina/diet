@@ -7,8 +7,17 @@
     z-index: 1;
 }
 
-.ProgressBar::before,
-.ProgressBar::after {
+.ProgressBar__target {
+    position: absolute;
+    top: 0;
+    left: 25%;
+    height: 2em;
+    transition: 1s ease-out;
+    z-index: 4;
+}
+
+.ProgressBar__target::before,
+.ProgressBar__target::after {
     content: '';
     background: var(--clr-primary-light-font);
     position: absolute;
@@ -19,12 +28,12 @@
     z-index: 4;
 }
 
-.ProgressBar::before {
+.ProgressBar__target::before {
     top: 0;
     transform: translateY(-50%);
 }
 
-.ProgressBar::after {
+.ProgressBar__target::after {
     top: 50%;
     transform: translateY(90%);
 }
