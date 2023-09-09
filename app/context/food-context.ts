@@ -11,14 +11,21 @@ export interface Portions {
     sweets: number;
 }
 
-export const PortionsNumberContext = createContext<Portions>({
-    fruit: 3,
-    veggies: 4,
-    carbs: 4,
-    prots: 4,
-    fats: 3,
-    sweets: 1
-})
+export const PortionsNumberContext = createContext({
+    portionsNumber: {
+        fruit: 3,
+        veggies: 4,
+        carbs: 4,
+        prots: 4,
+        fats: 3,
+        sweets: 1
+    }
+} as PortionsNumberContextProperty);
+
+export interface PortionsNumberContextProperty {
+    portionsNumber: Portions;
+    setPortionsNumber: (newValue: Portions) => void;
+};
 
 export const PortionsCheckedContext = createContext({
     portionsChecked: {
