@@ -9,7 +9,6 @@ export const Fats: FunctionComponent<PortionTypeProps> = (props) => {
     const width = 98;
     const height = 86;
     const handlePortionClick = () => {
-        console.log('fats');
         if(props.index <= portionsChecked.fats) {
             setPortionsChecked({...portionsChecked, fats: props.index - 1});
         } else {

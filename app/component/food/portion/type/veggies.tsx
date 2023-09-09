@@ -8,7 +8,6 @@ export const Veggies: FunctionComponent<PortionTypeProps> = (props) => {
     const width = 50;
     const height = 44;
     const handlePortionClick = () => {
-        console.log('veggies');
         if(props.index <= portionsChecked.veggies) {
             setPortionsChecked({...portionsChecked, veggies: props.index - 1});
         } else {

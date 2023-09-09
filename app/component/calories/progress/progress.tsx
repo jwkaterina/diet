@@ -34,7 +34,6 @@ export const ProgressBar = () => {
    
     const calculateClassName = () => {
         const completed = calories / targetCalories * 100;
-        console.log(completed);
         if (completed > 55) {
             return "ProgressBar__calories white";
         } else {
