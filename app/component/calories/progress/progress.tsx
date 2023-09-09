@@ -28,7 +28,18 @@ export const ProgressBar = () => {
         const percentage = fraction * 100;
         return {
             width: `${percentage}%`
-        };;
+        };    
+    }
+
+   
+    const calculateClassName = () => {
+        const completed = calories / targetCalories * 100;
+        console.log(completed);
+        if (completed > 55) {
+            return "ProgressBar__calories white";
+        } else {
+            return "ProgressBar__calories";
+        }   
     }
 
     const exceededCalories = () => {
@@ -63,6 +74,6 @@ export const ProgressBar = () => {
         <div className="ProgressBar__target" style={timeTargetCalories()}></div>
         <div className="ProgressBar__completed" style={completedCalories()}></div>
         <div className="ProgressBar__exceeded" style={exceededCalories()}></div>
-        <div className="ProgressBar__calories">{currentCalories()} kcal</div>
+        <div className={calculateClassName()}>{currentCalories()} kcal</div>
     </div>)
 }
