@@ -58,7 +58,7 @@ export const ProgressBar = () => {
     const timeTargetCalories = () => {
         const oneMealCalories = targetCalories / mealsNumber;
         const timeBetweenMeals = (lastMeal - firstMeal) / (mealsNumber - 1);
-        const time = 6;
+        const time = new Date().getHours();
         const timeCalories = (((time - firstMeal) / timeBetweenMeals) + 1) * (oneMealCalories);
         const fraction = timeCalories / targetCalories;
         const percentage = fraction * 100;
