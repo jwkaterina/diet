@@ -4,15 +4,23 @@ import { Portion } from '../portion';
 import { PortionsCheckedContext } from '../../../../context/food-context';
 
 export const Sweets: FunctionComponent<PortionTypeProps> = (props) => {
-    const {portionsChecked, setPortionsChecked} = React.useContext(PortionsCheckedContext);
+    const {portionsChecked, dispatch} = React.useContext(PortionsCheckedContext);
 
     const width = 72;
     const height = 92;
     const handlePortionClick = () => {
         if(props.index <= portionsChecked.sweets) {
-            setPortionsChecked({...portionsChecked, sweets: props.index - 1});
+            dispatch({
+                type: 'check',
+                group: 'sweets',
+                index: props.index - 1,
+              }); 
         } else {
-            setPortionsChecked({...portionsChecked, sweets: props.index});
+            dispatch({
+                type: 'check',
+                group: 'sweets',
+                index: props.index,
+              }); 
         }
     };
     return <Portion width={width} height={height} onclick={handlePortionClick} checked={portionsChecked.sweets >= props.index}>
