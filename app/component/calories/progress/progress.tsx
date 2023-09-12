@@ -4,17 +4,18 @@ import { PortionsContext } from '../../../context/food-context'
 import { TargetCaloriesContext, MealsTimeContext, MealsNumberContext } from '../../../context/settings-context'
 
 export const ProgressBar = () => {
-
-    const fruitCal = useContext(PortionsContext).portions.fruit.calories * useContext(PortionsContext).portions.fruit.checked;
-    const veggiesCal = useContext(PortionsContext).portions.veggies.calories * useContext(PortionsContext).portions.veggies.checked;
-    const carbsCal = useContext(PortionsContext).portions.carbs.calories * useContext(PortionsContext).portions.carbs.checked;
-    const protsCal = useContext(PortionsContext).portions.prots.calories * useContext(PortionsContext).portions.prots.checked;
-    const fatsCal = useContext(PortionsContext).portions.fats .calories* useContext(PortionsContext).portions.fats.checked;
-    const sweetsCal = useContext(PortionsContext).portions.sweets.calories * useContext(PortionsContext).portions.sweets.checked;
+    const portions = useContext(PortionsContext).portions;
     const targetCalories = useContext(TargetCaloriesContext);
     const mealsNumber = useContext(MealsNumberContext);
     const firstMeal = useContext(MealsTimeContext).firstMeal;
     const lastMeal = useContext(MealsTimeContext).lastMeal;
+
+    const fruitCal = portions.fruit.calories * portions.fruit.checked;
+    const veggiesCal = portions.veggies.calories * portions.veggies.checked;
+    const carbsCal = portions.carbs.calories * portions.carbs.checked;
+    const protsCal = portions.prots.calories * portions.prots.checked;
+    const fatsCal = portions.fats .calories* portions.fats.checked;
+    const sweetsCal = portions.sweets.calories * portions.sweets.checked;
 
     const currentCalories = () => {
         const calories = fruitCal + veggiesCal + carbsCal + protsCal + fatsCal + sweetsCal;
