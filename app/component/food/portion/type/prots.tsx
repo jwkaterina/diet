@@ -13,13 +13,13 @@ export const Prots: FunctionComponent<PortionTypeProps> = (props) => {
             dispatch({
                 type: 'check',
                 group: 'prots',
-                index: props.index - 1,
+                number: props.index - 1,
               }); 
         } else {
             dispatch({
                 type: 'check',
                 group: 'prots',
-                index: props.index,
+                number: props.index,
               }); 
         }
     };

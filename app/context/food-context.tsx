@@ -42,7 +42,7 @@ export const PortionsContext = createContext({
 
 export interface PortionsContextProperty {
     portions: Portions;
-    dispatch: (newValue: Portions) => void;
+    dispatch: (newValue: any) => void;
 };
 
 export const PortionsProvider = ({ children }: any) => {
@@ -61,22 +61,22 @@ function portionsReducer(portions: any, action: any) {
     switch (action.type) {
       case 'check': {
         if(action.group == 'carbs') return {...portions, carbs: {
-            ...portions.carbs, checked: action.index
+            ...portions.carbs, checked: action.number
         }};
         if(action.group == 'fats') return {...portions, fats: {
-            ...portions.carbs, checked: action.index
+            ...portions.carbs, checked: action.number
         }};
         if(action.group == 'fruit') return {...portions, fruit: {
-            ...portions.carbs, checked: action.index
+            ...portions.carbs, checked: action.number
         }};
         if(action.group == 'prots') return {...portions, prots: {
-            ...portions.carbs, checked: action.index
+            ...portions.carbs, checked: action.number
         }};
         if(action.group == 'sweets') return {...portions, sweets: {
-            ...portions.carbs, checked: action.index
+            ...portions.carbs, checked: action.number
         }};
         if(action.group == 'veggies') return {...portions, veggies: {
-            ...portions.carbs, checked: action.index
+            ...portions.carbs, checked: action.number
         }};
       }
       default: {
