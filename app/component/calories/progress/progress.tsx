@@ -1,3 +1,5 @@
+'use client'
+
 import './progress-bar.css'
 import { useContext } from 'react';
 import { PortionsContext } from '../../../context/food-context'

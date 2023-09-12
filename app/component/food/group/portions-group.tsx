@@ -1,3 +1,5 @@
+'use client'
+
 import React, { FunctionComponent } from 'react';
 import { PortionsContext, Group } from '../../../context/food-context';
 import './portions-group.css'

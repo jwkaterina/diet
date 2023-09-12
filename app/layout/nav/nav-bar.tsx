@@ -1,3 +1,5 @@
+'use client'
+
 import './nav-bar.css'
 
 export const NavBar = () => {

@@ -1,0 +1,51 @@
+.SettingsPage {
+    margin: calc(var(--fs-h1) + 1.0em) auto 0 auto;
+    max-width: 500px;
+    background: var(--clr-secondary-light);
+    color: var(--clr-secondary-light-font);
+}
+
+.Settings__section {
+    padding: 1.0em 1.5em;
+}
+
+.Settings__section-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Settings__section-body {
+    margin-top: 1em;
+    padding-left: 1em;
+}
+
+.Settings__general-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    row-gap: 2em;
+}
+
+.Settings__general-cell {
+    align-self: center;
+}
+
+.Settings__time-grid,
+.Settings__portions-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    row-gap: 2em;
+    align-items: center;
+}
+
+.Settings__time-cell,
+.Settings__portions-cell {
+}
+
+.Settings__count-cell {
+    text-align: center;
+}
+
+.Settings__controls-cell {
+    justify-self: center;
+}
