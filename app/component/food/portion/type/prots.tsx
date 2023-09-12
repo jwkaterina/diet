@@ -1,29 +1,15 @@
 import React, { FunctionComponent } from 'react';
 import { PortionTypeProps } from './portion-type-props';
 import { Portion } from '../portion';
-import { PortionsContext } from '../../../../context/food-context';
+import { PortionsContext, Group } from '../../../../context/food-context';
 
 export const Prots: FunctionComponent<PortionTypeProps> = (props) => {
-    const {portions, dispatch} = React.useContext(PortionsContext);
+    const checked = React.useContext(PortionsContext).portions.prots.checked;
 
     const width = 50;
     const height = 36;
-    const handlePortionClick = () => {
-        if(props.index <= portions.prots.checked) {
-            dispatch({
-                type: 'check',
-                group: 'prots',
-                checked: props.index - 1,
-              }); 
-        } else {
-            dispatch({
-                type: 'check',
-                group: 'prots',
-                checked: props.index,
-              }); 
-        }
-    };
-    return <Portion width={width} height={height} onclick={handlePortionClick} checked={portions.prots.checked >= props.index}>
+
+    return <Portion width={width} height={height} group={Group.PROTS} index={props.index} checked={checked}>
         <g className="portion">
             <g className="portion-left">
                 <path d="M24.9966 1.01647C16.8601 0.815089 9.14424 2.51193 6.02579 3.30304C2.81129 4.11844 0.954785 6.87384 1.13419 10.0716C1.24259 12.0035 1.32799 14.9764 1.02399 17.2178C0.715385 19.4933 3.41229 22.6505 7.51919 22.6872C10.3472 22.7124 15.2118 24.0508 17.0193 26.9593C18.7747 29.784 21.6576 31.7497 24.9966 32.9178V21.6274C24.181 21.2632 23.3683 20.821 22.5649 20.2901C21.7985 19.7836 21.1285 19.1446 20.5529 18.4287C19.0929 16.6129 15.242 12.558 9.98948 12.5912C3.49578 12.6321 1.74589 7.42444 5.22879 5.21254C7.78416 3.58967 13.2752 1.83829 24.9966 2.46133V1.01647ZM24.9966 3.80368C20.4165 4.1852 21.5496 8.00793 24.8328 9.01904C24.8881 9.03606 24.9426 9.05368 24.9966 9.0719V3.80368ZM24.9966 11.0883C23.1898 10.4966 21.443 10.8361 21.443 10.8361C18.432 11.6299 20.3052 16.7851 23.2604 18.5179C23.8805 18.8815 24.4583 19.1967 24.9966 19.4693V11.0883ZM7.85268 5.97464C11.1425 4.00944 15.2925 3.13304 18.642 4.90774C23.4199 7.43894 19.5508 14.1746 14.4158 11.5055C13.5202 11.0397 12.2514 10.8421 10.9938 10.6461C8.59848 10.2729 6.24373 9.906 6.58608 7.70484C6.69218 7.02284 7.15378 6.39224 7.85268 5.97464Z"/>

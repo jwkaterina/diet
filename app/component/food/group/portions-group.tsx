@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { PortionsContext } from '../../../context/food-context';
+import { PortionsContext, Group } from '../../../context/food-context';
 import './portions-group.css'
 
 export const PortionsGroup: FunctionComponent<PortionsGroupProps> = (props) => {
@@ -31,7 +31,7 @@ export const PortionsGroup: FunctionComponent<PortionsGroupProps> = (props) => {
 
 export interface PortionsGroupProps {
     title: string,
-    group: string,
+    group: Group,
     calories: number,
     number: number,
     count: number,
