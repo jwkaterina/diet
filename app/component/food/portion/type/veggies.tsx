@@ -1,14 +1,14 @@
 import React, { FunctionComponent } from 'react';
 import { PortionTypeProps } from './portion-type-props';
 import { Portion } from '../portion';
-import { PortionsCheckedContext } from '../../../../context/food-context';
+import { PortionsContext } from '../../../../context/food-context';
 
 export const Veggies: FunctionComponent<PortionTypeProps> = (props) => {
-    const {portionsChecked, dispatch} = React.useContext(PortionsCheckedContext);
+    const {portions, dispatch} = React.useContext(PortionsContext);
     const width = 50;
     const height = 44;
     const handlePortionClick = () => {
-        if(props.index <= portionsChecked.veggies.checked) {
+        if(props.index <= portions.veggies.checked) {
             dispatch({
                 type: 'check',
                 group: 'veggies',
@@ -22,7 +22,7 @@ export const Veggies: FunctionComponent<PortionTypeProps> = (props) => {
               }); 
         }
     };
-    return <Portion width={width} height={height} onclick={handlePortionClick} checked={portionsChecked.veggies.checked >= props.index}>
+    return <Portion width={width} height={height} onclick={handlePortionClick} checked={portions.veggies.checked >= props.index}>
       <g className="portion">
         <g className="portion-left">
             <path d="M25 34.371V43.0779C21.7409 42.9119 18.4567 42.3601 15.4842 41.5475C15.5663 41.4182 15.6145 41.2703 15.6242 41.1175C15.6742 40.4375 15.7242 39.7675 15.7842 39.1175C16.9027 37.3816 19.4063 35.2454 25 34.371Z"/>

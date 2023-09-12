@@ -3,12 +3,12 @@
 import { createContext, useReducer } from 'react';
 
 export interface Portions {
-    fruit: number;
-    veggies: number;
-    carbs: number;
-    prots: number;
-    fats: number;
-    sweets: number;
+    fruit: {calories: number, number: number, checked: number}, 
+    veggies: {calories: number, number: number, checked: number},
+    carbs: {calories: number, number: number, checked: number},
+    prots: {calories: number, number: number, checked: number},
+    fats: {calories: number, number: number, checked: number},
+    sweets: {calories: number, number: number, checked: number}
 }
 
 export const PortionsNumberContext = createContext({
@@ -23,11 +23,11 @@ export const PortionsNumberContext = createContext({
 } as PortionsNumberContextProperty);
 
 export interface PortionsNumberContextProperty {
-    portionsNumber: Portions;
-    setPortionsNumber: (newValue: Portions) => void;
+    portionsNumber: any;
+    setPortionsNumber: (newValue: any) => void;
 };
 
-export const CaloriesContext = createContext<Portions>({
+export const CaloriesContext = createContext({
     fruit: 60,
     veggies: 25,
     carbs: 70,
@@ -36,37 +36,37 @@ export const CaloriesContext = createContext<Portions>({
     sweets: 75,
 })
 
-const initialPortions = {
-    fruit: {number: 0, calories: 60, checked: 0}, 
-    veggies: {number: 0, calories: 25, checked: 0},
-    carbs: {number: 0, calories: 70, checked: 0},
-    prots: {number: 0, calories: 110, checked: 0},
-    fats: {number: 0, calories: 45, checked: 0},
-    sweets: {number: 0, calories: 75, checked: 0}
+const initialPortions: Portions = {
+    fruit: {calories: 60, number: 0, checked: 0}, 
+    veggies: {calories: 25, number: 0, checked: 0},
+    carbs: {calories: 70, number: 0, checked: 0},
+    prots: {calories: 110, number: 0, checked: 0},
+    fats: {calories: 45, number: 0, checked: 0},
+    sweets: {calories: 75, number: 0, checked: 0}
 }
 
-export const PortionsCheckedContext = createContext({
-    portionsChecked: initialPortions
-} as PortionsCheckedContextProperty);
+export const PortionsContext = createContext({
+    portions: initialPortions
+} as PortionsContextProperty);
 
-export interface PortionsCheckedContextProperty {
-    portionsChecked: any;
-    dispatch: (newValue: any) => void;
+export interface PortionsContextProperty {
+    portions: Portions;
+    dispatch: (newValue: Portions) => void;
 };
 
-export const PortionsCheckedProvider = ({ children }: any) => {
-    const [portionsChecked, dispatch] = useReducer(
-        portionsCheckedReducer, initialPortions
+export const PortionsProvider = ({ children }: any) => {
+    const [portions, dispatch] = useReducer(
+        portionsReducer, initialPortions
     );
 
     return (
-      <PortionsCheckedContext.Provider value={{portionsChecked, dispatch}}>
+      <PortionsContext.Provider value={{portions, dispatch}}>
           {children}
-      </PortionsCheckedContext.Provider>
+      </PortionsContext.Provider>
     );
 }
 
-function portionsCheckedReducer(portions: any, action: any) {
+function portionsReducer(portions: any, action: any) {
     switch (action.type) {
       case 'check': {
         if(action.group == 'carbs') return {...portions, carbs: {

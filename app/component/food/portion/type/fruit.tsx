@@ -1,15 +1,15 @@
 import React, { FunctionComponent } from 'react';
 import { PortionTypeProps } from './portion-type-props';
 import { Portion } from '../portion';
-import { PortionsCheckedContext } from '../../../../context/food-context';
+import { PortionsContext } from '../../../../context/food-context';
 
 export const Fruit: FunctionComponent<PortionTypeProps> = (props) => {
-    const {portionsChecked, dispatch} = React.useContext(PortionsCheckedContext);
+    const {portions, dispatch} = React.useContext(PortionsContext);
 
     const width = 118;
     const height = 202;
     const handlePortionClick = () => {
-        if(props.index <= portionsChecked.fruit.checked) {
+        if(props.index <= portions.fruit.checked) {
             dispatch({
                 type: 'check',
                 group: 'fruit',
@@ -23,7 +23,7 @@ export const Fruit: FunctionComponent<PortionTypeProps> = (props) => {
               }); 
         }
     };
-    return <Portion width={width} height={height} onclick={handlePortionClick} checked={portionsChecked.fruit.checked >= props.index}>
+    return <Portion width={width} height={height} onclick={handlePortionClick} checked={portions.fruit.checked >= props.index}>
         <g className="portion">
             <g className="portion-left">
                 <path d="M58.7561 44V54.7575L68.4261 44H58.7561Z"/>
