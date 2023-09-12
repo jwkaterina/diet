@@ -41,45 +41,54 @@ export const PortionsProvider = ({ children }: any) => {
     );
 }
 
+export enum Group {
+    FRUIT = 'fruit',
+    VEGGIES = 'veggies',
+    CARBS = 'carbs',
+    PROTS = 'prots',
+    FATS = 'fats',
+    SWEETS = 'sweets'
+}
+
 function portionsReducer(portions: any, action: any) {
     switch (action.type) {
       case 'check': {
-        if(action.group == 'carbs') return {...portions, carbs: {
+        if(action.group == Group.CARBS) return {...portions, carbs: {
             ...portions.carbs, checked: action.checked
         }};
-        if(action.group == 'fats') return {...portions, fats: {
+        if(action.group == Group.FATS) return {...portions, fats: {
             ...portions.fats, checked: action.checked
         }};
-        if(action.group == 'fruit') return {...portions, fruit: {
+        if(action.group == Group.FRUIT) return {...portions, fruit: {
             ...portions.fruit, checked: action.checked
         }};
-        if(action.group == 'prots') return {...portions, prots: {
+        if(action.group == Group.PROTS) return {...portions, prots: {
             ...portions.prots, checked: action.checked
         }};
-        if(action.group == 'sweets') return {...portions, sweets: {
+        if(action.group == Group.SWEETS) return {...portions, sweets: {
             ...portions.sweets, checked: action.checked
         }};
-        if(action.group == 'veggies') return {...portions, veggies: {
+        if(action.group == Group.VEGGIES) return {...portions, veggies: {
             ...portions.veggies, checked: action.checked
         }};
       }
       case 'add': {
-        if(action.group == 'carbs') return {...portions, carbs: {
+        if(action.group == Group.CARBS) return {...portions, carbs: {
             ...portions.carbs, number: action.number
         }};
-        if(action.group == 'fats') return {...portions, fats: {
+        if(action.group == Group.FATS) return {...portions, fats: {
             ...portions.fats, number: action.number
         }};
-        if(action.group == 'fruit') return {...portions, fruit: {
+        if(action.group == Group.FRUIT) return {...portions, fruit: {
             ...portions.fruit, number: action.number
         }};
-        if(action.group == 'prots') return {...portions, prots: {
+        if(action.group == Group.PROTS) return {...portions, prots: {
             ...portions.prots, number: action.number
         }};
-        if(action.group == 'sweets') return {...portions, sweets: {
+        if(action.group == Group.SWEETS) return {...portions, sweets: {
             ...portions.sweets, number: action.number
         }};
-        if(action.group == 'veggies') return {...portions, veggies: {
+        if(action.group == Group.VEGGIES) return {...portions, veggies: {
             ...portions.veggies, number: action.number
         }};
       }

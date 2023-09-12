@@ -4,24 +4,17 @@ import React, { FunctionComponent, useContext } from 'react';
 import { CategoryProps } from './category-props';
 import { PortionsGroup } from '../portions-group';
 import { Sweets } from '../../portion/type/sweets';
-import { PortionsContext } from '../../../../context/food-context'
+import { PortionsContext, Group } from '../../../../context/food-context'
 
 export const SweetsGroup: FunctionComponent<CategoryProps> = (props) => {
-    const {portions, dispatch} = React.useContext(PortionsContext);
+    const {portions} = React.useContext(PortionsContext);
     const {calories, number, checked} = portions.sweets;
 
-    const title = 'Sweets';  
     let sweetsArr = [];
     for(let i = 0; i < number; i++) {
         sweetsArr.push(<Sweets key={ i + 1 } index={ i + 1 }/>);
     }
-    const handlePlusClick = () => {
-        dispatch({
-            type: 'add',
-            group: 'sweets',
-            number: number + 1,
-        });    }
-    return <PortionsGroup calories={calories} title={title} count={checked} onclick={handlePlusClick}>
+    return <PortionsGroup title={'Sweets'} group={Group.SWEETS} calories={calories} number={number} count={checked}>
         {sweetsArr}
     </PortionsGroup>
 };

@@ -14,4 +14,4 @@ export const MealsTimeContext = createContext<MealTimeProperty>({
     lastMeal: 21
 });
 
-export const TargetCaloriesContext = createContext(1200);
+export const TargetCaloriesContext = createContext<number>(1200);
