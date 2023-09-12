@@ -4,12 +4,12 @@ import React, { FunctionComponent, useContext } from 'react';
 import { CategoryProps } from './category-props';
 import { PortionsGroup } from '../portions-group';
 import { Fats } from '../../portion/type/fats';
-import { PortionsNumberContext, PortionsContext, CaloriesContext } from '../../../../context/food-context';
+import { PortionsNumberContext, PortionsContext } from '../../../../context/food-context';
 
 export const FatsGroup: FunctionComponent<CategoryProps> = (props) => {
     const {portionsNumber, setPortionsNumber} = React.useContext(PortionsNumberContext);
 
-    const calories = useContext(CaloriesContext).fats;
+    const calories = useContext(PortionsContext).portions.fats.calories;
     const title = 'Fats';
     const count = useContext(PortionsContext).portions.fats.checked;
     const portions = portionsNumber.fats;    

@@ -27,15 +27,6 @@ export interface PortionsNumberContextProperty {
     setPortionsNumber: (newValue: any) => void;
 };
 
-export const CaloriesContext = createContext({
-    fruit: 60,
-    veggies: 25,
-    carbs: 70,
-    prots: 110,
-    fats: 45,
-    sweets: 75,
-})
-
 const initialPortions: Portions = {
     fruit: {calories: 60, number: 0, checked: 0}, 
     veggies: {calories: 25, number: 0, checked: 0},
