@@ -9,7 +9,7 @@ export const Fruit: FunctionComponent<PortionTypeProps> = (props) => {
     const width = 118;
     const height = 202;
     const handlePortionClick = () => {
-        if(props.index <= portionsChecked.fruit) {
+        if(props.index <= portionsChecked.fruit.checked) {
             dispatch({
                 type: 'check',
                 group: 'fruit',
@@ -23,7 +23,7 @@ export const Fruit: FunctionComponent<PortionTypeProps> = (props) => {
               }); 
         }
     };
-    return <Portion width={width} height={height} onclick={handlePortionClick} checked={portionsChecked.fruit >= props.index}>
+    return <Portion width={width} height={height} onclick={handlePortionClick} checked={portionsChecked.fruit.checked >= props.index}>
         <g className="portion">
             <g className="portion-left">
                 <path d="M58.7561 44V54.7575L68.4261 44H58.7561Z"/>

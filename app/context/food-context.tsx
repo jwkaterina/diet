@@ -36,27 +36,27 @@ export const CaloriesContext = createContext<Portions>({
     sweets: 75,
 })
 
-const initialPortionsChecked = {
-    fruit: 0, 
-    veggies: 0,
-    carbs: 0,
-    prots: 0,
-    fats: 0,
-    sweets: 0
+const initialPortions = {
+    fruit: {number: 0, calories: 60, checked: 0}, 
+    veggies: {number: 0, calories: 25, checked: 0},
+    carbs: {number: 0, calories: 70, checked: 0},
+    prots: {number: 0, calories: 110, checked: 0},
+    fats: {number: 0, calories: 45, checked: 0},
+    sweets: {number: 0, calories: 75, checked: 0}
 }
 
 export const PortionsCheckedContext = createContext({
-    portionsChecked: initialPortionsChecked
+    portionsChecked: initialPortions
 } as PortionsCheckedContextProperty);
 
 export interface PortionsCheckedContextProperty {
-    portionsChecked: Portions;
+    portionsChecked: any;
     dispatch: (newValue: any) => void;
 };
 
 export const PortionsCheckedProvider = ({ children }: any) => {
     const [portionsChecked, dispatch] = useReducer(
-        portionsCheckedReducer, initialPortionsChecked
+        portionsCheckedReducer, initialPortions
     );
 
     return (
@@ -66,18 +66,30 @@ export const PortionsCheckedProvider = ({ children }: any) => {
     );
 }
 
-function portionsCheckedReducer(portionsChecked: Portions, action: any) {
+function portionsCheckedReducer(portions: any, action: any) {
     switch (action.type) {
       case 'check': {
-        if(action.group == 'carbs') return {...portionsChecked, carbs: action.index};
-        if(action.group == 'fats') return {...portionsChecked, fats: action.index};
-        if(action.group == 'fruit') return {...portionsChecked, fruit: action.index};
-        if(action.group == 'prots') return {...portionsChecked, prots: action.index};
-        if(action.group == 'sweets') return {...portionsChecked, sweets: action.index};
-        if(action.group == 'veggies') return {...portionsChecked, veggies: action.index};
+        if(action.group == 'carbs') return {...portions, carbs: {
+            ...portions.carbs, checked: action.index
+        }};
+        if(action.group == 'fats') return {...portions, fats: {
+            ...portions.carbs, checked: action.index
+        }};
+        if(action.group == 'fruit') return {...portions, fruit: {
+            ...portions.carbs, checked: action.index
+        }};
+        if(action.group == 'prots') return {...portions, prots: {
+            ...portions.carbs, checked: action.index
+        }};
+        if(action.group == 'sweets') return {...portions, sweets: {
+            ...portions.carbs, checked: action.index
+        }};
+        if(action.group == 'veggies') return {...portions, veggies: {
+            ...portions.carbs, checked: action.index
+        }};
       }
       default: {
         throw Error('Unknown action: ' + action.type);
       }
     }
-  }
+}

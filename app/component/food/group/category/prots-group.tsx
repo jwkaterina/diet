@@ -11,7 +11,7 @@ export const ProtsGroup: FunctionComponent<CategoryProps> = (props) => {
 
     const calories = useContext(CaloriesContext).prots;
     const title = 'Prots';
-    const count = useContext(PortionsCheckedContext).portionsChecked.prots;
+    const count = useContext(PortionsCheckedContext).portionsChecked.prots.checked;
     const portions = portionsNumber.prots;    
     let protsArr = [];
     for(let i = 0; i < portions; i++) {
