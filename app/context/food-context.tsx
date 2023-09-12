@@ -11,29 +11,13 @@ export interface Portions {
     sweets: {calories: number, number: number, checked: number}
 }
 
-export const PortionsNumberContext = createContext({
-    portionsNumber: {
-        fruit: 3,
-        veggies: 4,
-        carbs: 4,
-        prots: 4,
-        fats: 3,
-        sweets: 1
-    }
-} as PortionsNumberContextProperty);
-
-export interface PortionsNumberContextProperty {
-    portionsNumber: any;
-    setPortionsNumber: (newValue: any) => void;
-};
-
 const initialPortions: Portions = {
-    fruit: {calories: 60, number: 0, checked: 0}, 
-    veggies: {calories: 25, number: 0, checked: 0},
-    carbs: {calories: 70, number: 0, checked: 0},
-    prots: {calories: 110, number: 0, checked: 0},
-    fats: {calories: 45, number: 0, checked: 0},
-    sweets: {calories: 75, number: 0, checked: 0}
+    fruit: {calories: 60, number: 3, checked: 0}, 
+    veggies: {calories: 25, number: 4, checked: 0},
+    carbs: {calories: 70, number: 4, checked: 0},
+    prots: {calories: 110, number: 3, checked: 0},
+    fats: {calories: 45, number: 3, checked: 0},
+    sweets: {calories: 75, number: 1, checked: 0}
 }
 
 export const PortionsContext = createContext({
@@ -61,22 +45,42 @@ function portionsReducer(portions: any, action: any) {
     switch (action.type) {
       case 'check': {
         if(action.group == 'carbs') return {...portions, carbs: {
-            ...portions.carbs, checked: action.number
+            ...portions.carbs, checked: action.checked
         }};
         if(action.group == 'fats') return {...portions, fats: {
-            ...portions.carbs, checked: action.number
+            ...portions.fats, checked: action.checked
         }};
         if(action.group == 'fruit') return {...portions, fruit: {
-            ...portions.carbs, checked: action.number
+            ...portions.fruit, checked: action.checked
         }};
         if(action.group == 'prots') return {...portions, prots: {
-            ...portions.carbs, checked: action.number
+            ...portions.prots, checked: action.checked
         }};
         if(action.group == 'sweets') return {...portions, sweets: {
-            ...portions.carbs, checked: action.number
+            ...portions.sweets, checked: action.checked
         }};
         if(action.group == 'veggies') return {...portions, veggies: {
-            ...portions.carbs, checked: action.number
+            ...portions.veggies, checked: action.checked
+        }};
+      }
+      case 'add': {
+        if(action.group == 'carbs') return {...portions, carbs: {
+            ...portions.carbs, number: action.number
+        }};
+        if(action.group == 'fats') return {...portions, fats: {
+            ...portions.fats, number: action.number
+        }};
+        if(action.group == 'fruit') return {...portions, fruit: {
+            ...portions.fruit, number: action.number
+        }};
+        if(action.group == 'prots') return {...portions, prots: {
+            ...portions.prots, number: action.number
+        }};
+        if(action.group == 'sweets') return {...portions, sweets: {
+            ...portions.sweets, number: action.number
+        }};
+        if(action.group == 'veggies') return {...portions, veggies: {
+            ...portions.veggies, number: action.number
         }};
       }
       default: {

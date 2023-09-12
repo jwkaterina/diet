@@ -4,22 +4,25 @@ import React, { FunctionComponent, useContext } from 'react';
 import { CategoryProps } from './category-props';
 import { PortionsGroup } from '../portions-group';
 import { Fruit } from '../../portion/type/fruit';
-import { PortionsNumberContext, PortionsContext } from '../../../../context/food-context'
+import { PortionsContext } from '../../../../context/food-context'
 
 export const FruitGroup: FunctionComponent<CategoryProps> = (props) => {
-    const {portionsNumber, setPortionsNumber} = React.useContext(PortionsNumberContext);
+    const {portions, dispatch} = React.useContext(PortionsContext);
 
-    const calories = useContext(PortionsContext).portions.fruit.calories;
+    const calories = portions.fruit.calories;
     const title = 'Fruit';
-    const count = useContext(PortionsContext).portions.fruit.checked;
-    const portions = portionsNumber.fruit;    
+    const count = portions.fruit.checked;
+    const number = portions.fruit.number;    
     let fruitArr = [];
-    for(let i = 0; i < portions; i++) {
+    for(let i = 0; i < number; i++) {
         fruitArr.push(<Fruit key={ i + 1 } index={ i + 1 }/>);
     }
     const handlePlusClick = () => {
-        setPortionsNumber({...portionsNumber, fruit: portionsNumber.fruit + 1});
-    }
+        dispatch({
+            type: 'add',
+            group: 'fruit',
+            number: number + 1,
+        });    }
     return <PortionsGroup calories={calories} title={title} count={count} onclick={handlePlusClick}>
         {fruitArr}
     </PortionsGroup>

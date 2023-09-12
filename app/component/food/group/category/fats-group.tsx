@@ -4,21 +4,25 @@ import React, { FunctionComponent, useContext } from 'react';
 import { CategoryProps } from './category-props';
 import { PortionsGroup } from '../portions-group';
 import { Fats } from '../../portion/type/fats';
-import { PortionsNumberContext, PortionsContext } from '../../../../context/food-context';
+import { PortionsContext } from '../../../../context/food-context';
 
 export const FatsGroup: FunctionComponent<CategoryProps> = (props) => {
-    const {portionsNumber, setPortionsNumber} = React.useContext(PortionsNumberContext);
+    const {portions, dispatch} = React.useContext(PortionsContext);
 
-    const calories = useContext(PortionsContext).portions.fats.calories;
+    const calories = portions.fats.calories;
     const title = 'Fats';
-    const count = useContext(PortionsContext).portions.fats.checked;
-    const portions = portionsNumber.fats;    
+    const count = portions.fats.checked;
+    const number = portions.fats.number;    
     let fatsArr = [];
-    for(let i = 0; i < portions; i++) {
+    for(let i = 0; i < number; i++) {
         fatsArr.push(<Fats key={ i + 1 } index={ i + 1 }/>);
     }
     const handlePlusClick = () => {
-        setPortionsNumber({...portionsNumber, fats: portionsNumber.fats + 1});
+        dispatch({
+            type: 'add',
+            group: 'fats',
+            number: number + 1,
+        });
     }
     return <PortionsGroup calories={calories} title={title} count={count} onclick={handlePlusClick}>
         {fatsArr}

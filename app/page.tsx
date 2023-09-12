@@ -1,7 +1,6 @@
 'use client'
 import styles from './page.module.css'
-import { useState } from 'react'
-import { PortionsNumberContext, Portions, PortionsProvider } from './context/food-context'
+import { PortionsProvider } from './context/food-context'
 import { FruitGroup } from './component/food/group/category/fruit-group'
 import { VeggiesGroup } from './component/food/group/category/veggies-group'
 import { CarbsGroup } from './component/food/group/category/carbs-group'
@@ -13,21 +12,11 @@ import { NavBar } from './layout/nav/nav-bar'
 
 export default function Home() {
 
-  const [portionsNumber, setPortionsNumber] = useState({
-    fruit: 3, 
-    veggies: 4,
-    carbs: 4,
-    prots: 3,
-    fats: 3,
-    sweets: 1
-  })
-
   return (
   <>
     <NavBar/>
     <div className={styles.main}>
       <PortionsProvider>
-        <PortionsNumberContext.Provider value={{portionsNumber, setPortionsNumber}}>
           <ProgressBar/>
           <FruitGroup/>
           <VeggiesGroup/>
@@ -35,7 +24,6 @@ export default function Home() {
           <ProtsGroup/>
           <FatsGroup/>
           <SweetsGroup/>
-        </PortionsNumberContext.Provider>
       </PortionsProvider>
     </div>
   </>
