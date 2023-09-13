@@ -1,6 +1,6 @@
 "use client"
 
-import React, { FunctionComponent, useContext } from 'react';
+import React, { FunctionComponent } from 'react';
 import { CategoryProps } from './category-props';
 import { PortionsGroup } from '../portions-group';
 import { Fats } from '../../portion/type/fats';
