@@ -3,8 +3,11 @@
 import React, { FunctionComponent, useContext } from 'react';
 import { SettingsSection } from './settings-section';
 import { PortionsCell } from '../cells/portions-cell';
+import { PortionsContext } from '../../../context/portions-context';
 
 export const PortionsSection: FunctionComponent = (props) => {
+    const portions = useContext(PortionsContext).portions;
+
     return (
         <SettingsSection>
             <div className="Settings__section-title">
@@ -12,12 +15,12 @@ export const PortionsSection: FunctionComponent = (props) => {
                 <h2>1210 k</h2>
             </div>
             <div className="Settings__section-body Settings__portions-grid">
-                <PortionsCell count={3}>FRUITS:</PortionsCell>
-                <PortionsCell count={4}>VEGGIES:</PortionsCell>
-                <PortionsCell count={4}>CARBS:</PortionsCell>
-                <PortionsCell count={4}>PROTS:</PortionsCell>
-                <PortionsCell count={3}>FATS:</PortionsCell>
-                <PortionsCell count={1}>SWEETS:</PortionsCell>        
+                <PortionsCell count={portions.fruit.number}>FRUITS:</PortionsCell>
+                <PortionsCell count={portions.veggies.number}>VEGGIES:</PortionsCell>
+                <PortionsCell count={portions.carbs.number}>CARBS:</PortionsCell>
+                <PortionsCell count={portions.prots.number}>PROTS:</PortionsCell>
+                <PortionsCell count={portions.fats.number}>FATS:</PortionsCell>
+                <PortionsCell count={portions.sweets.number}>SWEETS:</PortionsCell>        
             </div>                
         </SettingsSection>
     )
