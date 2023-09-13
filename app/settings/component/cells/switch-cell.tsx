@@ -1,5 +1,7 @@
 'use client'
 
+import './cell.css'
+
 import React, { FunctionComponent } from 'react';
 
 export const SwitchCell: FunctionComponent<SwitchCellProps> = (props) => {

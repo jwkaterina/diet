@@ -1,5 +1,7 @@
 'use client'
 
+import './section.css'
+
 import React, {FunctionComponent} from 'react';
 
 export const SettingsSection: FunctionComponent<SettingsSectionProps> = (props: SettingsSectionProps) => {

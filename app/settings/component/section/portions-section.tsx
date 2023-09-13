@@ -2,7 +2,6 @@
 
 import React, { FunctionComponent, useContext } from 'react';
 import { SettingsSection } from './settings-section';
-import { SectionBody} from './section-body';
 import { PortionsCell } from '../cells/portions-cell';
 
 export const PortionsSection: FunctionComponent = (props) => {
@@ -12,14 +11,14 @@ export const PortionsSection: FunctionComponent = (props) => {
                 <h2>Portions</h2>
                 <h2>1210 k</h2>
             </div>
-            <SectionBody>
+            <div className="Settings__section-body Settings__portions-grid">
                 <PortionsCell count={3}>FRUITS:</PortionsCell>
                 <PortionsCell count={4}>VEGGIES:</PortionsCell>
                 <PortionsCell count={4}>CARBS:</PortionsCell>
                 <PortionsCell count={4}>PROTS:</PortionsCell>
                 <PortionsCell count={3}>FATS:</PortionsCell>
-                <PortionsCell count={1}>SWEETS:</PortionsCell>
-            </SectionBody>
+                <PortionsCell count={1}>SWEETS:</PortionsCell>        
+            </div>                
         </SettingsSection>
     )
 }
