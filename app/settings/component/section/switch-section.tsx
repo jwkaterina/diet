@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FunctionComponent, useContext } from 'react';
+import React, { FunctionComponent } from 'react';
 import { SettingsSection } from './settings-section';
 import { SwitchCell } from '../cells/switch-cell';
 

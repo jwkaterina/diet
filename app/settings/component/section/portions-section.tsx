@@ -3,7 +3,9 @@
 import React, { FunctionComponent, useContext } from 'react';
 import { SettingsSection } from './settings-section';
 import { PortionsCell } from '../cells/portions-cell';
-import { PortionsContext, Group } from '../../../context/portions-context';
+import { PortionsContext } from '../../../context/portions-context';
+import { Group } from '../../../context/portions-reducer';
+
 
 export const PortionsSection: FunctionComponent = (props) => {
     const {portions, dispatch} = useContext(PortionsContext);
