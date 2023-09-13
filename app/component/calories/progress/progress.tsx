@@ -3,13 +3,11 @@
 import './progress-bar.css'
 import { useContext } from 'react';
 import { PortionsContext } from '../../../context/portions-context'
-import { MealsTimeContext, MealsNumberContext } from '../../../context/settings-context'
+import { MealsContext } from '../../../context/meals-context'
 
 export const ProgressBar = () => {
     const portions = useContext(PortionsContext).portions;
-    const mealsNumber = useContext(MealsNumberContext);
-    const firstMeal = useContext(MealsTimeContext).firstMeal;
-    const lastMeal = useContext(MealsTimeContext).lastMeal;
+    const {firstMeal, lastMeal, mealsNumber} = useContext(MealsContext).meals;
 
     const currentCalories = () => {
         const fruitCal = portions.fruit.calories * portions.fruit.checked;

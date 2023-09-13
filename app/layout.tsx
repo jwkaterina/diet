@@ -1,5 +1,6 @@
 import './globals.css'
 import { PortionsProvider } from './context/portions-context'
+import { MealsProvider } from './context/meals-context'
 import { NavBar } from './layout/nav/nav-bar'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -21,7 +22,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <NavBar/>
         <PortionsProvider>
-          {children}
+          <MealsProvider>
+            {children}
+          </MealsProvider>
         </PortionsProvider>
       </body>
     </html>
