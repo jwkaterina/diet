@@ -1,7 +1,7 @@
 'use client'
 
 import React, { FunctionComponent } from 'react';
-import { PortionsContext, Group } from '../../../context/food-context';
+import { PortionsContext, Group } from '../../../context/portions-context';
 import './portions-group.css'
 
 export const PortionsGroup: FunctionComponent<PortionsGroupProps> = (props) => {

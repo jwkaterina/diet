@@ -4,7 +4,7 @@ import React, { FunctionComponent, useContext } from 'react';
 import { CategoryProps } from './category-props';
 import { PortionsGroup } from '../portions-group';
 import { Fats } from '../../portion/type/fats';
-import { PortionsContext, Group } from '../../../../context/food-context';
+import { PortionsContext, Group } from '../../../../context/portions-context';
 
 export const FatsGroup: FunctionComponent<CategoryProps> = (props) => {
     const {portions} = React.useContext(PortionsContext);

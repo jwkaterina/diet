@@ -1,5 +1,5 @@
 import './globals.css'
-import { PortionsProvider } from './context/food-context'
+import { PortionsProvider } from './context/portions-context'
 import { NavBar } from './layout/nav/nav-bar'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
