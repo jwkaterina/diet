@@ -14,7 +14,7 @@ export const CarbsGroup: FunctionComponent<CategoryProps> = (props) => {
     for(let i = 0; i < number; i++) {
         carbsArr.push(<Carbs key={ i + 1 } index={ i + 1 }/>);
     }
-    return <PortionsGroup title={'Carbs'} group={Group.CARBS} calories={calories} number={number} count={checked}>
+    return <PortionsGroup title={'Carbs'} group={Group.CARBS} calories={calories} checked={checked}>
         {carbsArr}
     </PortionsGroup>
 };

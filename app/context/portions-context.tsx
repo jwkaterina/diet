@@ -74,22 +74,22 @@ function portionsReducer(portions: any, action: any) {
       }
       case 'add': {
         if(action.group == Group.CARBS) return {...portions, carbs: {
-            ...portions.carbs, number: action.number
+            ...portions.carbs, number: portions.carbs.number + 1
         }};
         if(action.group == Group.FATS) return {...portions, fats: {
-            ...portions.fats, number: action.number
+            ...portions.fats, number: portions.fats.number + 1
         }};
         if(action.group == Group.FRUIT) return {...portions, fruit: {
-            ...portions.fruit, number: action.number
+            ...portions.fruit, number: portions.fruit.number + 1
         }};
         if(action.group == Group.PROTS) return {...portions, prots: {
-            ...portions.prots, number: action.number
+            ...portions.prots, number: portions.prots.number + 1
         }};
         if(action.group == Group.SWEETS) return {...portions, sweets: {
-            ...portions.sweets, number: action.number
+            ...portions.sweets, number: portions.sweets.number + 1
         }};
         if(action.group == Group.VEGGIES) return {...portions, veggies: {
-            ...portions.veggies, number: action.number
+            ...portions.veggies, number: portions.veggies.number + 1
         }};
       }
       default: {

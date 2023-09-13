@@ -14,7 +14,7 @@ export const FruitGroup: FunctionComponent<CategoryProps> = (props) => {
     for(let i = 0; i < number; i++) {
         fruitArr.push(<Fruit key={ i + 1 } index={ i + 1 }/>);
     }
-    return <PortionsGroup title={'Fruit'} group={Group.FRUIT} calories={calories} number={number} count={checked}>
+    return <PortionsGroup title={'Fruit'} group={Group.FRUIT} calories={calories} checked={checked}>
         {fruitArr}
     </PortionsGroup>
 };

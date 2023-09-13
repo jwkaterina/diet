@@ -15,7 +15,7 @@ export const FatsGroup: FunctionComponent<CategoryProps> = (props) => {
         fatsArr.push(<Fats key={ i + 1 } index={ i + 1 }/>);
     }
 
-    return <PortionsGroup title={'Fats'} group={Group.FATS} calories={calories} number={number} count={checked}>
+    return <PortionsGroup title={'Fats'} group={Group.FATS} calories={calories} checked={checked}>
         {fatsArr}
     </PortionsGroup>
 };

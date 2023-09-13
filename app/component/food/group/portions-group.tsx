@@ -11,14 +11,13 @@ export const PortionsGroup: FunctionComponent<PortionsGroupProps> = (props) => {
         dispatch({
             type: 'add',
             group: props.group,
-            number: props.number + 1,
         });
     }
     return (
         <div className="PortionsGroup-cell">
             <div className="PortionsGroup-card">
                 <div className="PortionsGroup-header">
-                    <h3 className="PortionsGroup__count">{props.count}</h3>
+                    <h3 className="PortionsGroup__checked">{props.checked}</h3>
                     <h3 className="PortionsGroup__calories-hint">x{props.calories}k</h3>
                     <h3>{props.title}</h3>
                     <div className="plus-btn" onClick={handlePlusClick}></div>
@@ -35,7 +34,6 @@ export interface PortionsGroupProps {
     title: string,
     group: Group,
     calories: number,
-    number: number,
-    count: number,
+    checked: number,
     children: React.ReactNode
 }
