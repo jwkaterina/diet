@@ -3,7 +3,8 @@
 import React, { FunctionComponent } from 'react';
 import { PortionTypeProps } from './portion-type-props';
 import { Portion } from '../portion';
-import { PortionsContext, Group } from '../../../../context/portions-context';
+import { PortionsContext } from '../../../../context/portions-context';
+import { Group } from '../../../../context/portions-reducer';
 
 export const Sweets: FunctionComponent<PortionTypeProps> = (props) => {
     const checked = React.useContext(PortionsContext).portions.sweets.checked;
