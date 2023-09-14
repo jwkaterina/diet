@@ -1,15 +1,17 @@
 'use client'
 
+import { useState } from 'react'
 import './nav-bar.css'
 
-export const NavBar = () => {
+export const NavBar = (props: NavBarProps) => {
+
     return (
         <header>
             <div className="app-title">
                 <span className="icon"></span>
                 <h1> My Diet</h1>
             </div>
-            <button className="menu-toggle" id="menu-toggle">
+            <button className="menu-toggle" id="menu-toggle" onClick={props.onclick}>
                 <span className="hamburger"></span>
             </button>
             <div className="menu">
@@ -30,4 +32,8 @@ export const NavBar = () => {
             </div>
         </header>
         )
+}
+
+export interface NavBarProps {
+    onclick: () => void
 }
