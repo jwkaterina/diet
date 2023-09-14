@@ -17,13 +17,13 @@ export const NavBar = (props: NavBarProps) => {
             <div className="menu">
                 <ul className="menu__list">
                 <li className="menu__item">
-                    <a className="menu__link" href="#/">Main</a>
+                    <a className="menu__link" href="/">Main</a>
                 </li>
                 <li className="menu__item">
-                    <a className="menu__link" href="#/calories">Calories</a>
+                    <a className="menu__link" href="/calories">Calories</a>
                 </li>
                 <li className="menu__item">
-                    <a className="menu__link" href="#/settings">Settings</a>
+                    <a className="menu__link" href="/settings">Settings</a>
                 </li>
                 <li className="menu__item">
                     <span className="menu__link">Clear Portions</span>
