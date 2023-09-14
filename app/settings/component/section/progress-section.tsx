@@ -6,36 +6,54 @@ import { ProgressCell } from '../cells/progress-cell';
 import { MealsContext } from '../../../context/meals-context';
 
 export const ProgressSection: FunctionComponent = (props) => {
-    const {meals, setMeals} = useContext(MealsContext);
+    const {meals, dispatch} = useContext(MealsContext);
     const {firstMeal, lastMeal, mealsNumber} = meals;
 
     const handeFirstMealMinusClick = () => {
         if (firstMeal < 1) return;
-        setMeals({...meals, firstMeal: firstMeal - 1})
+        dispatch({
+            type: 'reduce',
+            group: 'firstMeal',
+          });
     }
 
     const handleFirstMealPlusClick = () => {
         if (firstMeal >= 23 || lastMeal - firstMeal <= 1 ) return;
-        setMeals({...meals, firstMeal: firstMeal + 1})
+        dispatch({
+            type: 'add',
+            group: 'firstMeal',
+          });
     }
 
     const handleLastMealMinusClick = () => {
         if (lastMeal - firstMeal <= 1 ) return;
-        setMeals({...meals, lastMeal: lastMeal - 1})
+        dispatch({
+            type: 'reduce',
+            group: 'lastMeal',
+          });
     }
 
     const handleLastMealPlusClick = () => {
         if (lastMeal >= 23 ) return;
-        setMeals({...meals, lastMeal: lastMeal + 1})
+        dispatch({
+            type: 'add',
+            group: 'lastMeal',
+          });
     }
 
     const handleMealsNumberMinusClick = () => {
         if (mealsNumber <= 2 ) return;
-        setMeals({...meals, mealsNumber: mealsNumber - 1})
+        dispatch({
+            type: 'reduce',
+            group: 'mealsNumber',
+          });
     }
 
     const handleMealsNumberPlusClick = () => {
-        setMeals({...meals, mealsNumber: mealsNumber + 1})
+        dispatch({
+            type: 'add',
+            group: 'mealsNumber',
+          });
     }
 
     return (

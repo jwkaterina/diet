@@ -1,6 +1,7 @@
 "use client"
 
-import { createContext, useState } from 'react';
+import { createContext, useReducer } from 'react';
+import { MealsReducer } from './meals-reducer';
 
 export interface MealsProperty {
     firstMeal: number;
@@ -8,7 +9,10 @@ export interface MealsProperty {
     mealsNumber: number;
 }
 
-const initialMeals: MealsProperty = {
+let initialMeals: MealsProperty;
+if(localStorage.getItem('meals')) {
+    initialMeals = JSON.parse(localStorage.getItem('meals')!)
+} else initialMeals = {
     firstMeal: 9,
     lastMeal: 21,
     mealsNumber: 3
@@ -20,14 +24,14 @@ export const MealsContext = createContext({
 
 export interface MealsContextProperty {
     meals: MealsProperty;
-    setMeals: (meals: MealsProperty) => void;
+    dispatch: (newValue: any) => void;
 };
 
 export const MealsProvider = ({ children }: any) => {
-    const [meals, setMeals] = useState<MealsProperty>(initialMeals);
+    const [meals, dispatch] = useReducer(MealsReducer, initialMeals);
 
     return (
-      <MealsContext.Provider value={{meals, setMeals}}>
+      <MealsContext.Provider value={{meals, dispatch}}>
           {children}
       </MealsContext.Provider>
     );
