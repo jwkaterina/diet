@@ -165,6 +165,24 @@ export const  PortionsReducer = (portions: any, action: any) => {
                 }
             }
         }
+        case 'clear': {
+            localStorage.setItem('portions', JSON.stringify({...portions, 
+                carbs: {...portions.carbs, checked: 0},
+                fats: {...portions.fats, checked: 0},
+                fruit: {...portions.fruit, checked: 0},
+                prots: {...portions.prots, checked: 0},
+                sweets: {...portions.sweets, checked: 0},
+                veggies: {...portions.veggies, checked: 0}, 
+            }));
+            return {...portions, 
+                carbs: {...portions.carbs, checked: 0},
+                fats: {...portions.fats, checked: 0},
+                fruit: {...portions.fruit, checked: 0},
+                prots: {...portions.prots, checked: 0},
+                sweets: {...portions.sweets, checked: 0},
+                veggies: {...portions.veggies, checked: 0}, 
+            };          
+        }
         default: {
             throw Error('Unknown action: ' + action.type);
         }

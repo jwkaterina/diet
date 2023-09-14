@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
   <>
-    <div className={styles.main}>
+    <div className={styles.Portions_page}>
       <ProgressBar/>
       <FruitGroup/>
       <VeggiesGroup/>

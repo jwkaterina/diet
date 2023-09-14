@@ -11,7 +11,7 @@ export const NavBar = (props: NavBarProps) => {
                 <span className="icon"></span>
                 <h1> My Diet</h1>
             </div>
-            <button className="menu-toggle" id="menu-toggle" onClick={props.onclick}>
+            <button className="menu-toggle" id="menu-toggle" onClick={props.onMenuClick}>
                 <span className="hamburger"></span>
             </button>
             <div className="menu">
@@ -26,7 +26,7 @@ export const NavBar = (props: NavBarProps) => {
                     <a className="menu__link" href="/settings">Settings</a>
                 </li>
                 <li className="menu__item">
-                    <span className="menu__link">Clear Portions</span>
+                    <span className="menu__link" onClick={props.onClearClick}>Clear Portions</span>
                 </li>
                 </ul>
             </div>
@@ -35,5 +35,6 @@ export const NavBar = (props: NavBarProps) => {
 }
 
 export interface NavBarProps {
-    onclick: () => void
+    onMenuClick: () => void,
+    onClearClick: () => void
 }
