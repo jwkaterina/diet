@@ -12,7 +12,10 @@ export interface Portions {
     sweets: {calories: number, number: number, checked: number}
 }
 
-const initialPortions: Portions = {
+let initialPortions: Portions;
+if(localStorage.getItem('portions')) {
+    initialPortions = JSON.parse(localStorage.getItem('portions')!)
+} else initialPortions = {
     fruit: {calories: 60, number: 3, checked: 0}, 
     veggies: {calories: 25, number: 4, checked: 0},
     carbs: {calories: 70, number: 4, checked: 0},
