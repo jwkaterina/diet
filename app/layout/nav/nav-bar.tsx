@@ -1,14 +1,15 @@
 'use client'
 
-import { useState } from 'react'
 import './nav-bar.css'
+import Link from 'next/link'
+
 
 export const NavBar = (props: NavBarProps) => {
 
     return (
         <header>
             <div className="app-title">
-                <span className="icon"></span>
+                <Link className="icon" href="/"></Link>
                 <h1> My Diet</h1>
             </div>
             <button className="menu-toggle" id="menu-toggle" onClick={props.onMenuClick}>
