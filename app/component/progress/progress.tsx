@@ -2,8 +2,8 @@
 
 import './progress-bar.css'
 import { useContext } from 'react';
-import { PortionsContext } from '../../../context/portions-context'
-import { MealsContext } from '../../../context/meals-context'
+import { PortionsContext } from '../../context/portions-context'
+import { MealsContext } from '../../context/meals-context'
 
 export const ProgressBar = () => {
     const portions = useContext(PortionsContext).portions;

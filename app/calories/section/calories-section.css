@@ -1,0 +1,137 @@
+.Calories__section {
+    padding: 1.0em 1.5em 1.5em 1.5em;
+}
+
+.Calories__input {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    row-gap: 2em;
+    align-items: center;
+    margin: 1.5em 0 2em 0;
+}
+
+.Calories__gender__control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    font-size: 1.1rem;
+}
+
+input[type='number'] {
+    display: block;
+    padding: 0.4rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+}
+
+.CaloriesPage input[type='text']::placeholder,
+.CaloriesPage input[type='number']::placeholder {
+    opacity: .2;
+}
+
+
+.Calories__switch{
+    position: relative;
+    display: block;
+    width: 70px;
+    height: 45px;
+    margin: 0 1em;
+}
+
+.Calories__switch-slider{
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--clr-primary-dark);
+    transition: .5s;
+    border: 3px solid white;
+    box-shadow: var(--bs);
+}
+
+.Calories__switch-slider:before{
+    position: absolute;
+    content: "";
+    top: 6px;
+    background-color: var(--clr-primary-light);
+    transition: .5s;
+}
+
+.Calories__switch input{
+    display: none;
+}
+
+input:checked + .Calories__switch-slider{
+    background: #0077c2;
+}
+
+input:checked + .Calories__switch-slider:before{
+    transform: translateX(35px) rotateZ(45deg);
+    background: #80d6ff;
+}
+
+.Calories__switch-slider.Calories__switch-round{
+    border-radius: 35px;
+}
+
+.Calories__switch-slider.Calories__switch-round:before{
+    width: 43%;
+    height: 43%;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    transform: rotateZ(-45deg);
+}
+
+.Calories__weight__data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 2em;
+    align-items: center;
+    margin: 1.5em 0 0 0;
+}
+
+.Calories__weight__data .data {
+    text-align: center;
+}
+
+.Calories__weight__data .title {
+    font-family: sans-serif;
+    font-weight: 500;
+}
+
+.Calories__plan {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 2em;
+    align-items: center;
+    margin: 1.5em 0 0 0;
+}
+
+.Calories__plan .header,
+.Calories__plan .data {
+    text-align: center;
+}
+
+.Calories__plan .data {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.Calories__plan .title {
+    font-family: sans-serif;
+    font-weight: 500;
+}
+
+@media (min-width: 600px) {
+    .Calories__plan .data {
+        font-size: 2.1rem;
+    }
+
+    input[type='number'] {
+        font-size: 1.2rem;
+    }
+}

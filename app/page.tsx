@@ -7,7 +7,7 @@ import { CarbsGroup } from './component/food/group/category/carbs-group'
 import { ProtsGroup } from './component/food/group/category/prots-group'
 import { FatsGroup } from './component/food/group/category/fats-group'
 import { SweetsGroup } from './component/food/group/category/sweets-group'
-import { ProgressBar } from './component/calories/progress/progress'
+import { ProgressBar } from './component/progress/progress'
 
 export default function Home() {
 

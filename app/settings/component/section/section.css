@@ -32,10 +32,6 @@
     align-items: center;
 }
 
-.Settings__time-cell,
-.Settings__portions-cell {
-}
-
 .Settings__count-cell {
     text-align: center;
 }
