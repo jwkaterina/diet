@@ -1,6 +1,7 @@
 'use client'
 
 import React, { FunctionComponent } from 'react';
+import './cell.css'
 
 export const PortionsCell: FunctionComponent<PortionsCellProps> = (props) => {
     return (
