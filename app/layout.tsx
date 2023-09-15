@@ -3,6 +3,7 @@
 import './globals.css'
 import { useState } from 'react'
 import { PortionsProvider } from './context/portions-context'
+import { SettingsProvider } from './context/settings-context'
 import { MealsProvider } from './context/meals-context'
 import { NavBar } from './layout/nav/nav-bar'
 import Modal from './layout/nav/modal/modal'
@@ -30,7 +31,9 @@ export default function RootLayout(props: LayoutProps) {
         <NavBar onMenuClick={() => setMenuOpen(!menuOpen)} onClearClick={handleClearClick}/>
         <PortionsProvider>
           <MealsProvider>
-            {props.children}
+            <SettingsProvider>
+              {props.children}
+            </SettingsProvider>
             <Modal openState={{modalOpen, setModalOpen}}/>
           </MealsProvider>
         </PortionsProvider>
