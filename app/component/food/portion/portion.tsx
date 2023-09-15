@@ -11,14 +11,6 @@ export const Portion: FunctionComponent<PortionProps> = (props) => {
     const { dispatch} = React.useContext(PortionsContext);
     const { settings } = React.useContext(SettingsContext);
 
-    enum CheckProps {
-        half = 0.5,
-        full = 1,
-        none = 0
-    }
-    const [check, setCheck] = React.useState<CheckProps>(CheckProps.none);
-
-
     const handleClick = () => {
         if(settings.halfPortions) {
             handleHalfPortionClick();
@@ -44,20 +36,20 @@ export const Portion: FunctionComponent<PortionProps> = (props) => {
     }
 
     const handleHalfPortionClick = () => {
-        console.log("half portion change");
+        // console.log("half portion change");
         if(props.index <= props.checked / 2) {
             dispatch({
                 type: 'check',
                 group: props.group,
                 checked: 2 * (props.index - 1),
               }); 
-        } else if(props.index = props.checked / 2 + 0.5) {
+        } else if(props.index == props.checked / 2 + 0.5) {
             dispatch({
                 type: 'check',
                 group: props.group,
                 checked: props.index * 2,
               }); 
-        } else if(props.index >= props.checked / 2 + 1) {
+        } else {
             dispatch({
                 type: 'check',
                 group: props.group,
@@ -67,10 +59,21 @@ export const Portion: FunctionComponent<PortionProps> = (props) => {
     }
 
     const calculateClassname = () => {
-        if(props.index <= props.checked) {
-            return "portion-svg checked"
+        if(settings.halfPortions) {
+            // console.log("half portion class");
+            if(props.index <= props.checked / 2) {
+                return "portion-svg checked"
+            } else if(props.index == props.checked / 2 + 0.5) {
+                return "portion-svg checked-left"
+            } else {
+                return "portion-svg"
+            }
         } else {
-            return "portion-svg"
+            if(props.index <= props.checked) {
+                return "portion-svg checked"
+            } else {
+                return "portion-svg"
+            }
         }
     }
 
