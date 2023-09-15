@@ -5,18 +5,30 @@ import { CategoryProps } from './category-props';
 import { PortionsGroup } from '../portions-group';
 import { Prots } from '../../portion/type/prots';
 import { PortionsContext } from '../../../../context/portions-context';
-import { Group } from '../../../../context/portions-reducer';
 
 
 export const ProtsGroup: FunctionComponent<CategoryProps> = (props) => {
     const {portions} = React.useContext(PortionsContext);
     const {calories, number, checked} = portions.prots;
 
-    let protsArr = [];
-    for(let i = 0; i < number; i++) {
-        protsArr.push(<Prots key={ i + 1 } index={ i + 1 }/>);
+    let n; 
+    if(checked > number) {
+        n = checked;
+    } else {
+        n = number;
     }
-    return <PortionsGroup title={'Props'} group={Group.PROTS} calories={calories} checked={checked}>
+    const [currentNumber, setCurrentNumber] = React.useState<number>(n);
+
+    let protsArr = [];
+    for(let i = 0; i < currentNumber; i++) {
+        protsArr.push(<Prots key={ i + 1 } index={ i + 1 }/>);
+    }    
+
+    const handlePlusClick = () => {
+        setCurrentNumber(currentNumber + 1);
+    }
+
+    return <PortionsGroup title={'Props'} calories={calories} checked={checked} onPlusClick={handlePlusClick}>
         {protsArr}
     </PortionsGroup>
 };
