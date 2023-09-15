@@ -4,7 +4,7 @@ import React, { createContext, useState } from 'react';
 
 export interface SettingsProps {
     halfPortions: boolean;
-    automaticReset: boolean;
+    autoReset: boolean;
 }
 
 let initialSettings: SettingsProps;
@@ -12,7 +12,7 @@ if(localStorage.getItem('settings')) {
     initialSettings = JSON.parse(localStorage.getItem('settings')!)
 } else initialSettings = {
     halfPortions: false,
-    automaticReset: false
+    autoReset: false
 }
 
 export const SettingsContext = createContext({
