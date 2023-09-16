@@ -1,39 +1,65 @@
-export const  MealsReducer = (meals: any, action: any) => {
+import { MealsProperty } from "./meals-context";
+
+export const  MealsReducer = (meals: MealsProperty, action: any) => {
     switch (action.type) {
         case 'add': {
-            switch (action.group) {
-                case 'firstMeal': {
-                    localStorage.setItem('meals', JSON.stringify({...meals, firstMeal: meals.firstMeal + 1}));
-                    return {...meals, firstMeal: meals.firstMeal + 1};
-                }
-                case 'lastMeal': {
-                    localStorage.setItem('meals', JSON.stringify({...meals, lastMeal: meals.lastMeal + 1}));
-                    return {...meals, lastMeal: meals.lastMeal + 1};
-                }
-                case 'mealsNumber': {
-                    localStorage.setItem('meals', JSON.stringify({...meals, mealsNumber: meals.mealsNumber + 1}));
-                    return {...meals, mealsNumber: meals.mealsNumber + 1};
-                }
-            }
+            return actionAdd(action.group, meals);
         }
         case 'reduce': {
-            switch (action.group) {
-                case 'firstMeal': {
-                    localStorage.setItem('meals', JSON.stringify({...meals, firstMeal: meals.firstMeal - 1}));
-                    return {...meals, firstMeal: meals.firstMeal - 1};
-                }
-                case 'lastMeal': {
-                    localStorage.setItem('meals', JSON.stringify({...meals, lastMeal: meals.lastMeal - 1}));
-                    return {...meals, lastMeal: meals.lastMeal - 1};
-                }
-                case 'mealsNumber': {
-                    localStorage.setItem('meals', JSON.stringify({...meals, mealsNumber: meals.mealsNumber - 1}));
-                    return {...meals, mealsNumber: meals.mealsNumber - 1};
-                }
-            }
+            return actionReduce(action.group, meals);
         }
         default: {
             throw Error('Unknown action: ' + action.type);
         }
     }
+}
+
+const actionAdd = (group: string, meals: MealsProperty) => {
+    switch (group) {
+        case 'firstMeal': {
+            const newMeals = {...meals, firstMeal: meals.firstMeal + 1};
+            saveMeals(newMeals);
+            return newMeals;
+        }
+        case 'lastMeal': {
+            const newMeals = {...meals, lastMeal: meals.lastMeal + 1};
+            saveMeals(newMeals);
+            return newMeals;
+        }
+        case 'mealsNumber': {
+            const newMeals = {...meals, mealsNumber: meals.mealsNumber + 1};
+            saveMeals(newMeals);
+            return newMeals;
+        }
+        default: {
+            throw Error('Unknown group: ' + group);
+        }
+    }
+}
+
+const actionReduce = (group: string, meals: MealsProperty) => {
+    switch (group) {
+        case 'firstMeal': {
+            const newMeals = {...meals, firstMeal: meals.firstMeal - 1};
+            saveMeals(newMeals);
+            return newMeals;
+        }
+        case 'lastMeal': {
+            const newMeals = {...meals, lastMeal: meals.lastMeal - 1};
+            saveMeals(newMeals);
+            return newMeals;
+        }
+        case 'mealsNumber': {
+            const newMeals = {...meals, mealsNumber: meals.mealsNumber - 1};
+            saveMeals(newMeals);
+            return newMeals;
+        }
+        default: {
+            throw Error('Unknown group: ' + group);
+        }
+    }
+}
+
+const saveMeals = (meals: MealsProperty) => {
+    localStorage.setItem('meals', JSON.stringify(meals));
 }
