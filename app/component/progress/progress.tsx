@@ -4,24 +4,49 @@ import './progress-bar.css'
 import { useContext } from 'react';
 import { PortionsContext } from '../../context/portions-context'
 import { MealsContext } from '../../context/meals-context'
+import { SettingsContext } from '../../context/settings-context'
 
 export const ProgressBar = () => {
     const portions = useContext(PortionsContext).portions;
     const {firstMeal, lastMeal, mealsNumber} = useContext(MealsContext).meals;
+    const {settings} = useContext(SettingsContext);
+
+    let fruitCalories: number, 
+    veggiesCalories: number,
+    carbsCalories: number,
+    protsCalories: number,
+    fatsCalories: number,
+    sweetsCalories: number;
+
+    if(settings.halfPortions) {
+        fruitCalories = portions.fruit.calories / 2;
+        veggiesCalories = portions.veggies.calories / 2;
+        carbsCalories = portions.carbs.calories / 2;
+        protsCalories = portions.prots.calories / 2;
+        fatsCalories = portions.fats.calories / 2;
+        sweetsCalories = portions.sweets.calories / 2;
+    } else {
+        fruitCalories = portions.fruit.calories;
+        veggiesCalories = portions.veggies.calories;
+        carbsCalories = portions.carbs.calories;
+        protsCalories = portions.prots.calories;
+        fatsCalories = portions.fats.calories;
+        sweetsCalories = portions.sweets.calories;
+    }        
 
     const currentCalories = () => {
-        const fruitCal = portions.fruit.calories * portions.fruit.checked;
-        const veggiesCal = portions.veggies.calories * portions.veggies.checked;
-        const carbsCal = portions.carbs.calories * portions.carbs.checked;
-        const protsCal = portions.prots.calories * portions.prots.checked;
-        const fatsCal = portions.fats .calories* portions.fats.checked;
-        const sweetsCal = portions.sweets.calories * portions.sweets.checked;
+        const fruitCal = fruitCalories * portions.fruit.checked;
+        const veggiesCal = veggiesCalories * portions.veggies.checked;
+        const carbsCal = carbsCalories * portions.carbs.checked;
+        const protsCal = protsCalories * portions.prots.checked;
+        const fatsCal = fatsCalories* portions.fats.checked;
+        const sweetsCal = sweetsCalories * portions.sweets.checked;
         const calories = fruitCal + veggiesCal + carbsCal + protsCal + fatsCal + sweetsCal;
         return calories;
     }
 
     const calculateTarget = () => {
-        const fruitCal = portions.fruit.calories * portions.fruit.number;
+        const fruitCal = fruitCalories * portions.fruit.number;
         const veggiesCal = portions.veggies.calories * portions.veggies.number;
         const carbsCal = portions.carbs.calories * portions.carbs.number;
         const protsCal = portions.prots.calories * portions.prots.number;
