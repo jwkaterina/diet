@@ -5,59 +5,29 @@ import { useContext } from 'react';
 import { PortionsContext } from '../../context/portions-context'
 import { MealsContext } from '../../context/meals-context'
 import { SettingsContext } from '../../context/settings-context'
+import { currentCalories } from './utils'
+import { calculateTarget } from './utils'
 
 export const ProgressBar = () => {
     const portions = useContext(PortionsContext).portions;
     const {firstMeal, lastMeal, mealsNumber} = useContext(MealsContext).meals;
     const {settings} = useContext(SettingsContext);
 
-    let fruitCalories: number, 
-    veggiesCalories: number,
-    carbsCalories: number,
-    protsCalories: number,
-    fatsCalories: number,
-    sweetsCalories: number;
+    const calories =  currentCalories(portions, settings.halfPortions);
+    const targetCalories = calculateTarget(portions);
 
-    if(settings.halfPortions) {
-        fruitCalories = portions.fruit.calories / 2;
-        veggiesCalories = portions.veggies.calories / 2;
-        carbsCalories = portions.carbs.calories / 2;
-        protsCalories = portions.prots.calories / 2;
-        fatsCalories = portions.fats.calories / 2;
-        sweetsCalories = portions.sweets.calories / 2;
-    } else {
-        fruitCalories = portions.fruit.calories;
-        veggiesCalories = portions.veggies.calories;
-        carbsCalories = portions.carbs.calories;
-        protsCalories = portions.prots.calories;
-        fatsCalories = portions.fats.calories;
-        sweetsCalories = portions.sweets.calories;
-    }        
-
-    const currentCalories = () => {
-        const fruitCal = fruitCalories * portions.fruit.checked;
-        const veggiesCal = veggiesCalories * portions.veggies.checked;
-        const carbsCal = carbsCalories * portions.carbs.checked;
-        const protsCal = protsCalories * portions.prots.checked;
-        const fatsCal = fatsCalories* portions.fats.checked;
-        const sweetsCal = sweetsCalories * portions.sweets.checked;
-        const calories = fruitCal + veggiesCal + carbsCal + protsCal + fatsCal + sweetsCal;
-        return calories;
+    const timeTargetCalories = () => {
+        const oneMealCalories = targetCalories / mealsNumber;
+        const timeBetweenMeals = (lastMeal - firstMeal) / (mealsNumber - 1);
+        const time = new Date().getHours();
+        const timeCalories = (((time - firstMeal) / timeBetweenMeals) + 1) * (oneMealCalories);
+        const fraction = timeCalories / targetCalories;
+        const percentage = fraction * 100;
+        return {
+            left: `${percentage}%`
+            
+        };;
     }
-
-    const calculateTarget = () => {
-        const fruitCal = fruitCalories * portions.fruit.number;
-        const veggiesCal = portions.veggies.calories * portions.veggies.number;
-        const carbsCal = portions.carbs.calories * portions.carbs.number;
-        const protsCal = portions.prots.calories * portions.prots.number;
-        const fatsCal = portions.fats .calories* portions.fats.number;
-        const sweetsCal = portions.sweets.calories * portions.sweets.number;
-        const targetCalories = fruitCal + veggiesCal + carbsCal + protsCal + fatsCal + sweetsCal;
-        return targetCalories;
-    }
-
-    const calories =  currentCalories();
-    const targetCalories = calculateTarget();
 
     const completedCalories = () => {
         const fraction = calories / targetCalories;
@@ -65,16 +35,6 @@ export const ProgressBar = () => {
         return {
             width: `${percentage}%`
         };    
-    }
-
-   
-    const calculateClassName = () => {
-        const completed = calories / targetCalories * 100;
-        if (completed > 55) {
-            return "ProgressBar__calories white";
-        } else {
-            return "ProgressBar__calories";
-        }   
     }
 
     const exceededCalories = () => {
@@ -91,17 +51,13 @@ export const ProgressBar = () => {
         }
     }
 
-    const timeTargetCalories = () => {
-        const oneMealCalories = targetCalories / mealsNumber;
-        const timeBetweenMeals = (lastMeal - firstMeal) / (mealsNumber - 1);
-        const time = new Date().getHours();
-        const timeCalories = (((time - firstMeal) / timeBetweenMeals) + 1) * (oneMealCalories);
-        const fraction = timeCalories / targetCalories;
-        const percentage = fraction * 100;
-        return {
-            left: `${percentage}%`
-            
-        };;
+    const calculateClassName = () => {
+        const completed = calories / targetCalories * 100;
+        if (completed > 55) {
+            return "ProgressBar__calories white";
+        } else {
+            return "ProgressBar__calories";
+        }   
     }
 
     return  (
@@ -109,6 +65,6 @@ export const ProgressBar = () => {
         <div className="ProgressBar__target" style={timeTargetCalories()}></div>
         <div className="ProgressBar__completed" style={completedCalories()}></div>
         <div className="ProgressBar__exceeded" style={exceededCalories()}></div>
-        <div className={calculateClassName()}>{currentCalories()} kcal</div>
+        <div className={calculateClassName()}>{calories} kcal</div>
     </div>)
 }
