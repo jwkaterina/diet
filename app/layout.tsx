@@ -6,7 +6,7 @@ import { PortionsProvider } from './context/portions-context'
 import { SettingsProvider } from './context/settings-context'
 import { MealsProvider } from './context/meals-context'
 import { NavBar } from './layout/nav/nav-bar'
-import Modal from './layout/nav/modal/modal'
+import Modal from './layout/modal/modal'
 
 export default function RootLayout(props: LayoutProps) {
   const [menuOpen, setMenuOpen] = useState(false);
