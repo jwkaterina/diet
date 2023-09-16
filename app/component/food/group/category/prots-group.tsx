@@ -6,29 +6,16 @@ import { PortionsGroup } from '../portions-group';
 import { Prots } from '../../portion/type/prots';
 import { PortionsContext } from '../../../../context/portions-context';
 import { SettingsContext } from '../../../../context/settings-context';
+import { calculateCurrentNumber } from './utils';
 
 export const ProtsGroup: FunctionComponent<CategoryProps> = (props) => {
     const {portions} = React.useContext(PortionsContext);
     const {calories, number, checked} = portions.prots;
     const { settings } = React.useContext(SettingsContext);
 
-    let n; 
-    if(settings.halfPortions) {
-        if(checked > 2 * number) {
-            n = (checked / 2);
-            n = Math.ceil(n);
-        } else {
-            n = number;
-        }
-    } else {
-        if(checked > number) {
-            n = checked;
-        } else {
-            n = number;
-        }
-    }
+    const current = calculateCurrentNumber(settings.halfPortions, checked, number);
 
-    const [currentNumber, setCurrentNumber] = React.useState<number>(n);
+    const [currentNumber, setCurrentNumber] = React.useState<number>(current);
 
     let protsArr = [];
     for(let i = 0; i < currentNumber; i++) {
