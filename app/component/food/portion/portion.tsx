@@ -36,7 +36,6 @@ export const Portion: FunctionComponent<PortionProps> = (props) => {
     }
 
     const handleHalfPortionClick = () => {
-        // console.log("half portion change");
         if(props.index <= props.checked / 2) {
             dispatch({
                 type: 'check',
@@ -60,7 +59,6 @@ export const Portion: FunctionComponent<PortionProps> = (props) => {
 
     const calculateClassname = () => {
         if(settings.halfPortions) {
-            // console.log("half portion class");
             if(props.index <= props.checked / 2) {
                 return "portion-svg checked"
             } else if(props.index == props.checked / 2 + 0.5) {

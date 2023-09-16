@@ -5,18 +5,29 @@ import { CategoryProps } from './category-props';
 import { PortionsGroup } from '../portions-group';
 import { Veggies } from '../../portion/type/veggies';
 import { PortionsContext } from '../../../../context/portions-context';
-
+import { SettingsContext } from '../../../../context/settings-context';
 
 export const VeggiesGroup: FunctionComponent<CategoryProps> = (props) => {
     const {portions} = React.useContext(PortionsContext);
     const {calories, number, checked} = portions.veggies;
+    const { settings } = React.useContext(SettingsContext);
 
     let n; 
-    if(checked > number) {
-        n = checked;
+    if(settings.halfPortions) {
+        if(checked > 2 * number) {
+            n = (checked / 2);
+            n = Math.ceil(n);
+        } else {
+            n = number;
+        }
     } else {
-        n = number;
+        if(checked > number) {
+            n = checked;
+        } else {
+            n = number;
+        }
     }
+
     const [currentNumber, setCurrentNumber] = React.useState<number>(n);
 
     let veggiesArr = [];
