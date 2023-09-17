@@ -1,6 +1,7 @@
 'use client'
 
-import React, { createContext, useState } from 'react';
+import React, { createContext, useReducer } from 'react';
+import { SettingsReducer } from './settings-reducer';
 
 export interface SettingsProps {
     halfPortions: boolean;
@@ -23,13 +24,13 @@ export const SettingsContext = createContext({
 
 export interface SettingsContextProperty {
     settings: SettingsProps;
-    setSettings: (settings: SettingsProps) => void;
+    dispatchSettings: (newValue: any) => void;
 };
 export const SettingsProvider = ({ children }: any) => {
-    const [settings, setSettings] = useState(initialSettings);
+    const [settings, dispatchSettings] = useReducer(SettingsReducer, initialSettings);
 
     return (
-      <SettingsContext.Provider value={{settings, setSettings}}>
+      <SettingsContext.Provider value={{settings, dispatchSettings}}>
           {children}
       </SettingsContext.Provider>
     );
