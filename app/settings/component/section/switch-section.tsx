@@ -3,18 +3,21 @@
 import React, { FunctionComponent, useContext } from 'react';
 import {SettingsContext} from '../../../context/settings-context'
 import { SettingsSection } from './settings-section';
+import { type } from 'os';
 
 export const SwitchSection: FunctionComponent = (props) => {
-    const {settings, setSettings} = useContext(SettingsContext);
+    const {settings, dispatchSettings} = useContext(SettingsContext);
 
     const handleHalfPortionsChange = () => {
-        localStorage.setItem('settings', JSON.stringify({...settings, halfPortions: !settings.halfPortions}));
-        setSettings({...settings, halfPortions: !settings.halfPortions})
+        dispatchSettings({
+            type: 'setHalfPortions',
+        }); 
     }
 
     const handleAutoResetChange = () => {
-        localStorage.setItem('settings', JSON.stringify({...settings, autoReset: !settings.autoReset}));
-        setSettings({...settings, autoReset: !settings.autoReset})
+        dispatchSettings({
+            type: 'setAutoReset',
+        }); 
     }
 
     return (

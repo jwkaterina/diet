@@ -14,15 +14,15 @@ import { PortionsContext } from './context/portions-context'
 
 export default function Home() {
 
-  const { settings, setSettings } = useContext(SettingsContext);
+  const { settings, dispatchSettings } = useContext(SettingsContext);
   const { dispatch} = useContext(PortionsContext);
 
   useEffect(() => {
     if(new Date().getMinutes() !== settings.timeStamp) {
-      localStorage.setItem('settings', JSON.stringify({...settings, timeStamp: new Date().getMinutes()}));
-      setSettings({...settings, timeStamp: new Date().getMinutes()});
-      console.log(new Date().getMinutes());
-      console.log("clearing portions");
+      dispatchSettings({
+        type: 'setTimeStamp',
+        timeStamp: new Date().getMinutes()
+    }); 
       dispatch({
           type: 'clear',
       });
