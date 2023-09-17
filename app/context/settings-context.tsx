@@ -5,6 +5,7 @@ import React, { createContext, useState } from 'react';
 export interface SettingsProps {
     halfPortions: boolean;
     autoReset: boolean;
+    timeStamp: number;
 }
 
 let initialSettings: SettingsProps;
@@ -12,7 +13,8 @@ if(localStorage.getItem('settings')) {
     initialSettings = JSON.parse(localStorage.getItem('settings')!)
 } else initialSettings = {
     halfPortions: false,
-    autoReset: false
+    autoReset: false,
+    timeStamp: new Date().getMinutes()
 }
 
 export const SettingsContext = createContext({

@@ -9,7 +9,7 @@ import './portion.css'
 
 export const Portion: FunctionComponent<PortionProps> = (props) => {
     const { dispatch} = React.useContext(PortionsContext);
-    const { settings } = React.useContext(SettingsContext);
+    const { settings, setSettings } = React.useContext(SettingsContext);
 
     const handleClick = () => {
         if(settings.halfPortions) {
