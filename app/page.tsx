@@ -18,14 +18,18 @@ export default function Home() {
   const { dispatch} = useContext(PortionsContext);
 
   useEffect(() => {
-    if(new Date().getMinutes() !== settings.timeStamp) {
+    if(new Date().toDateString() !== settings.timeStamp) {
       dispatchSettings({
         type: 'setTimeStamp',
-        timeStamp: new Date().getMinutes()
-    }); 
-      dispatch({
+        timeStamp: new Date().toDateString()
+      }); 
+      console.log(settings.timeStamp)
+
+      if(settings.autoReset) {
+        dispatch({
           type: 'clear',
-      });
+        });
+      }
     } else return
   });
 

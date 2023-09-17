@@ -8,7 +8,7 @@ export const  SettingsReducer = (settings: SettingsProps, action: any) => {
             return newSettings;
         }
         case 'setAutoReset': {
-            const newSettings = {...settings, auroReset: !settings.autoReset};
+            const newSettings = {...settings, autoReset: !settings.autoReset};
             saveSettings(newSettings);
             return newSettings;
         }

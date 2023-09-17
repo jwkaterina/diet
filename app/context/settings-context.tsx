@@ -6,7 +6,7 @@ import { SettingsReducer } from './settings-reducer';
 export interface SettingsProps {
     halfPortions: boolean;
     autoReset: boolean;
-    timeStamp: number;
+    timeStamp: string;
 }
 
 let initialSettings: SettingsProps;
@@ -15,7 +15,7 @@ if(localStorage.getItem('settings')) {
 } else initialSettings = {
     halfPortions: false,
     autoReset: false,
-    timeStamp: new Date().getMinutes()
+    timeStamp: new Date().toDateString()
 }
 
 export const SettingsContext = createContext({
