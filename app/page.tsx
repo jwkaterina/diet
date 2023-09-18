@@ -17,6 +17,15 @@ export default function Home() {
   const { settings, dispatchSettings } = useContext(SettingsContext);
   const { dispatch} = useContext(PortionsContext);
 
+  const portionCalories: Calories = {
+    fruit: 60,
+    veggies: 25,
+    carbs: 70,
+    prots: 110,
+    fats: 45,
+    sweets: 75
+  }
+
   useEffect(() => {
     if(new Date().toDateString() !== settings.timeStamp) {
       dispatchSettings({
@@ -36,14 +45,23 @@ export default function Home() {
   return (
   <>
     <div className={styles.Portions_page}>
-      <ProgressBar/>
-      <FruitGroup/>
-      <VeggiesGroup/>
-      <CarbsGroup/>
-      <ProtsGroup/>
-      <FatsGroup/>
-      <SweetsGroup/>
+      <ProgressBar calories={portionCalories}/>
+      <FruitGroup calories={portionCalories.fruit}/>
+      <VeggiesGroup calories={portionCalories.veggies}/>
+      <CarbsGroup calories={portionCalories.carbs}/>
+      <ProtsGroup calories={portionCalories.prots}/>
+      <FatsGroup calories={portionCalories.fats}/>
+      <SweetsGroup calories={portionCalories.sweets}/>
     </div>
   </>
   )
+}
+
+export type Calories = {
+  fruit: number,
+  veggies: number,
+  carbs: number,
+  prots: number,
+  fats: number,
+  sweets: number
 }

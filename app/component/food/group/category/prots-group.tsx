@@ -10,7 +10,7 @@ import { calculateCurrentNumber } from './utils';
 
 export const ProtsGroup: FunctionComponent<CategoryProps> = (props) => {
     const {portions} = React.useContext(PortionsContext);
-    const {calories, number, checked} = portions.prots;
+    const {number, checked} = portions.prots;
     const { settings } = React.useContext(SettingsContext);
 
     const current = calculateCurrentNumber(settings.halfPortions, checked, number);
@@ -26,7 +26,7 @@ export const ProtsGroup: FunctionComponent<CategoryProps> = (props) => {
         setCurrentNumber(currentNumber + 1);
     }
 
-    return <PortionsGroup title={'Props'} calories={calories} checked={checked} onPlusClick={handlePlusClick}>
+    return <PortionsGroup title={'Props'} calories={props.calories} checked={checked} onPlusClick={handlePlusClick}>
         {protsArr}
     </PortionsGroup>
 };

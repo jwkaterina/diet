@@ -6,29 +6,16 @@ import { PortionsGroup } from '../portions-group';
 import { Veggies } from '../../portion/type/veggies';
 import { PortionsContext } from '../../../../context/portions-context';
 import { SettingsContext } from '../../../../context/settings-context';
+import { calculateCurrentNumber } from './utils';
 
 export const VeggiesGroup: FunctionComponent<CategoryProps> = (props) => {
     const {portions} = React.useContext(PortionsContext);
-    const {calories, number, checked} = portions.veggies;
+    const {number, checked} = portions.veggies;
     const { settings } = React.useContext(SettingsContext);
 
-    let n; 
-    if(settings.halfPortions) {
-        if(checked > 2 * number) {
-            n = (checked / 2);
-            n = Math.ceil(n);
-        } else {
-            n = number;
-        }
-    } else {
-        if(checked > number) {
-            n = checked;
-        } else {
-            n = number;
-        }
-    }
+    const current = calculateCurrentNumber(settings.halfPortions, checked, number);
 
-    const [currentNumber, setCurrentNumber] = React.useState<number>(n);
+    const [currentNumber, setCurrentNumber] = React.useState<number>(current);
 
     let veggiesArr = [];
     for(let i = 0; i < currentNumber; i++) {
@@ -39,7 +26,7 @@ export const VeggiesGroup: FunctionComponent<CategoryProps> = (props) => {
         setCurrentNumber(currentNumber + 1);
     }
 
-    return <PortionsGroup title={'Veggies'} calories={calories} checked={checked} onPlusClick={handlePlusClick}>
+    return <PortionsGroup title={'Veggies'} calories={props.calories} checked={checked} onPlusClick={handlePlusClick}>
         {veggiesArr}
     </PortionsGroup>
 };

@@ -1,20 +1,21 @@
 'use client'
 
 import './progress-bar.css'
-import { useContext } from 'react';
+import { FunctionComponent, useContext } from 'react';
 import { PortionsContext } from '../../context/portions-context'
 import { MealsContext } from '../../context/meals-context'
 import { SettingsContext } from '../../context/settings-context'
-import { currentCalories } from './utils'
+import { Calories } from '../../page'
+import { calculateCurrent } from './utils'
 import { calculateTarget } from './utils'
 
-export const ProgressBar = () => {
+export const ProgressBar: FunctionComponent<ProgressProps> = (props) => {
     const portions = useContext(PortionsContext).portions;
     const {firstMeal, lastMeal, mealsNumber} = useContext(MealsContext).meals;
     const {settings} = useContext(SettingsContext);
 
-    const calories =  currentCalories(portions, settings.halfPortions);
-    const targetCalories = calculateTarget(portions);
+    const currentCalories =  calculateCurrent(portions, settings.halfPortions, props.calories);
+    const targetCalories = calculateTarget(portions, props.calories);
 
     const timeTargetCalories = () => {
         const oneMealCalories = targetCalories / mealsNumber;
@@ -30,7 +31,7 @@ export const ProgressBar = () => {
     }
 
     const completedCalories = () => {
-        const fraction = calories / targetCalories;
+        const fraction = currentCalories / targetCalories;
         const percentage = fraction * 100;
         return {
             width: `${percentage}%`
@@ -38,7 +39,7 @@ export const ProgressBar = () => {
     }
 
     const exceededCalories = () => {
-        const fraction = (calories - targetCalories) / targetCalories;
+        const fraction = (currentCalories - targetCalories) / targetCalories;
         const percentage = fraction * 100;
         if (percentage > 0) {
             return {
@@ -52,7 +53,7 @@ export const ProgressBar = () => {
     }
 
     const calculateClassName = () => {
-        const completed = calories / targetCalories * 100;
+        const completed = currentCalories / targetCalories * 100;
         if (completed > 55) {
             return "ProgressBar__calories white";
         } else {
@@ -65,6 +66,10 @@ export const ProgressBar = () => {
         <div className="ProgressBar__target" style={timeTargetCalories()}></div>
         <div className="ProgressBar__completed" style={completedCalories()}></div>
         <div className="ProgressBar__exceeded" style={exceededCalories()}></div>
-        <div className={calculateClassName()}>{calories} kcal</div>
+        <div className={calculateClassName()}>{currentCalories} kcal</div>
     </div>)
+}
+
+interface ProgressProps {
+    calories: Calories;
 }
