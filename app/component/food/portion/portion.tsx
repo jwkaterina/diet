@@ -2,7 +2,7 @@
 
 import { useContext } from 'react';
 import { PortionsContext  } from '../../../context/portions-context';
-import { SettingsContext } from '../../../context/settings-context';
+import { useSettings } from '../../../context/settings-context';
 import { Group } from '../../../context/portions-reducer';
 
 import './portion.css'
@@ -18,7 +18,7 @@ interface PortionProps {
 
 export default function Portion({ width, height, children, group, index, checked }: PortionProps): JSX.Element {
     const { dispatch } = useContext(PortionsContext);
-    const { settings } = useContext(SettingsContext);
+    const settings = useSettings();
 
     const handleClick = () => {
         if(settings.halfPortions) {

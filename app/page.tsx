@@ -9,12 +9,13 @@ import FatsGroup from './component/food/group/category/fats-group'
 import SweetsGroup from './component/food/group/category/sweets-group'
 import ProgressBar from './component/progress/progress'
 import { useContext, useEffect } from 'react'
-import { SettingsContext } from './context/settings-context'
+import { useSettings, useSettingsDispatch } from './context/settings-context'
 import { PortionsContext } from './context/portions-context'
 
 export default function Home() {
 
-  const { settings, dispatchSettings } = useContext(SettingsContext);
+  const settings = useSettings();
+  const settingsDispatch = useSettingsDispatch();
   const { dispatch} = useContext(PortionsContext);
 
   const portionCalories: Calories = {
@@ -28,7 +29,7 @@ export default function Home() {
 
   useEffect(() => {
     if(new Date().toDateString() !== settings.timeStamp) {
-      dispatchSettings({
+      settingsDispatch({
         type: 'setTimeStamp',
         timeStamp: new Date().toDateString()
       }); 

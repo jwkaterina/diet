@@ -1,20 +1,20 @@
 'use client'
 
-import React, { FunctionComponent, useContext } from 'react';
-import {SettingsContext} from '../../../context/settings-context'
+import { useSettings, useSettingsDispatch} from '../../../context/settings-context'
 import SettingsSection from './settings-section';
 
 export default function SwitchSection(): JSX.Element {
-    const { settings, dispatchSettings } = useContext(SettingsContext);
+    const settings = useSettings();
+    const settingsDispatch = useSettingsDispatch();
 
     const handleHalfPortionsChange = () => {
-        dispatchSettings({
+        settingsDispatch({
             type: 'setHalfPortions',
         }); 
     }
 
     const handleAutoResetChange = () => {
-        dispatchSettings({
+        settingsDispatch({
             type: 'setAutoReset',
         }); 
     }

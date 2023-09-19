@@ -5,13 +5,13 @@ import CategoryProps from './category-props';
 import PortionsGroup from '../portions-group';
 import Fruit from '../../portion/type/fruit';
 import { PortionsContext } from '../../../../context/portions-context';
-import { SettingsContext } from '../../../../context/settings-context';
+import { useSettings } from '../../../../context/settings-context';
 import calculateCurrentNumber from './utils';
 
 export default function FruitGroup({ calories }: CategoryProps): JSX.Element{
     const { portions } = useContext(PortionsContext);
     const { number, checked } = portions.fruit;
-    const { settings } = useContext(SettingsContext);
+    const settings = useSettings();
 
     const current = calculateCurrentNumber(settings.halfPortions, checked, number);
 
