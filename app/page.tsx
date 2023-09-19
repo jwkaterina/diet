@@ -8,15 +8,15 @@ import ProtsGroup from './component/food/group/category/prots-group'
 import FatsGroup from './component/food/group/category/fats-group'
 import SweetsGroup from './component/food/group/category/sweets-group'
 import ProgressBar from './component/progress/progress'
-import { useContext, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useSettings, useSettingsDispatch } from './context/settings-context'
-import { PortionsContext } from './context/portions-context'
+import { usePortionsDispatch } from './context/portions-context'
 
 export default function Home() {
 
   const settings = useSettings();
   const settingsDispatch = useSettingsDispatch();
-  const { dispatch} = useContext(PortionsContext);
+  const portionsDispatch = usePortionsDispatch();
 
   const portionCalories: Calories = {
     fruit: 60,
@@ -36,7 +36,7 @@ export default function Home() {
       console.log(settings.timeStamp)
 
       if(settings.autoReset) {
-        dispatch({
+        portionsDispatch({
           type: 'clear',
         });
       }

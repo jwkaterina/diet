@@ -3,12 +3,12 @@
 import { useContext } from 'react';
 import PortionTypeProps from './portion-type-props';
 import Portion from '../portion';
-import { PortionsContext } from '../../../../context/portions-context';
+import { usePortions } from '../../../../context/portions-context';
 import { Group } from '../../../../context/portions-reducer';
 
 
 export default function Prots({ index }: PortionTypeProps): JSX.Element {
-    const checked = useContext(PortionsContext).portions.prots.checked;
+    const checked = usePortions().prots.checked;
 
     const width = 50;
     const height = 36;

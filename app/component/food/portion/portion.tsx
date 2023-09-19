@@ -1,7 +1,6 @@
 'use client'
 
-import { useContext } from 'react';
-import { PortionsContext  } from '../../../context/portions-context';
+import { usePortionsDispatch  } from '../../../context/portions-context';
 import { useSettings } from '../../../context/settings-context';
 import { Group } from '../../../context/portions-reducer';
 
@@ -17,7 +16,7 @@ interface PortionProps {
 }
 
 export default function Portion({ width, height, children, group, index, checked }: PortionProps): JSX.Element {
-    const { dispatch } = useContext(PortionsContext);
+    const dispatch = usePortionsDispatch();
     const settings = useSettings();
 
     const handleClick = () => {

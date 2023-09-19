@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useReducer } from 'react';
+import { createContext, useContext, useReducer } from 'react';
 import { PortionsReducer } from './portions-reducer';
 
 export interface Portions {
@@ -24,14 +24,9 @@ if(localStorage.getItem('portions')) {
     sweets: {number: 1, checked: 0}
 }
 
-export const PortionsContext = createContext({
-    portions: initialPortions
-} as PortionsContextProperty);
+export const PortionsContext = createContext<Portions>(initialPortions);
 
-export interface PortionsContextProperty {
-    portions: Portions;
-    dispatch: (newValue: any) => void;
-};
+export const PortionsDispatchContext = createContext((() => {}) as React.Dispatch<any>);
 
 export const PortionsProvider = ({ children }: any) => {
     const [portions, dispatch] = useReducer(
@@ -39,10 +34,20 @@ export const PortionsProvider = ({ children }: any) => {
     );
 
     return (
-      <PortionsContext.Provider value={{portions, dispatch}}>
+      <PortionsContext.Provider value={portions}>
+        <PortionsDispatchContext.Provider value={dispatch}>
           {children}
+        </PortionsDispatchContext.Provider>
       </PortionsContext.Provider>
     );
 }
+
+export const usePortions = () => {
+    return useContext(PortionsContext);
+  }
+  
+  export const  usePortionsDispatch = () => {
+    return useContext(PortionsDispatchContext);
+  }
 
 

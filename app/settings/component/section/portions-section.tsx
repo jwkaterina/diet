@@ -1,13 +1,13 @@
 'use client'
 
-import { useContext } from 'react';
 import SettingsSection from './settings-section';
 import PortionsCell from '../cells/portions-cell';
-import { PortionsContext } from '../../../context/portions-context';
+import { usePortions, usePortionsDispatch } from '../../../context/portions-context';
 import { Group } from '../../../context/portions-reducer';
 
 export default function PortionsSection(): JSX.Element {
-    const { portions, dispatch } = useContext(PortionsContext);
+    const portions = usePortions();
+    const dispatch = usePortionsDispatch();
 
     const handlePlusClick = (group: Group) => {
         dispatch({

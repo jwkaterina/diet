@@ -1,7 +1,6 @@
 import './modal.css'
 
-import { useContext } from 'react';
-import { PortionsContext } from '@/app/context/portions-context';
+import { usePortionsDispatch } from '@/app/context/portions-context';
 
 interface ModalProps {
     openState: {
@@ -11,7 +10,7 @@ interface ModalProps {
 }
 
 export default function Modal({ openState }: ModalProps): JSX.Element {
-    const { portions, dispatch } = useContext(PortionsContext);
+    const dispatch = usePortionsDispatch();
 
     const clearPortions = () => {
         dispatch({

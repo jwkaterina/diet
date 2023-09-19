@@ -1,8 +1,7 @@
 'use client'
 
 import './progress-bar.css'
-import { useContext } from 'react';
-import { PortionsContext } from '../../context/portions-context'
+import { usePortions } from '../../context/portions-context'
 import { useMeals } from '../../context/meals-context'
 import { useSettings } from '../../context/settings-context'
 import { Calories } from '../../page'
@@ -14,7 +13,7 @@ interface ProgressProps {
 }
 
 export default function ProgressBar({ calories }: ProgressProps): JSX.Element {
-    const portions = useContext(PortionsContext).portions;
+    const portions = usePortions();
     const { firstMeal, lastMeal, mealsNumber } = useMeals();
     const settings = useSettings();
 
