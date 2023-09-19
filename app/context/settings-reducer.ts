@@ -1,6 +1,11 @@
 import { SettingsProps } from "./settings-context";
 
-export const  SettingsReducer = (settings: SettingsProps, action: any) => {
+type ACTIONTYPE = { 
+    type: 'setHalfPortions' | 'setAutoReset' | 'setTimeStamp',
+    timeStamp: string
+}
+
+export const  SettingsReducer = (settings: SettingsProps, action: ACTIONTYPE) => {
     switch (action.type) {
         case 'setHalfPortions': {
             const newSettings = {...settings, halfPortions: !settings.halfPortions};

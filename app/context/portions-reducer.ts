@@ -9,7 +9,13 @@ export enum Group {
     SWEETS = 'sweets'
 }
 
-export const  PortionsReducer = (portions: Portions, action: any) => {
+type ACTIONTYPE = { 
+    type: 'check' | 'add' | 'reduce' | 'clear',
+    group: Group,
+    checked: number
+}
+
+export const  PortionsReducer = (portions: Portions, action: ACTIONTYPE) => {
     switch (action.type) {
         case 'check': {
             return actionCheck(action.group, action.checked, portions);

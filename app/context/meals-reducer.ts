@@ -1,6 +1,11 @@
 import { MealsProperty } from "./meals-context";
 
-export const  MealsReducer = (meals: MealsProperty, action: any) => {
+type ACTIONTYPE = { 
+    type: 'add' | 'reduce',
+    group: string 
+}
+
+export const  MealsReducer = (meals: MealsProperty, action: ACTIONTYPE) => {
     switch (action.type) {
         case 'add': {
             return actionAdd(action.group, meals);
