@@ -2,15 +2,15 @@
 
 import './calories-section.css'
 
-export default function CaloriesSection(props: CaloriesSectionProps) {
+interface CaloriesSectionProps {
+    children: React.ReactNode;
+}
+
+export default function CaloriesSection({ children }: CaloriesSectionProps): JSX.Element {
 
     return (
         <div className="Calories__section">
-            {props.children}
+            { children }
         </div>
     )
-}
-
-export interface CaloriesSectionProps {
-    children: React.ReactNode;
 }

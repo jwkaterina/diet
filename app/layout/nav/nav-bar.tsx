@@ -3,8 +3,12 @@
 import './nav-bar.css'
 import Link from 'next/link'
 
+interface NavBarProps {
+    onMenuClick: () => void,
+    onClearClick: () => void
+}
 
-export const NavBar = (props: NavBarProps) => {
+export default function NavBar({ onMenuClick, onClearClick}: NavBarProps): JSX.Element {
 
     return (
         <header>
@@ -12,7 +16,7 @@ export const NavBar = (props: NavBarProps) => {
                 <Link className="icon" href="/"></Link>
                 <h1> My Diet</h1>
             </div>
-            <button className="menu-toggle" id="menu-toggle" onClick={props.onMenuClick}>
+            <button className="menu-toggle" id="menu-toggle" onClick={onMenuClick}>
                 <span className="hamburger"></span>
             </button>
             <div className="menu">
@@ -27,15 +31,10 @@ export const NavBar = (props: NavBarProps) => {
                     <a className="menu__link" href="/settings">Settings</a>
                 </li>
                 <li className="menu__item">
-                    <span className="menu__link" onClick={props.onClearClick}>Clear Portions</span>
+                    <span className="menu__link" onClick={onClearClick}>Clear Portions</span>
                 </li>
                 </ul>
             </div>
         </header>
         )
-}
-
-export interface NavBarProps {
-    onMenuClick: () => void,
-    onClearClick: () => void
 }

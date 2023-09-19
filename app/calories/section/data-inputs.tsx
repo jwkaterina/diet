@@ -2,7 +2,11 @@
 
 import CaloriesSection from './calories-section'
 
-export default function DataInputs(props: DataInputsProps) {
+export interface DataInputsProps {
+
+}
+
+export default function DataInputs(props: DataInputsProps): JSX.Element {
 
     return (
             <CaloriesSection>
@@ -29,8 +33,4 @@ export default function DataInputs(props: DataInputsProps) {
                 </form>
             </CaloriesSection>
     )
-}
-
-export interface DataInputsProps {
-
 }

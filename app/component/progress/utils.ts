@@ -1,7 +1,7 @@
 import { Portions } from '../../context/portions-context';
 import { Calories } from '../../page';
 
-export const calculateCurrent = (portions: Portions, halfPortions: boolean, calories: Calories) => {
+export const calculateCurrent = (portions: Portions, halfPortions: boolean, calories: Calories): number => {
     const fruitPortion = calories.fruit;
     const veggiesPortion = calories.veggies;
     const carbsPortion = calories.carbs;
@@ -30,7 +30,7 @@ export const calculateCurrent = (portions: Portions, halfPortions: boolean, calo
     }
 }
 
-export const calculateTarget = (portions: Portions, calories: Calories) => {
+export const calculateTarget = (portions: Portions, calories: Calories): number => {
     const fruitCal = calories.fruit * portions.fruit.number;
     const veggiesCal = calories.veggies * portions.veggies.number;
     const carbsCal = calories.carbs * portions.carbs.number;

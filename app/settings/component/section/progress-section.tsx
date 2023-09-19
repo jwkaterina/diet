@@ -1,11 +1,11 @@
 'use client'
 
-import React, { FunctionComponent, useContext } from 'react';
-import { SettingsSection } from './settings-section';
-import { ProgressCell } from '../cells/progress-cell';
+import { useContext } from 'react';
+import SettingsSection from './settings-section';
+import ProgressCell from '../cells/progress-cell';
 import { MealsContext } from '../../../context/meals-context';
 
-export const ProgressSection: FunctionComponent = (props) => {
+export default function ProgressSection(): JSX.Element {
     const {meals, dispatch} = useContext(MealsContext);
     const {firstMeal, lastMeal, mealsNumber} = meals;
 
@@ -66,8 +66,4 @@ export const ProgressSection: FunctionComponent = (props) => {
             </div>                
         </SettingsSection>
     )
-}
-
-export interface GeneralSectionProps {
-    children: React.ReactNode;
 }

@@ -1,19 +1,19 @@
 'use client'
 
-import React, { FunctionComponent } from 'react';
-import { PortionTypeProps } from './portion-type-props';
-import { Portion } from '../portion';
+import { useContext } from 'react';
+import PortionTypeProps from './portion-type-props';
+import Portion from '../portion';
 import { PortionsContext } from '../../../../context/portions-context';
 import { Group } from '../../../../context/portions-reducer';
 
 
-export const Fruit: FunctionComponent<PortionTypeProps> = (props) => {
-    const checked = React.useContext(PortionsContext).portions.fruit.checked;
+export default function Fruit({ index }: PortionTypeProps): JSX.Element {
+    const checked = useContext(PortionsContext).portions.fruit.checked;
 
     const width = 118;
     const height = 202;
  
-    return <Portion width={width} height={height} group={Group.FRUIT} index={props.index} checked={checked}>
+    return <Portion width={width} height={height} group={Group.FRUIT} index={index} checked={checked}>
         <g className="portion">
             <g className="portion-left">
                 <path d="M17.7561 13.0303L58.7561 43V0L52.1758 19.5455L17.7561 13.0303Z"/>

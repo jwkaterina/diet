@@ -1,14 +1,15 @@
 'use client'
 
-import React, { FunctionComponent } from 'react';
+import CellProps from './cell-props'
 
-export const ProgressCell: FunctionComponent<ProgressCellProps> = (props) => {
+export default function ProgressCell({ children, count, onPlusClick, onMinusClick }: CellProps): JSX.Element {
+    
     return (
         <>
-            <h3 className="Settings__time-cell">{props.children}</h3>
-            <div className="Settings__number-minus-btn Settings__time-cell Settings__controls-cell" onClick={props.onMinusClick}></div>
-            <h3 className="Settings__time-cell Settings__count-cell">{props.count}</h3>
-            <div className="Settings__number-plus-btn Settings__time-cell Settings__controls-cell" onClick={props.onPlusClick}></div>
+            <h3 className="Settings__time-cell">{children}</h3>
+            <div className="Settings__number-minus-btn Settings__time-cell Settings__controls-cell" onClick={onMinusClick}></div>
+            <h3 className="Settings__time-cell Settings__count-cell">{count}</h3>
+            <div className="Settings__number-plus-btn Settings__time-cell Settings__controls-cell" onClick={onPlusClick}></div>
         </> 
         )
 }

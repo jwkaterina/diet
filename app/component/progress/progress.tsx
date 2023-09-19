@@ -1,7 +1,7 @@
 'use client'
 
 import './progress-bar.css'
-import { FunctionComponent, useContext } from 'react';
+import { useContext } from 'react';
 import { PortionsContext } from '../../context/portions-context'
 import { MealsContext } from '../../context/meals-context'
 import { SettingsContext } from '../../context/settings-context'
@@ -9,13 +9,17 @@ import { Calories } from '../../page'
 import { calculateCurrent } from './utils'
 import { calculateTarget } from './utils'
 
-export const ProgressBar: FunctionComponent<ProgressProps> = (props) => {
-    const portions = useContext(PortionsContext).portions;
-    const {firstMeal, lastMeal, mealsNumber} = useContext(MealsContext).meals;
-    const {settings} = useContext(SettingsContext);
+interface ProgressProps {
+    calories: Calories;
+}
 
-    const currentCalories =  calculateCurrent(portions, settings.halfPortions, props.calories);
-    const targetCalories = calculateTarget(portions, props.calories);
+export default function ProgressBar({ calories }: ProgressProps): JSX.Element {
+    const portions = useContext(PortionsContext).portions;
+    const { firstMeal, lastMeal, mealsNumber } = useContext(MealsContext).meals;
+    const { settings } = useContext(SettingsContext);
+
+    const currentCalories =  calculateCurrent(portions, settings.halfPortions, calories);
+    const targetCalories = calculateTarget(portions, calories);
 
     const timeTargetCalories = () => {
         const oneMealCalories = targetCalories / mealsNumber;
@@ -68,8 +72,4 @@ export const ProgressBar: FunctionComponent<ProgressProps> = (props) => {
         <div className="ProgressBar__exceeded" style={exceededCalories()}></div>
         <div className={calculateClassName()}>{currentCalories} kcal</div>
     </div>)
-}
-
-interface ProgressProps {
-    calories: Calories;
 }

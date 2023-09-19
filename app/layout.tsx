@@ -5,12 +5,12 @@ import { useState } from 'react'
 import { PortionsProvider } from './context/portions-context'
 import { SettingsProvider } from './context/settings-context'
 import { MealsProvider } from './context/meals-context'
-import { NavBar } from './layout/nav/nav-bar'
+import NavBar from './layout/nav/nav-bar'
 import Modal from './layout/modal/modal'
 
 export default function RootLayout(props: LayoutProps) {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
   const handleClearClick = () => {
     setModalOpen(true);
     setMenuOpen(false);

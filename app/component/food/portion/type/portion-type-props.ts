@@ -1,3 +1,3 @@
-export interface PortionTypeProps {
+export default interface PortionTypeProps {
     index: number;
 }

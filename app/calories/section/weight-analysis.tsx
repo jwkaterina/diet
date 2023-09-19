@@ -2,7 +2,11 @@
 
 import CaloriesSection from './calories-section'
 
-export default function WeightAnalysis(props: CaloriesSectionProps) {
+interface CaloriesSectionProps {
+
+}
+
+export default function WeightAnalysis(props: CaloriesSectionProps): JSX.Element {
 
     return (
         <>
@@ -21,8 +25,4 @@ export default function WeightAnalysis(props: CaloriesSectionProps) {
             </CaloriesSection>
         </>
     )
-}
-
-export interface CaloriesSectionProps {
-
 }

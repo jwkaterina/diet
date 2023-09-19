@@ -2,7 +2,11 @@
 
 import CaloriesSection from './calories-section'
 
-export default function CaloriesPlan(props: CaloriesPlanProps) {
+interface CaloriesPlanProps {
+    
+}
+
+export default function CaloriesPlan(props: CaloriesPlanProps): JSX.Element {
 
     return (
         <>
@@ -27,7 +31,4 @@ export default function CaloriesPlan(props: CaloriesPlanProps) {
             </CaloriesSection>
         </>
     )
-}
-
-export interface CaloriesPlanProps {
 }

@@ -1,21 +1,21 @@
 "use client"
 
-import React, { FunctionComponent } from 'react';
-import { CategoryProps } from './category-props';
-import { PortionsGroup } from '../portions-group';
-import { Veggies } from '../../portion/type/veggies';
+import { useState, useContext } from 'react';
+import CategoryProps from './category-props';
+import PortionsGroup from '../portions-group';
+import Veggies from '../../portion/type/veggies';
 import { PortionsContext } from '../../../../context/portions-context';
 import { SettingsContext } from '../../../../context/settings-context';
-import { calculateCurrentNumber } from './utils';
+import calculateCurrentNumber from './utils';
 
-export const VeggiesGroup: FunctionComponent<CategoryProps> = (props) => {
-    const {portions} = React.useContext(PortionsContext);
-    const {number, checked} = portions.veggies;
-    const { settings } = React.useContext(SettingsContext);
+export default function VeggiesGroup({ calories }: CategoryProps): JSX.Element {
+    const { portions } = useContext(PortionsContext);
+    const { number, checked } = portions.veggies;
+    const { settings } = useContext(SettingsContext);
 
     const current = calculateCurrentNumber(settings.halfPortions, checked, number);
 
-    const [currentNumber, setCurrentNumber] = React.useState<number>(current);
+    const [currentNumber, setCurrentNumber] = useState<number>(current);
 
     let veggiesArr = [];
     for(let i = 0; i < currentNumber; i++) {
@@ -26,7 +26,7 @@ export const VeggiesGroup: FunctionComponent<CategoryProps> = (props) => {
         setCurrentNumber(currentNumber + 1);
     }
 
-    return <PortionsGroup title={'Veggies'} calories={props.calories} checked={checked} onPlusClick={handlePlusClick}>
+    return <PortionsGroup title={'Veggies'} calories={calories} checked={checked} onPlusClick={handlePlusClick}>
         {veggiesArr}
     </PortionsGroup>
 };

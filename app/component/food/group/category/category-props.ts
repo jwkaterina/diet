@@ -1,3 +1,3 @@
-export interface CategoryProps {
+export default interface CategoryProps {
     calories: number;
 }

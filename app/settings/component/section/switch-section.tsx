@@ -2,11 +2,10 @@
 
 import React, { FunctionComponent, useContext } from 'react';
 import {SettingsContext} from '../../../context/settings-context'
-import { SettingsSection } from './settings-section';
-import { type } from 'os';
+import SettingsSection from './settings-section';
 
-export const SwitchSection: FunctionComponent = (props) => {
-    const {settings, dispatchSettings} = useContext(SettingsContext);
+export default function SwitchSection(): JSX.Element {
+    const { settings, dispatchSettings } = useContext(SettingsContext);
 
     const handleHalfPortionsChange = () => {
         dispatchSettings({
@@ -37,9 +36,5 @@ export const SwitchSection: FunctionComponent = (props) => {
             </div>       
         </SettingsSection>
     )
-}
-
-export interface SwitchSectionProps {
-    children: React.ReactNode;
 }
 

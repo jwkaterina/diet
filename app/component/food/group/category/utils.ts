@@ -1,4 +1,4 @@
-export const calculateCurrentNumber = (halfPortions: boolean, checked: number, number: number): number => {
+export default function calculateCurrentNumber (halfPortions: boolean, checked: number, number: number): number {
     let current;
     if(halfPortions) {
         if(checked > 2 * number) {
