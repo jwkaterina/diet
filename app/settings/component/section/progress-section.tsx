@@ -1,13 +1,12 @@
 'use client'
 
-import { useContext } from 'react';
 import SettingsSection from './settings-section';
 import ProgressCell from '../cells/progress-cell';
-import { MealsContext } from '../../../context/meals-context';
+import { useMeals, useMealsDispatch } from '../../../context/meals-context';
 
 export default function ProgressSection(): JSX.Element {
-    const {meals, dispatch} = useContext(MealsContext);
-    const {firstMeal, lastMeal, mealsNumber} = meals;
+    const {firstMeal, lastMeal, mealsNumber}  = useMeals();
+    const dispatch = useMealsDispatch();
 
     const handeFirstMealMinusClick = () => {
         if (firstMeal < 1) return;
