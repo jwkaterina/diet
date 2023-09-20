@@ -24,9 +24,9 @@ if(localStorage.getItem('portions')) {
     sweets: {number: 1, checked: 0}
 }
 
-export const PortionsContext = createContext<Portions>(initialPortions);
+const PortionsContext = createContext<Portions>(initialPortions);
 
-export const PortionsDispatchContext = createContext((() => {}) as React.Dispatch<any>);
+const PortionsDispatchContext = createContext((() => {}) as React.Dispatch<any>);
 
 export const PortionsProvider = ({ children }: any) => {
     const [portions, dispatch] = useReducer(

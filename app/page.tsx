@@ -12,7 +12,7 @@ import { useEffect } from 'react'
 import { useSettings, useSettingsDispatch } from './context/settings-context'
 import { usePortionsDispatch } from './context/portions-context'
 
-export default function Home() {
+export default function Home(): JSX.Element {
 
   const settings = useSettings();
   const settingsDispatch = useSettingsDispatch();

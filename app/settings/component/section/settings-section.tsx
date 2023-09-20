@@ -2,7 +2,7 @@
 
 import './section.css'
 
-export interface SettingsSectionProps {
+interface SettingsSectionProps {
     children: React.ReactNode;
 }
 

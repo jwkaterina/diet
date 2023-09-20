@@ -18,9 +18,9 @@ if(localStorage.getItem('meals')) {
     mealsNumber: 3
 }
 
-export const MealsContext = createContext<MealsProperty>(initialMeals);
+const MealsContext = createContext<MealsProperty>(initialMeals);
 
-export const MealsDispatchContext = createContext((() => {}) as React.Dispatch<any>);
+const MealsDispatchContext = createContext((() => {}) as React.Dispatch<any>);
 
 export const MealsProvider = ({ children }: any) => {
     const [meals, dispatch] = useReducer(MealsReducer, initialMeals);

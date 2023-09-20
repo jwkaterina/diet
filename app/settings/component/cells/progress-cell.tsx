@@ -13,10 +13,3 @@ export default function ProgressCell({ children, count, onPlusClick, onMinusClic
         </> 
         )
 }
-
-export interface ProgressCellProps {
-    children: React.ReactNode;
-    count: number,
-    onPlusClick: () => void
-    onMinusClick: () => void
-}

@@ -20,7 +20,12 @@ export default function ProgressBar({ calories }: ProgressProps): JSX.Element {
     const currentCalories =  calculateCurrent(portions, settings.halfPortions, calories);
     const targetCalories = calculateTarget(portions, calories);
 
-    const timeTargetCalories = () => {
+    type Style = {
+        left?: string,
+        width?: string
+    }
+
+    const timeTargetCalories = (): Style => {
         const oneMealCalories = targetCalories / mealsNumber;
         const timeBetweenMeals = (lastMeal - firstMeal) / (mealsNumber - 1);
         const time = new Date().getHours();
@@ -33,7 +38,7 @@ export default function ProgressBar({ calories }: ProgressProps): JSX.Element {
         };;
     }
 
-    const completedCalories = () => {
+    const completedCalories = (): Style => {
         const fraction = currentCalories / targetCalories;
         const percentage = fraction * 100;
         return {
@@ -41,7 +46,7 @@ export default function ProgressBar({ calories }: ProgressProps): JSX.Element {
         };    
     }
 
-    const exceededCalories = () => {
+    const exceededCalories = (): Style => {
         const fraction = (currentCalories - targetCalories) / targetCalories;
         const percentage = fraction * 100;
         if (percentage > 0) {
@@ -55,7 +60,7 @@ export default function ProgressBar({ calories }: ProgressProps): JSX.Element {
         }
     }
 
-    const calculateClassName = () => {
+    const calculateClassName = (): string => {
         const completed = currentCalories / targetCalories * 100;
         if (completed > 55) {
             return "ProgressBar__calories white";

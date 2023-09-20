@@ -18,9 +18,9 @@ if(localStorage.getItem('settings')) {
     timeStamp: new Date().toDateString()
 }
 
-export const SettingsContext = createContext<SettingsProps>(initialSettings);
+const SettingsContext = createContext<SettingsProps>(initialSettings);
 
-export const SettingsDispatchContext = createContext((() => {}) as React.Dispatch<any>);
+const SettingsDispatchContext = createContext((() => {}) as React.Dispatch<any>);
 
 export const SettingsProvider = ({ children }: any) => {
     const [settings, dispatch] = useReducer(SettingsReducer, initialSettings);

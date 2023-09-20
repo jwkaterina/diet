@@ -65,7 +65,7 @@ export default function Portion({ width, height, children, group, index, checked
         }
     }
 
-    const calculateClassname = () => {
+    const calculateClassname = (): string => {
         if(settings.halfPortions) {
             if(index <= checked / 2) {
                 return "portion-svg checked"

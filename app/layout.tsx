@@ -8,7 +8,11 @@ import { MealsProvider } from './context/meals-context'
 import NavBar from './layout/nav/nav-bar'
 import Modal from './layout/modal/modal'
 
-export default function RootLayout(props: LayoutProps) {
+interface LayoutProps {
+  children: React.ReactNode
+}
+
+export default function RootLayout({ children }: LayoutProps): JSX.Element {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const handleClearClick = () => {
@@ -23,7 +27,7 @@ export default function RootLayout(props: LayoutProps) {
         <PortionsProvider>
           <MealsProvider>
             <SettingsProvider>
-              {props.children}
+              {children}
             </SettingsProvider>
             <Modal openState={{modalOpen, setModalOpen}}/>
           </MealsProvider>
@@ -31,10 +35,6 @@ export default function RootLayout(props: LayoutProps) {
       </body>
     </html>
   )
-}
-
-export interface LayoutProps {
-  children: React.ReactNode
 }
 
 
