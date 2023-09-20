@@ -1,6 +1,7 @@
 'use client'
 
 import './portions-group.css'
+import { useSettings } from '../../../context/settings-context';
 
 interface PortionsGroupProps {
     title: string,
@@ -11,6 +12,11 @@ interface PortionsGroupProps {
 }
 
 export default function PortionsGroup({ title, calories, checked, children, onPlusClick}: PortionsGroupProps): JSX.Element {
+    const settings = useSettings();
+
+    if(settings.halfPortions) {
+        checked = checked / 2;
+    }
 
     return (
         <div className="PortionsGroup-cell">
