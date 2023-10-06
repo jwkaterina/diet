@@ -1,4 +1,5 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import user from '@testing-library/user-event';
 import  ProtsGroup from '../../../../../app/component/food/group/category/carbs-group';
 
 jest.mock('../../../../../app/component/food/group/category/utils', () => ({
@@ -8,14 +9,25 @@ jest.mock('../../../../../app/component/food/group/category/utils', () => ({
 
 describe('render category', function () {
 
-    it('should render 3 headings with content', async () => {
+    it('should render 10 prots portions', () => {
         const calories = 110;
             
         const { container } = render(<ProtsGroup calories={calories}/>);
 
         const portions = container.querySelectorAll('.portion');
         expect(portions).toHaveLength(10);
+    });
 
+    it('should add 1 portion on click', async () => {
+        const calories = 110;
+            
+        const { container } = render(<ProtsGroup calories={calories}/>);
+
+        const button = screen.getByTestId('btn');
+        await user.click(button);
+
+        const portions = container.querySelectorAll('.portion');
+        expect(portions).toHaveLength(11);
     });
 })
 
