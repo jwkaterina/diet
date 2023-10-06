@@ -25,7 +25,7 @@ export default function PortionsGroup({ title, calories, checked, children, onPl
                     <h3 className="PortionsGroup__checked">{checked}</h3>
                     <h3 className="PortionsGroup__calories-hint">x{calories}k</h3>
                     <h3>{title}</h3>
-                    <div className="plus-btn" onClick={onPlusClick}></div>
+                    <div className="plus-btn" data-testid="btn" onClick={onPlusClick}></div>
                 </div>         
                 <div className="PortionsGroup__portions">
                     {children}
