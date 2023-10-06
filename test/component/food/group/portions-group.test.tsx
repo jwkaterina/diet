@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import  PortionsGroup from '../../../../app/component/food/group/portions-group';
-import { on } from 'events';
 
 describe('render portion group', function () {
     function renderComponent() {
