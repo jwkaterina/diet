@@ -33,7 +33,7 @@ describe('render portion group', function () {
         const onPlusClick = renderComponent();
         // screen.logTestingPlaygroundURL();
 
-        const button = screen.getByTestId('btn');
+        const button = screen.getByTestId('plus-btn');
         await user.click(button);
 
         expect(onPlusClick).toHaveBeenCalled();

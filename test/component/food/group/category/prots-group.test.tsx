@@ -23,7 +23,7 @@ describe('render category', function () {
             
         const { container } = render(<ProtsGroup calories={calories}/>);
 
-        const button = screen.getByTestId('btn');
+        const button = screen.getByTestId('plus-btn');
         await user.click(button);
 
         const portions = container.querySelectorAll('.portion');
