@@ -3,8 +3,10 @@
 import { usePortionsDispatch  } from '../../../context/portions-context';
 import { useSettings } from '../../../context/settings-context';
 import { Group } from '../../../context/portions-reducer';
+import { handleFullPortionClick, handleHalfPortionClick } from './utils';
 
 import './portion.css'
+import { Dispatch } from 'react';
 
 interface PortionProps {
     width: number,
@@ -21,49 +23,11 @@ export default function Portion({ width, height, children, group, index, checked
 
     const handleClick = () => {
         if(settings.halfPortions) {
-            handleHalfPortionClick();
+            handleHalfPortionClick(index, checked, group, dispatch);
         } else {
-            handleFullPortionClick();
+            handleFullPortionClick(index, checked, group, dispatch);
         }
     };
-
-    const handleFullPortionClick = () => {
-        if(index <= checked) {
-            dispatch({
-                type: 'check',
-                group: group,
-                checked: index - 1,
-              }); 
-        } else {
-            dispatch({
-                type: 'check',
-                group: group,
-                checked: index,
-              }); 
-        }
-    }
-
-    const handleHalfPortionClick = () => {
-        if(index <= checked / 2) {
-            dispatch({
-                type: 'check',
-                group: group,
-                checked: 2 * (index - 1),
-              }); 
-        } else if(index == checked / 2 + 0.5) {
-            dispatch({
-                type: 'check',
-                group: group,
-                checked: index * 2,
-              }); 
-        } else {
-            dispatch({
-                type: 'check',
-                group: group,
-                checked: index * 2 - 1,
-              }); 
-        }
-    }
 
     const calculateClassname = (): string => {
         if(settings.halfPortions) {
@@ -83,7 +47,7 @@ export default function Portion({ width, height, children, group, index, checked
         }
     }
 
-    return <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} className={calculateClassname()} onClick={handleClick}>
+    return <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} className={calculateClassname()} onClick={handleClick} data-testid="portion">
 
         {children}
 
