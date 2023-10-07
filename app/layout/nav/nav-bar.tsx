@@ -21,18 +21,18 @@ export default function NavBar({ onMenuClick, onClearClick}: NavBarProps): JSX.E
             </button>
             <div className="menu">
                 <ul className="menu__list">
-                <li className="menu__item">
-                    <a className="menu__link" href="/">Main</a>
-                </li>
-                <li className="menu__item">
-                    <a className="menu__link" href="/calories">Calories</a>
-                </li>
-                <li className="menu__item">
-                    <a className="menu__link" href="/settings">Settings</a>
-                </li>
-                <li className="menu__item">
-                    <span className="menu__link" onClick={onClearClick}>Clear Portions</span>
-                </li>
+                    <li className="menu__item">
+                        <a className="menu__link" href="/">Main</a>
+                    </li>
+                    <li className="menu__item">
+                        <a className="menu__link" href="/calories">Calories</a>
+                    </li>
+                    <li className="menu__item">
+                        <a className="menu__link" href="/settings">Settings</a>
+                    </li>
+                    <li className="menu__item">
+                        <span className="menu__link" onClick={onClearClick}>Clear Portions</span>
+                    </li>
                 </ul>
             </div>
         </header>

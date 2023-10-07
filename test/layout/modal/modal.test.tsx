@@ -16,9 +16,6 @@ describe('render portion group', function () {
     it('should render heading and 2 buttons', () => {
         renderComponent();
 
-        const headings = screen.getAllByRole('heading');
-        screen.logTestingPlaygroundURL();
-
         const heading = screen.getByRole('heading', {
             name: /are you sure\?/i
         });
