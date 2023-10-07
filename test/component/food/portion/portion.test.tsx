@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import user from '@testing-library/user-event';
 import Portion from '../../../../app/component/food/portion/portion';
 import {handleFullPortionClick, handleHalfPortionClick} from '../../../../app/component/food/portion/utils';
@@ -73,5 +74,125 @@ describe('render portion', function () {
     await user.click(portion);
 
     expect(handleFullPortionClick).toHaveBeenCalledWith(1, 2, Group.CARBS, expect.any(Function));
+  });
+
+  it('should calculate class when halfPoritons and index <= checked / 2', async () => {
+    const  props = {
+      width: 48,
+      height: 51,
+      children: [],
+      group: Group.CARBS,
+      index: 1,
+      checked: 2,
+    };
+
+    mockedUseSettings.mockReturnValue({
+      halfPortions: true,
+      autoReset: false,
+      timeStamp: ""
+    });
+
+    render(<Portion {...props}/>);
+    const portion = screen.getByTestId('portion');
+
+    await user.click(portion);
+
+    expect(portion).toHaveClass('portion-svg checked');
+  });
+
+  it('should calculate class when halfPoritons and index == checked / 2 + 0.5', async () => {
+    const  props = {
+      width: 48,
+      height: 51,
+      children: [],
+      group: Group.CARBS,
+      index: 1.5,
+      checked: 2,
+    };
+
+    mockedUseSettings.mockReturnValue({
+      halfPortions: true,
+      autoReset: false,
+      timeStamp: ""
+    });
+
+    render(<Portion {...props}/>);
+    const portion = screen.getByTestId('portion');
+
+    await user.click(portion);
+
+    expect(portion).toHaveClass('portion-svg checked-left');
+  });
+
+  it('should calculate class when halfPoritons and index >= checked / 2 + 1', async () => {
+    const  props = {
+      width: 48,
+      height: 51,
+      children: [],
+      group: Group.CARBS,
+      index: 2,
+      checked: 2,
+    };
+
+    mockedUseSettings.mockReturnValue({
+      halfPortions: true,
+      autoReset: false,
+      timeStamp: ""
+    });
+
+    render(<Portion {...props}/>);
+    const portion = screen.getByTestId('portion');
+
+    await user.click(portion);
+
+    expect(portion).toHaveClass('portion-svg');
+  });
+
+  it('should calculate class when fullPoritons and index <= checked', async () => {
+    const  props = {
+      width: 48,
+      height: 51,
+      children: [],
+      group: Group.CARBS,
+      index: 2,
+      checked: 2,
+    };
+
+    mockedUseSettings.mockReturnValue({
+      halfPortions: false,
+      autoReset: false,
+      timeStamp: ""
+    });
+
+    render(<Portion {...props}/>);
+    const portion = screen.getByTestId('portion');
+
+    await user.click(portion);
+
+    expect(portion).toHaveClass('portion-svg checked');
+  });
+
+  it('should calculate class when fullPoritons and index > checked', async () => {
+    const  props = {
+      width: 48,
+      height: 51,
+      children: [],
+      group: Group.CARBS,
+      index: 3,
+      checked: 2,
+    };
+
+    mockedUseSettings.mockReturnValue({
+      halfPortions: false,
+      autoReset: false,
+      timeStamp: ""
+    });
+
+    render(<Portion {...props}/>);
+    const portion = screen.getByTestId('portion');
+
+    await user.click(portion);
+
+    expect(portion).toHaveClass('portion-svg');
   });
 })
