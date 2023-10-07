@@ -18,47 +18,13 @@ export default function ProgressBar({ calories }: ProgressProps): JSX.Element {
     const settings = useSettings();
 
     const currentCalories =  calculateCurrent(portions, settings.halfPortions, calories);
-    const targetCalories = calculateTarget(portions, calories);
+    const targetCalories = calculateTarget(portions, calories);  
 
-    type Style = {
-        left?: string,
-        width?: string
-    }
+    const time = new Date().getHours();
 
-    const timeTargetCalories = (): Style => {
-        const oneMealCalories = targetCalories / mealsNumber;
-        const timeBetweenMeals = (lastMeal - firstMeal) / (mealsNumber - 1);
-        const time = new Date().getHours();
-        const timeCalories = (((time - firstMeal) / timeBetweenMeals) + 1) * (oneMealCalories);
-        const fraction = timeCalories / targetCalories;
-        const percentage = fraction * 100;
-        return {
-            left: `${percentage}%`
-            
-        };;
-    }
-
-    const completedCalories = (): Style => {
-        const fraction = currentCalories / targetCalories;
-        const percentage = fraction * 100;
-        return {
-            width: `${percentage}%`
-        };    
-    }
-
-    const exceededCalories = (): Style => {
-        const fraction = (currentCalories - targetCalories) / targetCalories;
-        const percentage = fraction * 100;
-        if (percentage > 0) {
-            return {
-                width: `${percentage}%`
-            };
-        } else {
-            return {
-                width: `0%`
-            };
-        }
-    }
+    const timeTarget = timeTargetCalories(targetCalories, mealsNumber, lastMeal, firstMeal, time);
+    const completed = completedCalories(currentCalories, targetCalories);
+    const exceeded = exceededCalories(currentCalories, targetCalories);
 
     const calculateClassName = (): string => {
         const completed = currentCalories / targetCalories * 100;
@@ -71,9 +37,48 @@ export default function ProgressBar({ calories }: ProgressProps): JSX.Element {
 
     return  (
     <div className="ProgressBar">
-        <div className="ProgressBar__target" style={timeTargetCalories()}></div>
-        <div className="ProgressBar__completed" style={completedCalories()}></div>
-        <div className="ProgressBar__exceeded" style={exceededCalories()}></div>
+        <div className="ProgressBar__target" style={timeTarget}></div>
+        <div className="ProgressBar__completed" style={completed}></div>
+        <div className="ProgressBar__exceeded" style={exceeded}></div>
         <div className={calculateClassName()}>{currentCalories} kcal</div>
     </div>)
+}
+
+type Style = {
+    left?: string,
+    width?: string
+}
+
+export const timeTargetCalories = (targetCalories: number,mealsNumber: number, lastMeal: number, firstMeal: number, time: number): Style => {
+    const oneMealCalories = targetCalories / mealsNumber;
+    const timeBetweenMeals = (lastMeal - firstMeal) / (mealsNumber - 1);
+    const timeCalories = (((time - firstMeal) / timeBetweenMeals) + 1) * (oneMealCalories);
+    const fraction = timeCalories / targetCalories;
+    const percentage = fraction * 100;
+    return {
+        left: `${percentage}%`
+        
+    };;
+}
+
+export const completedCalories = (currentCalories: number, targetCalories: number): Style => {
+    const fraction = currentCalories / targetCalories;
+    const percentage = fraction * 100;
+    return {
+        width: `${percentage}%`
+    };    
+}
+
+export const exceededCalories = (currentCalories: number, targetCalories: number): Style => {
+    const fraction = (currentCalories - targetCalories) / targetCalories;
+    const percentage = fraction * 100;
+    if (percentage > 0) {
+        return {
+            width: `${percentage}%`
+        };
+    } else {
+        return {
+            width: `0%`
+        };
+    }
 }
