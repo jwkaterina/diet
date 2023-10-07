@@ -4,13 +4,12 @@ import  PortionsGroup from '../../../../app/component/food/group/portions-group'
 
 describe('render portion group', function () {
     function renderComponent() {
-        const mockFn = jest.fn();
         const props = {
             title: "Carbs",
             calories: 70,
             checked: 3,
             children: [],
-            onPlusClick: mockFn
+            onPlusClick: jest.fn(),
         }
         
         render(<PortionsGroup {...props}/>);
@@ -31,7 +30,6 @@ describe('render portion group', function () {
 
     it('should call onPlusClick function', async () => {
         const onPlusClick = renderComponent();
-        // screen.logTestingPlaygroundURL();
 
         const button = screen.getByTestId('plus-btn');
         await user.click(button);
