@@ -2,13 +2,14 @@ import { handleFullPortionClick, handleHalfPortionClick} from '../../../../app/c
 import { Group } from '../../../../app/context/portions-reducer';
 
 describe('render portion group', function () {
+
+        const group = Group.CARBS;
+        const dispatch = jest.fn();
     
     it('should dispatch full porions when index is less or equal', () => {
         //init
         const index = 1;
         const checked = 2;
-        const group = Group.CARBS;
-        const dispatch = jest.fn();
 
         //invoke
         handleFullPortionClick(index, checked, group, dispatch);
@@ -26,8 +27,6 @@ describe('render portion group', function () {
         //init
         const index = 3;
         const checked = 2;
-        const group = Group.CARBS;
-        const dispatch = jest.fn();
 
         //invoke
         handleFullPortionClick(index, checked, group, dispatch);
@@ -45,8 +44,6 @@ describe('render portion group', function () {
         //init
         const index = 1;
         const checked = 2;
-        const group = Group.CARBS;
-        const dispatch = jest.fn();
 
         //invoke
         handleHalfPortionClick(index, checked, group, dispatch);
@@ -64,8 +61,6 @@ describe('render portion group', function () {
         //init
         const index = 1.5;
         const checked = 2;
-        const group = Group.CARBS;
-        const dispatch = jest.fn();
 
         //invoke
         handleHalfPortionClick(index, checked, group, dispatch);
@@ -83,8 +78,6 @@ describe('render portion group', function () {
         //init
         const index = 3;
         const checked = 4;
-        const group = Group.CARBS;
-        const dispatch = jest.fn();
 
         //invoke
         handleHalfPortionClick(index, checked, group, dispatch);
