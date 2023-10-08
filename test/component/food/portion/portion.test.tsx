@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import user from '@testing-library/user-event';
 import Portion from '../../../../app/component/food/portion/portion';
-import {handleFullPortionClick, handleHalfPortionClick} from '../../../../app/component/food/portion/utils';
+import { handleFullPortionClick, handleHalfPortionClick } from '../../../../app/component/food/portion/utils';
 import { Group } from '../../../../app/context/portions-reducer';
 import { useSettings } from '../../../../app/context/settings-context';
 
