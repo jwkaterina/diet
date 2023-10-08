@@ -5,7 +5,7 @@ export const handleFirstMealMinusClick = (firstMeal: number, dispatch: Dispatch<
     dispatch({
         type: 'reduce',
         group: 'firstMeal',
-      });
+    });
 }
 
 export const handleFirstMealPlusClick = (firstMeal: number, lastMeal: number, dispatch: Dispatch<any>) => {
@@ -13,7 +13,7 @@ export const handleFirstMealPlusClick = (firstMeal: number, lastMeal: number, di
     dispatch({
         type: 'add',
         group: 'firstMeal',
-      });
+    });
 }
 
 export const handleLastMealMinusClick = (firstMeal: number, lastMeal: number, dispatch: Dispatch<any>) => {
@@ -21,7 +21,7 @@ export const handleLastMealMinusClick = (firstMeal: number, lastMeal: number, di
     dispatch({
         type: 'reduce',
         group: 'lastMeal',
-      });
+    });
 }
 
 export const handleLastMealPlusClick = (lastMeal: number, dispatch: Dispatch<any>) => {
@@ -29,7 +29,7 @@ export const handleLastMealPlusClick = (lastMeal: number, dispatch: Dispatch<any
     dispatch({
         type: 'add',
         group: 'lastMeal',
-      });
+    });
 }
 
 export const handleMealsNumberMinusClick = (mealsNumber: number, dispatch: Dispatch<any>) => {
@@ -37,12 +37,12 @@ export const handleMealsNumberMinusClick = (mealsNumber: number, dispatch: Dispa
     dispatch({
         type: 'reduce',
         group: 'mealsNumber',
-      });
+    });
 }
 
 export const handleMealsNumberPlusClick = (dispatch: Dispatch<any>) => {
     dispatch({
         type: 'add',
         group: 'mealsNumber',
-      });
+    });
 }
