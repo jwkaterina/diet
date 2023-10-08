@@ -35,7 +35,6 @@ describe('render portions section', function () {
 
         await user.click(plus!);
 
-
         expect(mockedDispatch).toBeCalledWith({
             type: 'add',
             group: Group.FRUIT,
