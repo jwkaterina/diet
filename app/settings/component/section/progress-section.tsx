@@ -8,7 +8,7 @@ export default function ProgressSection(): JSX.Element {
     const {firstMeal, lastMeal, mealsNumber}  = useMeals();
     const dispatch = useMealsDispatch();
 
-    const handeFirstMealMinusClick = () => {
+    const handleFirstMealMinusClick = () => {
         if (firstMeal < 1) return;
         dispatch({
             type: 'reduce',
@@ -59,7 +59,7 @@ export default function ProgressSection(): JSX.Element {
         <SettingsSection>
             <h2>Progress Bar</h2>
             <div className="Settings__section-body Settings__time-grid">
-                <ProgressCell count={firstMeal} onPlusClick={handleFirstMealPlusClick} onMinusClick={handeFirstMealMinusClick}>First Meal At:</ProgressCell>
+                <ProgressCell count={firstMeal} onPlusClick={handleFirstMealPlusClick} onMinusClick={handleFirstMealMinusClick}>First Meal At:</ProgressCell>
                 <ProgressCell count={lastMeal} onPlusClick={handleLastMealPlusClick} onMinusClick={handleLastMealMinusClick}>Last Meal At:</ProgressCell>
                 <ProgressCell count={mealsNumber} onPlusClick={handleMealsNumberPlusClick} onMinusClick={handleMealsNumberMinusClick}>Daily Meals Number:</ProgressCell>        
             </div>                

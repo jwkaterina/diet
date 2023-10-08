@@ -12,21 +12,21 @@ describe('render category', function () {
     it('should render 10 carbs portions', () => {
         const calories = 70;
             
-        const { container } = render(<CarbsGroup calories={calories}/>);
+        render(<CarbsGroup calories={calories}/>);
 
-        const portions = container.querySelectorAll('.portion');
+        const portions = screen.getAllByTestId('portion');
         expect(portions).toHaveLength(10);
     });
 
     it('should add 1 portion on click', async () => {
         const calories = 70;
             
-        const { container } = render(<CarbsGroup calories={calories}/>);
+        render(<CarbsGroup calories={calories}/>);
 
         const button = screen.getByTestId('plus-btn');
         await user.click(button);
 
-        const portions = container.querySelectorAll('.portion');
+        const portions = screen.getAllByTestId('portion');
         expect(portions).toHaveLength(11);
     });
 })

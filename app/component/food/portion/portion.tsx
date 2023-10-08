@@ -6,7 +6,6 @@ import { Group } from '../../../context/portions-reducer';
 import { handleFullPortionClick, handleHalfPortionClick } from './utils';
 
 import './portion.css'
-import { Dispatch } from 'react';
 
 interface PortionProps {
     width: number,
