@@ -88,3 +88,9 @@ input:checked + .Settings__switch-slider:before{
 .Settings__number-plus-btn:hover {
     transform: scale(1.1);
 }
+
+.portions-cell, .progress-cell {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    align-items: center;
+}

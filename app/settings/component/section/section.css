@@ -27,8 +27,8 @@
 .Settings__time-grid,
 .Settings__portions-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    row-gap: 2em;
+    grid-template-rows: 1fr;
+    grid-gap: 2em;
     align-items: center;
 }
 
