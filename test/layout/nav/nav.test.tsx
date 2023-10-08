@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import user from '@testing-library/user-event';
 import NavBar from '../../../app/layout/nav/nav-bar';
-import { on } from 'events';
 
 describe('render portion group', function () {
     function renderComponent() {

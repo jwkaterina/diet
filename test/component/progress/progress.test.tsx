@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import user from '@testing-library/user-event';
 import  ProgressBar from '../../../app/component/progress/progress';
 import { timeTargetCalories, completedCalories, exceededCalories } from '../../../app/component/progress/progress';
 
@@ -13,13 +12,6 @@ describe('render portion group', function () {
             fats: 45,
             sweets: 75
         };
-    
-        const firstMeal = 9;
-        const lastMeal = 21;
-        const mealsNumber = 3;
-        const currentCalories =  550;
-        const targetCalories = 1100;
-        const time = 12;
         
         render(<ProgressBar calories={calories}/>);
         }
@@ -27,7 +19,13 @@ describe('render portion group', function () {
     it('should calculate time target calories', () => {
         renderComponent();
 
-        const actual = timeTargetCalories(1100, 3, 21, 9, 12);
+        const firstMeal = 9;
+        const lastMeal = 21;
+        const mealsNumber = 3;
+        const targetCalories = 1100;
+        const time = 12;
+
+        const actual = timeTargetCalories(targetCalories, mealsNumber, lastMeal, firstMeal, time);
         expect(actual).toEqual({
             left: '50%'
         });
@@ -36,7 +34,10 @@ describe('render portion group', function () {
     it('should calculate completed calories', () => {
         renderComponent();
 
-        const actual = completedCalories(550, 1100);
+        const currentCalories =  550;
+        const targetCalories = 1100;
+
+        const actual = completedCalories(currentCalories, targetCalories);
         expect(actual).toEqual({
             width: '50%'
         });
@@ -45,7 +46,10 @@ describe('render portion group', function () {
     it('should calculate exceeded calories', () => {
         renderComponent();
 
-        const actual = exceededCalories(550, 1100);
+        const currentCalories =  550;
+        const targetCalories = 1100;
+
+        const actual = exceededCalories(currentCalories, targetCalories);
         expect(actual).toEqual({
             width: '0%'
         });

@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import user from '@testing-library/user-event';
 import Modal from '../../../app/layout/modal/modal';
 
 describe('render portion group', function () {

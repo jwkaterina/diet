@@ -17,7 +17,7 @@ describe('render portion group', function () {
         return props.onPlusClick;
     }
 
-    it('should render 3 headings with content', async () => {
+    it('should render 3 headings with content', () => {
         renderComponent();
 
         const headings = screen.getAllByRole('heading');
