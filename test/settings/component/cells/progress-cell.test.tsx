@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import user from '@testing-library/user-event';
 import ProgressCell from '../../../../app/settings/component/cells/progress-cell';
 
-describe('render portion group', function () {
+describe('render progress cell', function () {
 
     it('should render all elements', () => {
         const props = {
@@ -22,7 +22,7 @@ describe('render portion group', function () {
         screen.logTestingPlaygroundURL();
     });
 
-    it('should call onMenuClick', async () => {
+    it('should call onMinusClick', async () => {
         const props = {
             children: [],
             count: 5, 
@@ -38,7 +38,7 @@ describe('render portion group', function () {
         expect(props.onMinusClick).toHaveBeenCalled();
     });
 
-    it('should call onClearClick', async () => {
+    it('should call onPlusClick', async () => {
         const props = {
             children: [],
             count: 5, 

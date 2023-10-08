@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import user from '@testing-library/user-event';
 import NavBar from '../../../app/layout/nav/nav-bar';
 
-describe('render portion group', function () {
+describe('render nav bar', function () {
     function renderComponent() {
         const props = {
             onMenuClick: jest.fn(),

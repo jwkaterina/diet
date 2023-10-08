@@ -25,7 +25,7 @@ describe('render portions section', function () {
         render(<PortionsSection />);
     });
 
-    it('should call handlePlusClick', async () => {
+    it('should add portions', async () => {
         const heading = screen.getByRole('heading', {
             name: /fruits:/i
         });
@@ -41,7 +41,7 @@ describe('render portions section', function () {
         });
     });
 
-    it('should call handleMinusClick', async () => {
+    it('should reduce portions', async () => {
         const heading = screen.getByRole('heading', {
             name: /fruits:/i
         });

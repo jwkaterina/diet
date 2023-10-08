@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import  ProgressBar from '../../../app/component/progress/progress';
 import { timeTargetCalories, completedCalories, exceededCalories } from '../../../app/component/progress/progress';
 
-describe('render portion group', function () {
+describe('render progress', function () {
     function renderComponent() {
         const calories = {
             fruit: 60,

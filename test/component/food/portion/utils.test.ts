@@ -1,7 +1,7 @@
 import { handleFullPortionClick, handleHalfPortionClick} from '../../../../app/component/food/portion/utils';
 import { Group } from '../../../../app/context/portions-reducer';
 
-describe('render portion group', function () {
+describe('dispatch portions', function () {
 
         const group = Group.CARBS;
         const dispatch = jest.fn();

@@ -14,7 +14,7 @@ jest.mock('../../../../app/context/settings-context', () => {
     };
 });
 
-describe('render portions section', function () {
+describe('render switch section', function () {
     const mockedUseDispatch = useSettingsDispatch as jest.Mock;
     const mockedDispatch = jest.fn();
 
