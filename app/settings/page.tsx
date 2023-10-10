@@ -7,7 +7,7 @@ import ProgressSection from './component/section/progress-section'
 
 export default function Settings(): JSX.Element {
     return (
-    <div className={styles.SettingsPage}>
+    <div className={styles.container}>
         <SwitchSection/>
         <PortionsSection/>
         <ProgressSection/>

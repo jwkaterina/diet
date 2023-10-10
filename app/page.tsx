@@ -45,7 +45,7 @@ export default function Home(): JSX.Element {
 
   return (
   <>
-    <div className={styles.Portions_page}>
+    <div className={styles.container}>
       <ProgressBar calories={portionCalories}/>
       <FruitGroup calories={portionCalories.fruit}/>
       <VeggiesGroup calories={portionCalories.veggies}/>

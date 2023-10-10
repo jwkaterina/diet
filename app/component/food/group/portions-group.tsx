@@ -1,6 +1,6 @@
 'use client'
 
-import './portions-group.css'
+import styles from './portions-group.module.css'
 import { useSettings } from '../../../context/settings-context';
 
 interface PortionsGroupProps {
@@ -19,15 +19,15 @@ export default function PortionsGroup({ title, calories, checked, children, onPl
     }
 
     return (
-        <div className="PortionsGroup-cell">
-            <div className="PortionsGroup-card">
-                <div className="PortionsGroup-header">
-                    <h3 className="PortionsGroup__checked">{checked}</h3>
-                    <h3 className="PortionsGroup__calories-hint">x{calories}k</h3>
+        <div className={styles.container}>
+            <div className={styles.card}>
+                <div className={styles.header}>
+                    <h3 className={styles.checked}>{checked}</h3>
+                    <h3 className={styles.calories_hint}>x{calories}k</h3>
                     <h3>{title}</h3>
-                    <div className="plus-btn" data-testid="plus-btn" onClick={onPlusClick}></div>
+                    <div className={styles.plus_btn} data-testid="plus-btn" onClick={onPlusClick}></div>
                 </div>         
-                <div className="PortionsGroup__portions">
+                <div className={styles.portions}>
                     {children}
                 </div>        
             </div>

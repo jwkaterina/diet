@@ -1,4 +1,4 @@
-.SettingsPage {
+.container {
     margin: calc(var(--fs-h1) + 1.0em) auto 0 auto;
     max-width: 500px;
     background: var(--clr-secondary-light);

@@ -1,4 +1,4 @@
-import './modal.css'
+import styles from './modal.module.css'
 
 import { usePortionsDispatch } from '@/app/context/portions-context';
 
@@ -22,10 +22,10 @@ export default function Modal({ openState }: ModalProps): JSX.Element {
     if (!openState.modalOpen) return <></>;
 
     return (
-        <div className="ConfirmationComponent">
-            <div className="ConfirmationComponent__window">
-                <h3 className="ConfirmationComponent__title">Are You Sure?</h3>
-                <div className="ConfirmationComponent__controls">
+        <div className={styles.container}>
+            <div className={styles.window}>
+                <h3 className={styles.title}>Are You Sure?</h3>
+                <div className={styles.controls}>
                     <div className="btn" onClick={() => openState.setModalOpen(false)}>Cancel</div>
                     <div className="btn" onClick={clearPortions}>Confirm</div>
                 </div>

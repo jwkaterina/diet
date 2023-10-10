@@ -1,4 +1,4 @@
-.ConfirmationComponent {
+.container {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -10,7 +10,7 @@
     z-index: 100;
 }
 
-.ConfirmationComponent__window {
+.window {
     position: relative;
     padding: .5em;
     background: var(--clr-secondary);
@@ -24,12 +24,12 @@
     justify-self: center;
 }
 
-.ConfirmationComponent__title {
+.title {
     text-align: center;
     color: var(--clr-secondary-font);
 }
 
-.ConfirmationComponent__controls {
+.controls {
     display: flex;
     justify-content: space-around;
     margin-top: 2em;

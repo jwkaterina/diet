@@ -1,9 +1,9 @@
-.PortionsGroup-cell {
+.container {
     margin: 0 auto;
     max-width: 500px;
 }
 
-.PortionsGroup-card {
+.card {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -14,31 +14,31 @@
     box-shadow: var(--bs);
 }
 
-.PortionsGroup-header {
+.header {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.PortionsGroup__calories-hint {
+.calories_hint {
     position: absolute;
     left: 2em;
     opacity: .2;
 }
 
-.PortionsGroup__portions {
+.portions {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: .5em;
 }
 
-.PortionsGroup__checked {
+.checked {
     min-width: 2em;
 }
 
-.plus-btn {
+.plus_btn {
     background: var(--clr-secondary-dark);
     font-size: 1rem;
     height: 2.5em;
@@ -49,8 +49,8 @@
     transition: transform 200ms ease-in-out;
 }
 
-.plus-btn:after,
-.plus-btn:before {
+.plus_btn:after,
+.plus_btn:before {
      content: "";
      display: block;
      background-color: var(--clr-secondary-dark-font);
@@ -60,16 +60,16 @@
      transform: translate(-50%, -50%);
  }
 
-.plus-btn:before {
+.plus_btn:before {
      height: 1em;
      width: 0.2em;
  }
 
-.plus-btn:after {
+.plus_btn:after {
      height: 0.2em;
      width: 1em;
  }
 
-.plus-btn:hover {
+.plus_btn:hover {
     transform: scale(1.1);
 }

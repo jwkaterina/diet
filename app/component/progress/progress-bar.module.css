@@ -1,4 +1,4 @@
-.ProgressBar {
+.container {
     position: fixed;
     width: 100%;
     height: 2em;
@@ -7,7 +7,7 @@
     z-index: 1;
 }
 
-.ProgressBar__target {
+.target {
     position: absolute;
     top: 0;
     left: 25%;
@@ -16,8 +16,8 @@
     z-index: 4;
 }
 
-.ProgressBar__target::before,
-.ProgressBar__target::after {
+.target::before,
+.target::after {
     content: '';
     background: var(--clr-primary-light-font);
     position: absolute;
@@ -28,17 +28,17 @@
     z-index: 4;
 }
 
-.ProgressBar__target::before {
+.target::before {
     top: 0;
     transform: translateY(-50%);
 }
 
-.ProgressBar__target::after {
+.target::after {
     top: 50%;
     transform: translateY(90%);
 }
 
-.ProgressBar__completed {
+.completed {
     width: 0;
     height: 2em;
     position: absolute;
@@ -47,7 +47,7 @@
     transition: 1s ease-out;
 }
 
-.ProgressBar__exceeded {
+.exceeded {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -57,7 +57,7 @@
     z-index: 3;
 }
 
-.ProgressBar__calories {
+.calories {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -72,6 +72,6 @@
     z-index: 4;
 }
 
-.ProgressBar__calories.white {
+.calories.white {
     color: var(--clr-primary-dark-font);
 }
