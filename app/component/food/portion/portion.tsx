@@ -31,15 +31,15 @@ export default function Portion({ width, height, children, group, index, checked
     const calculateClassname = (): string => {
         if(settings.halfPortions) {
             if(index <= checked / 2) {
-                return styles.portion_svg + styles.checked
+                return styles.portion_svg + ' ' + styles.checked
             } else if(index == checked / 2 + 0.5) {
-                return styles.portion_svg + styles.half_checked
+                return styles.portion_svg + ' ' + styles.checked_left
             } else {
                 return styles.portion_svg
             }
         } else {
             if(index <= checked) {
-                return styles.portion_svg + styles.checked
+                return styles.portion_svg + ' ' + styles.checked
             } else {
                 return styles.portion_svg
             }

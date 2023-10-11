@@ -21,7 +21,7 @@
     animation-timing-function: ease;
 }
 
-.checked-left.portion_svg{
+.checked_left.portion_svg{
     animation-name: bounce-checked-left;
     animation-timing-function: ease;
 }

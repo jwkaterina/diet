@@ -23,7 +23,7 @@ export default function ProgressBar(): JSX.Element {
     const calculateClassName = (): string => {
         const completed = currentCalories / targetCalories * 100;
         if (completed > 55) {
-            return styles.calories + ' ' + styles.completed;
+            return styles.calories + ' ' + styles.white;
         } else {
             return styles.calories;
         }   
