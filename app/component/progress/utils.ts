@@ -1,6 +1,11 @@
 import { Portions } from '../../context/portions-context';
 import { Calories } from '../../page';
 
+type Style = {
+    left?: string,
+    width?: string
+}
+
 export const calculateCurrent = (portions: Portions, halfPortions: boolean, calories: Calories): number => {
     const fruitPortion = calories.fruit;
     const veggiesPortion = calories.veggies;
@@ -39,4 +44,40 @@ export const calculateTarget = (portions: Portions, calories: Calories): number 
     const sweetsCal = calories.sweets * portions.sweets.number;
     const targetCalories = fruitCal + veggiesCal + carbsCal + protsCal + fatsCal + sweetsCal;
     return targetCalories;
+}
+
+export const timeTargetCalories = (targetCalories: number,mealsNumber: number, lastMeal: number, firstMeal: number): Style => {
+    const oneMealCalories = targetCalories / mealsNumber;
+    const timeBetweenMeals = (lastMeal - firstMeal) / (mealsNumber - 1);
+    const time = new Date().getHours();
+    const timeCalories = (((time - firstMeal) / timeBetweenMeals) + 1) * (oneMealCalories);
+    const fraction = timeCalories / targetCalories;
+    console.log(fraction)
+
+    const percentage = fraction * 100;
+    return {
+        left: `${percentage}%`
+    };;
+}
+
+export const completedCalories = (currentCalories: number, targetCalories: number): Style => {
+    const fraction = currentCalories / targetCalories;
+    const percentage = fraction * 100;
+    return {
+        width: `${percentage}%`
+    };    
+}
+
+export const exceededCalories = (currentCalories: number, targetCalories: number): Style => {
+    const fraction = (currentCalories - targetCalories) / targetCalories;
+    const percentage = fraction * 100;
+    if (percentage > 0) {
+        return {
+            width: `${percentage}%`
+        };
+    } else {
+        return {
+            width: `0%`
+        };
+    }
 }
