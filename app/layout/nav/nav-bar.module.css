@@ -95,23 +95,23 @@
     outline: none;
 }
 
-.menu-open .menu {
+.menu_open .menu {
     transform: translateX(0);
 }
 
-.menu-open .menu-toggle {
+.menu_open .menu-toggle {
     position: fixed;
 }
 
-.menu-open .hamburger {
+.menu_open .hamburger {
     transform: rotate(.625turn);
 }
 
-.menu-open .hamburger::before {
+.menu_open .hamburger::before {
     transform: rotate(90deg) translateX(-6px);
 }
 
-.menu-open .hamburger::after {
+.menu_open .hamburger::after {
     opacity: 0;
 }
 

@@ -1,6 +1,7 @@
 'use client'
 
 import './globals.css'
+import styles from '../app/layout/nav/nav-bar.module.css'
 import { useState } from 'react'
 import { PortionsProvider } from './context/portions-context'
 import { SettingsProvider } from './context/settings-context'
@@ -22,7 +23,7 @@ export default function RootLayout({ children }: LayoutProps): JSX.Element {
 
   return (
     <html lang="en">
-      <body className={menuOpen ? "menu-open" : ''}>
+      <body className={menuOpen ? styles.menu_open : ''}>
         <NavBar onMenuClick={() => setMenuOpen(!menuOpen)} onClearClick={handleClearClick}/>
         <PortionsProvider>
           <MealsProvider>

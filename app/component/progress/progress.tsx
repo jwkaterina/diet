@@ -1,6 +1,6 @@
 'use client'
 
-import styles from './progress-bar.module.css'
+import styles from './progress.module.css'
 import { usePortions } from '../../context/portions-context'
 import { useMeals } from '../../context/meals-context'
 import { useSettings } from '../../context/settings-context'
@@ -29,9 +29,9 @@ export default function ProgressBar({ calories }: ProgressProps): JSX.Element {
     const calculateClassName = (): string => {
         const completed = currentCalories / targetCalories * 100;
         if (completed > 55) {
-            return "calories white";
+            return styles.calories + ' ' + styles.completed;
         } else {
-            return "calories";
+            return styles.calories;
         }   
     }
 

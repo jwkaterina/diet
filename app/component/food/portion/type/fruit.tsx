@@ -5,6 +5,7 @@ import Portion from '../portion';
 import { usePortions } from '../../../../context/portions-context';
 import { Group } from '../../../../context/portions-reducer';
 
+import styles from '../portion.module.css'
 
 export default function Fruit({ index }: PortionTypeProps): JSX.Element {
     const checked = usePortions().fruit.checked;
@@ -13,8 +14,8 @@ export default function Fruit({ index }: PortionTypeProps): JSX.Element {
     const height = 202;
  
     return <Portion width={width} height={height} group={Group.FRUIT} index={index} checked={checked}>
-        <g className="portion">
-            <g className="portion-left">
+        <g className={styles.portion}>
+            <g className={styles.portion_left}>
                 <path d="M17.7561 13.0303L58.7561 43V0L52.1758 19.5455L17.7561 13.0303Z"/>
                 <path d="M58.7561 54.5675V43.81H50.5361C49.9361 43.81 49.3261 43.83 48.7261 43.85L58.5561 54.79L58.7561 54.5675Z"/>
                 <path d="M58.7561 60.9126V94.9367L58.5561 95.16L43.0961 77.9L58.5561 60.69L58.7561 60.9126Z"/>
@@ -32,7 +33,7 @@ export default function Fruit({ index }: PortionTypeProps): JSX.Element {
                 <path d="M0.956074 159.43L0.954392 159.421L19.6261 138.58L4.12607 121.25L0.00607339 125.84V148.85C0.00607339 152.467 0.335476 156.004 0.954392 159.421L0.946074 159.43H0.956074Z"/>
                 <path d="M0.00607339 119.94V116.64L1.48607 118.29L0.00607339 119.94Z"/>
             </g>
-            <g className="portion-right">
+            <g className={styles.portion_right}>
                 <path d="M58.7561 44V54.7575L68.4261 44H58.7561Z"/>
                 <path d="M58.7561 61.1026V95.1267L74.0161 78.09L58.7561 61.1026Z"/>
                 <path d="M58.7561 135.606V101.473L74.0361 118.53L58.7561 135.606Z"/>

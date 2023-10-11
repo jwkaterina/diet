@@ -5,7 +5,7 @@ import { useSettings } from '../../../context/settings-context';
 import { Group } from '../../../context/portions-reducer';
 import { handleFullPortionClick, handleHalfPortionClick } from './utils';
 
-import './portion.css'
+import styles from './portion.module.css'
 
 interface PortionProps {
     width: number,
@@ -31,17 +31,17 @@ export default function Portion({ width, height, children, group, index, checked
     const calculateClassname = (): string => {
         if(settings.halfPortions) {
             if(index <= checked / 2) {
-                return "portion-svg checked"
+                return styles.portion_svg + styles.checked
             } else if(index == checked / 2 + 0.5) {
-                return "portion-svg checked-left"
+                return styles.portion_svg + styles.half_checked
             } else {
-                return "portion-svg"
+                return styles.portion_svg
             }
         } else {
             if(index <= checked) {
-                return "portion-svg checked"
+                return styles.portion_svg + styles.checked
             } else {
-                return "portion-svg"
+                return styles.portion_svg
             }
         }
     }
@@ -50,6 +50,6 @@ export default function Portion({ width, height, children, group, index, checked
 
         {children}
 
-        <rect x="0" y="0" width={width} height={height} className="portion-rect"></rect>
+        <rect x="0" y="0" width={width} height={height} className={styles.portion_rect}></rect>
     </svg>
 }
