@@ -22,6 +22,7 @@ export default function PortionsSection(): JSX.Element {
     }
 
     const handleMinusClick = (group: Group) => {
+        if(portions[group].number == 0) return;
         dispatch({
             type: 'reduce',
             group: group,
