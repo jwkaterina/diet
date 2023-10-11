@@ -2,8 +2,8 @@
 
 import PortionTypeProps from './portion-type-props';
 import Portion from '../portion';
-import { usePortions } from '../../../../context/portions-context';
-import { Group } from '../../../../context/portions-reducer';
+import { usePortions } from '@/app/context/portions-context';
+import { Group } from '@/app/context/portions-reducer';
 
 import styles from '../portion.module.css'
 

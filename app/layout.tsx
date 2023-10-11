@@ -1,9 +1,9 @@
 'use client'
 
 import './globals.css'
-import styles from '../app/layout/nav/nav-bar.module.css'
+import styles from '/layout/nav/nav-bar.module.css'
 import { useState } from 'react'
-import Providers from '../app/context/providers'
+import Providers from './context/providers'
 import NavBar from './layout/nav/nav-bar'
 import Modal from './layout/modal/modal'
 

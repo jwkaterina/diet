@@ -1,6 +1,6 @@
 'use client'
 
-import { useSettings, useSettingsDispatch} from '../../../context/settings-context'
+import { useSettings, useSettingsDispatch} from '@/app/context/settings-context'
 import SettingsSection from './settings-section';
 import SwitchCell from '../cells/switch-cell';
 

@@ -1,7 +1,7 @@
 'use client'
 
 import styles from './portions-group.module.css'
-import { useSettings } from '../../../context/settings-context';
+import { useSettings } from '@/app/context/settings-context';
 
 interface PortionsGroupProps {
     title: string,

@@ -2,9 +2,9 @@
 
 import SettingsSection from './settings-section';
 import PortionsCell from '../cells/portions-cell';
-import { usePortions, usePortionsDispatch } from '../../../context/portions-context';
+import { usePortions, usePortionsDispatch } from '@/app/context/portions-context';
 import { useCalories } from '@/app/context/calories-context';
-import { Group } from '../../../context/portions-reducer';
+import { Group } from '@/app/context/portions-reducer';
 import { calculateTarget } from '@/app/component/progress/utils';
 
 import styles from './section.module.css'

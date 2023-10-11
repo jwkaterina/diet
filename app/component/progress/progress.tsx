@@ -1,10 +1,10 @@
 'use client'
 
 import styles from './progress.module.css'
-import { usePortions } from '../../context/portions-context'
-import { useMeals } from '../../context/meals-context'
-import { useSettings } from '../../context/settings-context'
-import { useCalories } from '../../context/calories-context'
+import { usePortions } from '@/app/context/portions-context'
+import { useMeals } from '@/app/context/meals-context'
+import { useSettings } from '@/app/context/settings-context'
+import { useCalories } from '@/app/context/calories-context'
 import { calculateCurrent, calculateTarget, timeTargetCalories, completedCalories, exceededCalories } from './utils'
 
 export default function ProgressBar(): JSX.Element {

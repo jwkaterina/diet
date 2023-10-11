@@ -1,8 +1,8 @@
 'use client'
 
 import { usePortionsDispatch  } from '../../../context/portions-context';
-import { useSettings } from '../../../context/settings-context';
-import { Group } from '../../../context/portions-reducer';
+import { useSettings } from '@/app/context/settings-context';
+import { Group } from '@/app/context/portions-reducer';
 import { handleFullPortionClick, handleHalfPortionClick } from './utils';
 
 import styles from './portion.module.css'

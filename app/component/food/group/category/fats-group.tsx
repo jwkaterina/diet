@@ -3,9 +3,9 @@
 import { useState } from 'react';
 import PortionsGroup from '../portions-group';
 import Fats from '../../portion/type/fats';
-import { usePortions } from '../../../../context/portions-context';
-import { useSettings } from '../../../../context/settings-context';
-import { useCalories } from '../../../../context/calories-context';
+import { usePortions } from '@/app/context/portions-context';
+import { useSettings } from '@/app/context/settings-context';
+import { useCalories } from '@/app/context/calories-context';
 import calculateCurrentNumber from './utils';
 
 export default function FatsGroup(): JSX.Element {

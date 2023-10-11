@@ -2,7 +2,7 @@
 
 import SettingsSection from './settings-section';
 import ProgressCell from '../cells/progress-cell';
-import { useMeals, useMealsDispatch } from '../../../context/meals-context';
+import { useMeals, useMealsDispatch } from '@/app/context/meals-context';
 import { handleFirstMealPlusClick, handleFirstMealMinusClick, handleLastMealPlusClick, handleLastMealMinusClick, handleMealsNumberPlusClick, handleMealsNumberMinusClick } from './progress-utils';
 
 import styles from './section.module.css'
