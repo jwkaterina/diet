@@ -2,6 +2,9 @@
 
 import { useSettings, useSettingsDispatch} from '../../../context/settings-context'
 import SettingsSection from './settings-section';
+import SwitchCell from '../cells/switch-cell';
+
+import styles from './section.module.css'
 
 export default function SwitchSection(): JSX.Element {
     const settings = useSettings();
@@ -22,17 +25,9 @@ export default function SwitchSection(): JSX.Element {
     return (
         <SettingsSection>
             <h2>General</h2>
-            <div className="Settings__section-body Settings__general-grid">
-                <h3 className="Settings__units-cell">Use Half Portions:</h3>
-                <label className="Settings__switch Settings__controls-cell">
-                    <input data-testid="portions" type="checkbox" onChange={handleHalfPortionsChange} checked={settings.halfPortions}></input>
-                    <span className="Settings__switch-slider Settings__switch-round"></span>
-                </label>   
-                    <h3 className="Settings__units-cell">Automatic Portions Reset:</h3>
-                <label className="Settings__switch Settings__controls-cell">
-                    <input data-testid="reset" type="checkbox" onChange={handleAutoResetChange} checked={settings.autoReset}></input>
-                    <span className="Settings__switch-slider Settings__switch-round"></span>
-                </label>   
+            <div className={styles.grid}>
+                <SwitchCell onChange={handleHalfPortionsChange} check={settings.halfPortions}>Use Half Portions:</SwitchCell>
+                <SwitchCell onChange={handleAutoResetChange} check={settings.autoReset}>Automatic Portions Reset:</SwitchCell> 
             </div>       
         </SettingsSection>
     )

@@ -5,6 +5,8 @@ import PortionsCell from '../cells/portions-cell';
 import { usePortions, usePortionsDispatch } from '../../../context/portions-context';
 import { Group } from '../../../context/portions-reducer';
 
+import styles from './section.module.css'
+
 export default function PortionsSection(): JSX.Element {
     const portions = usePortions();
     const dispatch = usePortionsDispatch();
@@ -25,11 +27,11 @@ export default function PortionsSection(): JSX.Element {
 
     return (
         <SettingsSection>
-            <div className="Settings__section-title">
+            <div className={styles.title}>
                 <h2>Portions</h2>
                 <h2>1210 k</h2>
             </div>
-            <div className="Settings__section-body Settings__portions-grid">
+            <div className={styles.grid}>
                 <PortionsCell count={portions.fruit.number} onPlusClick={() => handlePlusClick(Group.FRUIT)} onMinusClick={() => handleMinusClick(Group.FRUIT)}>FRUITS:</PortionsCell>
                 <PortionsCell count={portions.veggies.number} onPlusClick={() => handlePlusClick(Group.VEGGIES)} onMinusClick={() => handleMinusClick(Group.VEGGIES)}>VEGGIES:</PortionsCell>
                 <PortionsCell count={portions.carbs.number} onPlusClick={() => handlePlusClick(Group.CARBS)} onMinusClick={() => handleMinusClick(Group.CARBS)}>CARBS:</PortionsCell>

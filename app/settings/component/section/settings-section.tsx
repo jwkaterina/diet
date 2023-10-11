@@ -1,6 +1,6 @@
 'use client'
 
-import './section.css'
+import styles from  './section.module.css'
 
 interface SettingsSectionProps {
     children: React.ReactNode;
@@ -9,7 +9,7 @@ interface SettingsSectionProps {
 export default function SettingsSection({ children }: SettingsSectionProps): JSX.Element {
     
     return (
-        <div className="Settings__section">
+        <div className={styles.container}>
             {children}
         </div>
     )

@@ -5,6 +5,9 @@ import ProgressCell from '../cells/progress-cell';
 import { useMeals, useMealsDispatch } from '../../../context/meals-context';
 import { handleFirstMealPlusClick, handleFirstMealMinusClick, handleLastMealPlusClick, handleLastMealMinusClick, handleMealsNumberPlusClick, handleMealsNumberMinusClick } from './progress-utils';
 
+import styles from './section.module.css'
+
+
 export default function ProgressSection(): JSX.Element {
     const {firstMeal, lastMeal, mealsNumber}  = useMeals();
     const dispatch = useMealsDispatch();
@@ -12,7 +15,7 @@ export default function ProgressSection(): JSX.Element {
     return (
         <SettingsSection>
             <h2>Progress Bar</h2>
-            <div className="Settings__section-body Settings__time-grid">
+            <div className={styles.grid}>
                 <ProgressCell count={firstMeal} 
                     onPlusClick={() =>handleFirstMealPlusClick(firstMeal, lastMeal, dispatch)} 
                     onMinusClick={() => handleFirstMealMinusClick(firstMeal, dispatch)}

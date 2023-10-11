@@ -1,38 +1,23 @@
 
-.Settings__section {
+.container {
     padding: 1.0em 1.5em;
 }
 
-.Settings__section-title {
+.title {
     display: flex;
     justify-content: space-between;
 }
 
-.Settings__section-body {
+.grid {
     margin-top: 1em;
     padding-left: 1em;
-}
-
-.Settings__general-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    row-gap: 2em;
-}
-
-.Settings__general-cell {
-    align-self: center;
-}
-
-.Settings__time-grid,
-.Settings__portions-grid {
     display: grid;
     grid-template-rows: 1fr;
     grid-gap: 2em;
     align-items: center;
 }
 
-.Settings__count-cell {
+/* .Settings__count-cell {
     text-align: center;
 }
 
@@ -54,14 +39,12 @@
     background: white;
     transition: .5s;
     border: 3px solid white;
-    /*box-shadow: 1px 1px 1px rgba(0,0,0,0.1);*/
     box-shadow: var(--bs);
 }
 
 .Settings__switch-slider:before{
     position: absolute;
     content: "";
-    /*bottom: 14px;*/
     top: 6px;
     background-color: var(--clr-secondary-dark);
     transition: .5s;
@@ -90,4 +73,4 @@ input:checked + .Settings__switch-slider:before{
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     transform: rotateZ(-45deg);
-}
+} */
