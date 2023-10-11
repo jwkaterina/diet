@@ -1,17 +1,18 @@
 "use client"
 
 import { useState } from 'react';
-import CategoryProps from './category-props';
 import PortionsGroup from '../portions-group';
 import Carbs from '../../portion/type/carbs';
 import { usePortions } from '../../../../context/portions-context';
 import { useSettings } from '../../../../context/settings-context';
+import { useCalories } from '../../../../context/calories-context';
 import calculateCurrentNumber from './utils';
 
-export default function CarbsGroup({ calories }: CategoryProps): JSX.Element {
+export default function CarbsGroup(): JSX.Element {
     const portions = usePortions();
     const { number, checked } = portions.carbs;
     const settings = useSettings();
+    const calories = useCalories().carbs;
     
     const current = calculateCurrentNumber(settings.halfPortions, checked, number);
     

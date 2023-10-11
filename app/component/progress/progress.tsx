@@ -4,17 +4,14 @@ import styles from './progress.module.css'
 import { usePortions } from '../../context/portions-context'
 import { useMeals } from '../../context/meals-context'
 import { useSettings } from '../../context/settings-context'
-import { Calories } from '../../page'
+import { useCalories } from '../../context/calories-context'
 import { calculateCurrent, calculateTarget, timeTargetCalories, completedCalories, exceededCalories } from './utils'
 
-interface ProgressProps {
-    calories: Calories;
-}
-
-export default function ProgressBar({ calories }: ProgressProps): JSX.Element {
+export default function ProgressBar(): JSX.Element {
     const portions = usePortions();
     const { firstMeal, lastMeal, mealsNumber } = useMeals();
     const settings = useSettings();
+    const calories = useCalories();
 
     const currentCalories =  calculateCurrent(portions, settings.halfPortions, calories);
     const targetCalories = calculateTarget(portions, calories);  
