@@ -31,7 +31,7 @@ describe('render portions cell', function () {
         }
         
         const { container } = render(<PortionsCell { ...props}/>);
-        const minusButton = container.querySelector('.Settings__number-minus-btn');
+        const minusButton = container.querySelector('.minus_btn');
 
         await user.click(minusButton!);
 
@@ -47,7 +47,7 @@ describe('render portions cell', function () {
         }
         
         const { container } = render(<PortionsCell { ...props}/>);
-        const plusButton = container.querySelector('.Settings__number-plus-btn');
+        const plusButton = container.querySelector('.plus_btn');
 
         await user.click(plusButton!);
 

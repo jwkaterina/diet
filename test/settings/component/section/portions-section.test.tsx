@@ -31,7 +31,7 @@ describe('render portions section', function () {
         });
         const container = heading.parentElement!;
     
-        const plus = container.querySelector('.Settings__number-plus-btn');
+        const plus = container.querySelector('.plus_btn');
 
         await user.click(plus!);
 
@@ -47,7 +47,7 @@ describe('render portions section', function () {
         });
         const container = heading.parentElement!;
 
-        const minus = container.querySelector('.Settings__number-minus-btn');
+        const minus = container.querySelector('.minus_btn');
 
         await user.click(minus!);
 

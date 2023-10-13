@@ -25,8 +25,11 @@ describe('render switch section', function () {
     });
 
     it('should dispatch halfPortions' , async () => {
-
-        const portionsCheckbox = screen.getByTestId('portions');
+        const heading = screen.getByRole('heading', {
+            name: /portions:/i
+        });
+        const container = heading.parentElement!;
+        const portionsCheckbox = container.querySelector('input')!;
 
         await user.click(portionsCheckbox);
 
@@ -37,7 +40,11 @@ describe('render switch section', function () {
 
     it('should dispatch autoReset' , async () => {
 
-        const resetCheckbox = screen.getByTestId('reset');
+        const heading = screen.getByRole('heading', {
+            name: /reset:/i
+        });
+        const container = heading.parentElement!;
+        const resetCheckbox = container.querySelector('input')!;
 
         await user.click(resetCheckbox);
 
