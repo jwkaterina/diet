@@ -1,4 +1,4 @@
-import { handleLastMealMinusClick, handleLastMealPlusClick, handleMealsNumberMinusClick, handleMealsNumberPlusClick, handleFirstMealMinusClick, handleFirstMealPlusClick }  from '../../../../app/settings/component/section/progress-utils';
+import { handleLastMealMinusClick, handleLastMealPlusClick, handleMealsNumberMinusClick, handleMealsNumberPlusClick, handleFirstMealMinusClick, handleFirstMealPlusClick }  from '@/app/settings/component/section/progress-utils';
 
 describe('dispatch meals', function () {
 
@@ -57,7 +57,7 @@ describe('dispatch meals', function () {
         handleFirstMealPlusClick(firstMeal, lastMeal, dispatch);
         
         //check
-        expect(dispatch).not.toBeCalledWith();
+        expect(dispatch).not.toBeCalled();
     })
 
     it('should reduce last meal when lastMeal - firstMeal > 1', () => {
@@ -89,7 +89,6 @@ describe('dispatch meals', function () {
 
     it('should add last meal when lastMeal < 23' , () => {
         //init
-        const firstMeal = 3;
         const lastMeal = 5;
 
         //invoke
@@ -104,16 +103,52 @@ describe('dispatch meals', function () {
 
     it('should not add last meal when lastMeal >= 23 ', () => {
         //init
-        const firstMeal = 23;
         const lastMeal = 24;
 
         //invoke
         handleLastMealPlusClick(lastMeal, dispatch);
         
         //check
-        expect(dispatch).not.toBeCalledWith();
+        expect(dispatch).not.toBeCalled();
     })
 
+    it('should not reduce meals number when mealsNumber <= 2 ', () => {
+        //init
+        const mealsNumber = 2;
+
+        //invoke
+        handleMealsNumberMinusClick(mealsNumber, dispatch);
+        
+        //check
+        expect(dispatch).not.toBeCalled();
+    })
+
+    it('should reduce meals number when mealsNumber > 2 ', () => {
+        //init
+        const mealsNumber = 4;
+
+        //invoke
+        handleMealsNumberMinusClick(mealsNumber, dispatch);
+        
+        //check
+        expect(dispatch).toBeCalledWith({
+            type: 'reduce',
+            group: 'mealsNumber',
+        });
+    })
+
+    it('should add meals number', () => {
+        //init
+
+        //invoke
+        handleMealsNumberPlusClick(dispatch);
+        
+        //check
+        expect(dispatch).toBeCalledWith({
+            type: 'add',
+            group: 'mealsNumber',
+        });
+    })
 })
 
 
