@@ -46,7 +46,7 @@ export default function Portion({ width, height, children, group, index, checked
         }
     }
 
-    return <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} className={calculateClassname()} onClick={handleClick} data-testid="portion">
+    return <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} className={calculateClassname()} onClick={handleClick}>
 
         {children}
 

@@ -10,21 +10,19 @@ jest.mock('../../../../../app/component/food/group/category/utils', () => ({
 describe('render category', function () {
 
     it('should render 10 prots portions', () => {
-        const calories = 110;
             
-        const { container } = render(<ProtsGroup calories={calories}/>);
+        const { container } = render(<ProtsGroup/>);
 
         const portions = container.querySelectorAll('.portion');
         expect(portions).toHaveLength(10);
     });
 
     it('should add 1 portion on click', async () => {
-        const calories = 110;
             
-        const { container } = render(<ProtsGroup calories={calories}/>);
+        const { container } = render(<ProtsGroup/>);
 
-        const button = screen.getByTestId('plus-btn');
-        await user.click(button);
+        const button = container.querySelector('.plus_btn');
+        await user.click(button!);
 
         const portions = container.querySelectorAll('.portion');
         expect(portions).toHaveLength(11);

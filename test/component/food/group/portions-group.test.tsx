@@ -3,7 +3,9 @@ import user from '@testing-library/user-event';
 import  PortionsGroup from '../../../../app/component/food/group/portions-group';
 
 describe('render portion group', function () {
-    function renderComponent() {
+
+    it('should render 3 headings with content', () => {
+        
         const props = {
             title: "Carbs",
             calories: 70,
@@ -13,12 +15,6 @@ describe('render portion group', function () {
         }
         
         render(<PortionsGroup {...props}/>);
-    
-        return props.onPlusClick;
-    }
-
-    it('should render 3 headings with content', () => {
-        renderComponent();
 
         const headings = screen.getAllByRole('heading');
         
@@ -29,12 +25,20 @@ describe('render portion group', function () {
     });
 
     it('should call onPlusClick function', async () => {
-        const onPlusClick = renderComponent();
 
-        const button = screen.getByTestId('plus-btn');
-        await user.click(button);
+        const props = {
+            title: "Carbs",
+            calories: 70,
+            checked: 3,
+            children: [],
+            onPlusClick: jest.fn(),
+        }
+        
+        const { container } = render(<PortionsGroup {...props}/>);
+        const button = container.querySelector('.plus_btn');
+        await user.click(button!);
 
-        expect(onPlusClick).toHaveBeenCalled();
+        expect(props.onPlusClick).toHaveBeenCalled();
     });
 })
 

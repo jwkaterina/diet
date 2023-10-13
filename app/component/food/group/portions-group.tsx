@@ -25,7 +25,7 @@ export default function PortionsGroup({ title, calories, checked, children, onPl
                     <h3 className={styles.checked}>{checked}</h3>
                     <h3 className={styles.calories_hint}>x{calories}k</h3>
                     <h3>{title}</h3>
-                    <div className={styles.plus_btn} data-testid="plus-btn" onClick={onPlusClick}></div>
+                    <div className={styles.plus_btn} onClick={onPlusClick}></div>
                 </div>         
                 <div className={styles.portions}>
                     {children}

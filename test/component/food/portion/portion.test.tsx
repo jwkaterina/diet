@@ -44,10 +44,10 @@ describe('render portion', function () {
       timeStamp: ""
     });
 
-    render(<Portion {...props}/>);
-    const portion = screen.getByTestId('portion');
+    const { container } = render(<Portion {...props}/>);
+    const portion = container.querySelector('svg');
 
-    await user.click(portion);
+    await user.click(portion!);
 
     expect(handleHalfPortionClick).toHaveBeenCalledWith(1, 2, Group.CARBS, expect.any(Function));
   });
@@ -68,10 +68,10 @@ describe('render portion', function () {
       timeStamp: ""
     });
 
-    render(<Portion {...props}/>);
-    const portion = screen.getByTestId('portion');
+    const { container } = render(<Portion {...props}/>);
+    const portion = container.querySelector('svg');
 
-    await user.click(portion);
+    await user.click(portion!);
 
     expect(handleFullPortionClick).toHaveBeenCalledWith(1, 2, Group.CARBS, expect.any(Function));
   });
@@ -92,12 +92,12 @@ describe('render portion', function () {
       timeStamp: ""
     });
 
-    render(<Portion {...props}/>);
-    const portion = screen.getByTestId('portion');
+    const { container } = render(<Portion {...props}/>);
+    const portion = container.querySelector('svg');
 
-    await user.click(portion);
+    await user.click(portion!);
 
-    expect(portion).toHaveClass('portion-svg checked');
+    expect(portion).toHaveClass('portion_svg checked');
   });
 
   it('should calculate class when halfPoritons and index == checked / 2 + 0.5', async () => {
@@ -116,12 +116,12 @@ describe('render portion', function () {
       timeStamp: ""
     });
 
-    render(<Portion {...props}/>);
-    const portion = screen.getByTestId('portion');
+    const { container } = render(<Portion {...props}/>);
+    const portion = container.querySelector('svg');
 
-    await user.click(portion);
+    await user.click(portion!);
 
-    expect(portion).toHaveClass('portion-svg checked-left');
+    expect(portion).toHaveClass('portion_svg checked_left');
   });
 
   it('should calculate class when halfPoritons and index >= checked / 2 + 1', async () => {
@@ -140,12 +140,12 @@ describe('render portion', function () {
       timeStamp: ""
     });
 
-    render(<Portion {...props}/>);
-    const portion = screen.getByTestId('portion');
+    const { container } = render(<Portion {...props}/>);
+    const portion = container.querySelector('svg');
 
-    await user.click(portion);
+    await user.click(portion!);
 
-    expect(portion).toHaveClass('portion-svg');
+    expect(portion).toHaveClass('portion_svg');
   });
 
   it('should calculate class when fullPoritons and index <= checked', async () => {
@@ -164,12 +164,12 @@ describe('render portion', function () {
       timeStamp: ""
     });
 
-    render(<Portion {...props}/>);
-    const portion = screen.getByTestId('portion');
+    const { container } = render(<Portion {...props}/>);
+    const portion = container.querySelector('svg');
 
-    await user.click(portion);
+    await user.click(portion!);
 
-    expect(portion).toHaveClass('portion-svg checked');
+    expect(portion).toHaveClass('portion_svg checked');
   });
 
   it('should calculate class when fullPoritons and index > checked', async () => {
@@ -188,11 +188,11 @@ describe('render portion', function () {
       timeStamp: ""
     });
 
-    render(<Portion {...props}/>);
-    const portion = screen.getByTestId('portion');
+    const { container } = render(<Portion {...props}/>);
+    const portion = container.querySelector('svg');
 
-    await user.click(portion);
+    await user.click(portion!);
 
-    expect(portion).toHaveClass('portion-svg');
+    expect(portion).toHaveClass('portion_svg');
   });
 })
