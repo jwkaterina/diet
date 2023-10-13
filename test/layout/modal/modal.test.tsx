@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Modal from '../../../app/layout/modal/modal';
+import Modal from '@/app/layout/modal/modal';
 
 describe('render modal', function () {
     function renderComponent() {

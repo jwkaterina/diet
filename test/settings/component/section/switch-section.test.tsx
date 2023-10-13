@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import user from '@testing-library/user-event';
-import SwitchSection from '../../../../app/settings/component/section/switch-section';
-import { useSettingsDispatch } from '../../../../app/context/settings-context';
+import SwitchSection from '@/app/settings/component/section/switch-section';
+import { useSettingsDispatch } from '@/app/context/settings-context';
 
 jest.mock('../../../../app/context/settings-context', () => {
     const originalModule = jest.requireActual('../../../../app/context/settings-context');

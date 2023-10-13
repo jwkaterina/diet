@@ -1,4 +1,4 @@
-import  calculateCurrentNumber from '../../../../../app/component/food/group/category/utils';
+import  calculateCurrentNumber from '@/app/component/food/group/category/utils';
 
 describe('calculate current number', function () {
 

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import user from '@testing-library/user-event';
-import NavBar from '../../../app/layout/nav/nav-bar';
+import NavBar from '@/app/layout/nav/nav-bar';
 
 describe('render nav bar', function () {
     function renderComponent() {

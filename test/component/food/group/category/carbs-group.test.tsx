@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import  CarbsGroup from '@/app/component/food/group/category/carbs-group';
 

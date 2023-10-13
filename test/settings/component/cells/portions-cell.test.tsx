@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import user from '@testing-library/user-event';
-import PortionsCell from '../../../../app/settings/component/cells/portions-cell';
+import PortionsCell from '@/app/settings/component/cells/portions-cell';
 
 describe('render portions cell', function () {
 

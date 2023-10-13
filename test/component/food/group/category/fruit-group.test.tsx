@@ -1,6 +1,6 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import  FruitGroup from '../../../../../app/component/food/group/category/carbs-group';
+import  FruitGroup from '@/app/component/food/group/category/carbs-group';
 
 jest.mock('../../../../../app/component/food/group/category/utils', () => ({
     __esModule: true,

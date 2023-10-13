@@ -1,4 +1,4 @@
-import { calculateCurrent, calculateTarget, timeTargetCalories, completedCalories, exceededCalories }  from '../../../app/component/progress/utils';
+import { calculateCurrent, calculateTarget, timeTargetCalories, completedCalories, exceededCalories }  from '@/app/component/progress/utils';
 
 describe('calculate progress', function () {
 

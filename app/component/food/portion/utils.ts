@@ -1,5 +1,5 @@
 import { Dispatch } from 'react';
-import { Group } from '../../../context/portions-reducer';
+import { Group } from '@/app/context/portions-reducer';
 
 export const handleFullPortionClick = (index: number, checked: number, group: Group, dispatch: Dispatch<any>) => {
     if(index <= checked) {

@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import user from '@testing-library/user-event';
-import PortionsSection from '../../../../app/settings/component/section/portions-section';
-import { usePortionsDispatch } from '../../../../app/context/portions-context';
+import PortionsSection from '@/app/settings/component/section/portions-section';
+import { usePortionsDispatch } from '@/app/context/portions-context';
 import { Group } from '@/app/context/portions-reducer';
 
 jest.mock('../../../../app/context/portions-context', () => {

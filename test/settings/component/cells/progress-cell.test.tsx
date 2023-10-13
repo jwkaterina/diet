@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import user from '@testing-library/user-event';
-import ProgressCell from '../../../../app/settings/component/cells/progress-cell';
+import ProgressCell from '@/app/settings/component/cells/progress-cell';
 
 describe('render progress cell', function () {
 
