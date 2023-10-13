@@ -1,4 +1,4 @@
-import { calculateCurrent, calculateTarget }  from '../../../app/component/progress/utils';
+import { calculateCurrent, calculateTarget, timeTargetCalories, completedCalories, exceededCalories }  from '../../../app/component/progress/utils';
 
 describe('calculate progress', function () {
 
@@ -40,4 +40,40 @@ describe('calculate progress', function () {
 
         expect(actual).toBe(1100);
     })
+
+    it('should calculate time target calories', () => {
+
+        const firstMeal = 9;
+        const lastMeal = 21;
+        const mealsNumber = 3;
+        const targetCalories = 1100;
+        const time = 12;
+
+        const actual = timeTargetCalories(targetCalories, mealsNumber, lastMeal, firstMeal, time);
+        expect(actual).toEqual({
+            left: '50%'
+        });
+    });
+
+    it('should calculate completed calories', () => {
+
+        const currentCalories =  550;
+        const targetCalories = 1100;
+
+        const actual = completedCalories(currentCalories, targetCalories);
+        expect(actual).toEqual({
+            width: '50%'
+        });
+    });
+
+    it('should calculate exceeded calories', () => {
+
+        const currentCalories =  550;
+        const targetCalories = 1100;
+
+        const actual = exceededCalories(currentCalories, targetCalories);
+        expect(actual).toEqual({
+            width: '0%'
+        });
+    });
 })

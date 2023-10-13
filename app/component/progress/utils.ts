@@ -1,5 +1,5 @@
-import { Portions } from '../../context/portions-context';
-import { Calories } from '../../page';
+import { Portions } from '@/app/context/portions-context';
+import { Calories } from '@/app/context/calories-context';
 
 type Style = {
     left?: string,
@@ -46,10 +46,9 @@ export const calculateTarget = (portions: Portions, calories: Calories): number 
     return targetCalories;
 }
 
-export const timeTargetCalories = (targetCalories: number,mealsNumber: number, lastMeal: number, firstMeal: number): Style => {
+export const timeTargetCalories = (targetCalories: number, mealsNumber: number, lastMeal: number, firstMeal: number, time: number): Style => {
     const oneMealCalories = targetCalories / mealsNumber;
     const timeBetweenMeals = (lastMeal - firstMeal) / (mealsNumber - 1);
-    const time = new Date().getHours();
     const timeCalories = (((time - firstMeal) / timeBetweenMeals) + 1) * (oneMealCalories);
     const fraction = timeCalories / targetCalories;
     console.log(fraction)

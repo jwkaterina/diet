@@ -16,7 +16,8 @@ export default function ProgressBar(): JSX.Element {
     const currentCalories =  calculateCurrent(portions, settings.halfPortions, calories);
     const targetCalories = calculateTarget(portions, calories);  
 
-    const timeTarget = timeTargetCalories(targetCalories, mealsNumber, lastMeal, firstMeal);
+    const time = new Date().getHours();
+    const timeTarget = timeTargetCalories(targetCalories, mealsNumber, lastMeal, firstMeal, time);
     const completed = completedCalories(currentCalories, targetCalories);
     const exceeded = exceededCalories(currentCalories, targetCalories);
 
