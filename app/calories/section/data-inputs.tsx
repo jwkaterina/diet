@@ -1,15 +1,18 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import CaloriesSection from './calories-section'
 import { Gender, BodyData } from '../bmr-utils'
-import { calculate as calculateBmi, getClassification, getRecommendation } from '../bmi-utils'
+import { calculateBmi, getClassification, getRecommendation, getRange } from '../bmi-utils'
 
 export interface DataInputsProps {
-
+    setBmi: (bmi: number) => void;
+    setStatus: (status: string) => void;
+    setRange: (range: string) => void;
+    setRecommendation: (recommendation: string) => void;
 }
 
-export default function DataInputs(props: DataInputsProps): JSX.Element {
+export default function DataInputs({ setBmi, setStatus, setRange, setRecommendation }: DataInputsProps): JSX.Element {
 
     const genderRef = useRef<HTMLInputElement>(null);
     const ageRef = useRef<HTMLInputElement>(null);
@@ -17,7 +20,9 @@ export default function DataInputs(props: DataInputsProps): JSX.Element {
     const heightRef = useRef<HTMLInputElement>(null);
 
     const handleSubmit = (e: any) => {
+      
         e.preventDefault();
+
         const checkbox = genderRef.current as HTMLInputElement;
         const gender = checkbox.checked ? Gender.MALE : Gender.FEMALE;
         const ageInput = ageRef.current as HTMLInputElement;
@@ -26,6 +31,12 @@ export default function DataInputs(props: DataInputsProps): JSX.Element {
         const age = parseInt(ageInput.value);
         const weight = parseFloat(weightInput.value);
         const height = parseFloat(heightInput.value);
+        if (isNaN(age) || isNaN(weight) || isNaN(height)) {
+            console.log('Error: invalid input');
+            return;
+        }
+        //TODO: validate input
+        
         const body: BodyData = {
             weight: weight,
             height: height,
@@ -33,9 +44,15 @@ export default function DataInputs(props: DataInputsProps): JSX.Element {
         };
         console.log(`submitted: age = ${age}, weight = ${weight}, height = ${height}, gender = ${gender}`);
         const bmi = calculateBmi(weight, height);
+        setBmi(bmi);
         const weightClassification = getClassification(bmi);
+        setStatus(weightClassification.class);
         const recommendation = getRecommendation(weightClassification, body);
-        console.log(`bmi = ${bmi}, recommendation = ${recommendation}`);
+        setRecommendation(recommendation);
+        const range = getRange(body);
+        setRange(range);
+        console.log(`bmi = ${bmi}, recommendation = ${recommendation}, classification = ${weightClassification.class}, range = ${range}`);
+
     }
 
     return (
