@@ -3,7 +3,7 @@
 import CaloriesSection from './calories-section'
 
 interface CaloriesSectionProps {
-    bmi: number | string;
+    bmi: number | null;
     status: string;
     range: string;
     recommendation: string;

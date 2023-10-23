@@ -4,7 +4,7 @@ import { ajustCalories } from './bmi-utils';
 const MALE_MIN_CALORIES = 1400;
 const FEMALE_MIN_CALORIES = 1200;
 
-type PhysicalActivity = {
+export type PhysicalActivity = {
     type: string;
     value: number;
 }

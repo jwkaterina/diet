@@ -26,7 +26,7 @@ export type BodyData = {
 }
 
 const calculate = (bmr: BMRData, body: BodyData): number => {
-    return ((bmr.weightHeight + (bmr.weight * body.weight)) + (bmr.height * body.height)) - (bmr.age * body.age);
+    return ((bmr.weightHeight + (bmr.weight * body.weight)) + (bmr.height * body.height * 100)) - (bmr.age * body.age);
 }
 
 export enum Gender {
