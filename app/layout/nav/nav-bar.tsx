@@ -25,7 +25,7 @@ export default function NavBar({ onMenuClick, onClearClick}: NavBarProps): JSX.E
                         <a className={styles.link} href="/">Main</a>
                     </li>
                     <li className={styles.item}>
-                        <a className={styles.link} href="/calories">Calories</a>
+                        <a className={styles.link} href="/calculator">Calculator</a>
                     </li>
                     <li className={styles.item}>
                         <a className={styles.link} href="/settings">Settings</a>
