@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import CaloriesSection from './calories-section'
 import { Gender, BodyData } from '../bmr-utils'
 import { calculateBmi, getClassification, getRecommendation, getRange } from '../bmi-utils'
+import styles from './calories.module.css'
 
 export interface DataInputsProps {
     submitBmi: (bmi: number) => void;
@@ -58,24 +59,24 @@ export default function DataInputs({ submitBmi, submitStatus, submitRange, submi
             <CaloriesSection>
                 <h2>Data Inputs</h2>
                 <form>
-                    <div className="Calories__input">
+                    <div className={styles.input_grid}>
                         <h3>Gender:</h3>
-                        <div className="Calories__gender__control">
+                        <div className={styles.gender_control}>
                             <h3>F</h3>
-                            <label className="Calories__switch">
+                            <label className={styles.switch}>
                                 <input type="checkbox" ref={genderRef}></input>
-                                <span className="Calories__switch-slider Calories__switch-round"></span>
+                                <span className={styles.switch_slider}></span>
                             </label>
                             <h3>M</h3>
                         </div>
                         <h3>Age (years):</h3>
-                        <input type="number" name="age" placeholder="30" required min="1" max="120" ref={ageRef}/>
+                        <input className={styles.number_input} type="number" name="age" placeholder="30" required min="1" max="120" ref={ageRef}/>
                         <h3>Weight (kg):</h3>
-                        <input type="number" name="weight" placeholder="71.5" required step="0.1" min="1.0"  max="300.0" ref={weightRef}></input>
+                        <input className={styles.number_input}  type="number" name="weight" placeholder="71.5" required step="0.1" min="1.0"  max="300.0" ref={weightRef}></input>
                         <h3>Height (m):</h3>
-                        <input type="number" name="height" placeholder="1.65" required step="0.01" min="0.10" max="3.00" ref={heightRef}></input>
+                        <input className={styles.number_input}  type="number" name="height" placeholder="1.65" required step="0.01" min="0.10" max="3.00" ref={heightRef}></input>
                     </div>
-                    <input type="submit" className="btn btn-block" value="Calculate" onClick={handleSubmit}></input>
+                    <input type="submit" className={styles.btn}  value="Calculate" onClick={handleSubmit}></input>
                 </form>
             </CaloriesSection>
     )

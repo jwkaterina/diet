@@ -17,7 +17,7 @@ export default function Calories() {
     const [body, setBody] = useState<BodyData | null>(null);
 
     return (
-        <div className={styles.CaloriesPage}>
+        <div className={styles.container}>
             <DataInputs submitBmi={setBmi} submitStatus={setStatus} submitRange={setRange} submitRecommendation={setRecommendation} submitGender={setGender} submitBody={setBody}/>
             <WeightAnalysis bmi={bmi} status={status} range={range} recommendation={recommendation}/>
             <CaloriesPlan gender={gender} body={body} status={status}/>

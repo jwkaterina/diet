@@ -1,8 +1,8 @@
-.Calories__section {
+.section {
     padding: 1.0em 1.5em 1.5em 1.5em;
 }
 
-.Calories__input {
+.input_grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
     row-gap: 2em;
@@ -10,36 +10,45 @@
     margin: 1.5em 0 2em 0;
 }
 
-input:invalid {
-    border: solid red 3px;
-  }
-
-.Calories__gender__control {
+.gender_control {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.btn-block {
+.btn {
     display: block;
     width: 100%;
     font-size: 1.1rem;
+    padding: .5em 2.5em;
+    background: var(--clr-secondary-dark);
+    color: var(--clr-secondary-dark-font);
+    text-decoration: none;
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px; /*this might be needed if we applied [text-transform: uppercase]*/
+    font-weight: var(--fw-bold);
+    border: none;
+    transition: transform 200ms ease-in-out;
 }
 
-input[type='number'] {
+.btn:hover {
+    transform: scale(1.1);
+}
+
+.number_input {
     display: block;
     padding: 0.4rem;
     font-size: 1rem;
     border: 1px solid #ccc;
 }
 
-.CaloriesPage input[type='text']::placeholder,
-.CaloriesPage input[type='number']::placeholder {
+.number_input:placeholder{
     opacity: .2;
 }
 
 
-.Calories__switch{
+.switch{
     position: relative;
     display: block;
     width: 70px;
@@ -47,7 +56,7 @@ input[type='number'] {
     margin: 0 1em;
 }
 
-.Calories__switch-slider{
+.switch_slider{
     position: absolute;
     cursor: pointer;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -57,32 +66,32 @@ input[type='number'] {
     box-shadow: var(--bs);
 }
 
-.Calories__switch-slider:before{
+.switch_slider:before{
     position: absolute;
-    content: "";
+    content: '';
     top: 6px;
     background-color: var(--clr-primary-light);
     transition: .5s;
 }
 
-.Calories__switch input{
+.switch input{
     display: none;
 }
 
-input:checked + .Calories__switch-slider{
+input:checked + .switch_slider{
     background: #0077c2;
 }
 
-input:checked + .Calories__switch-slider:before{
+input:checked + .switch_slider:before{
     transform: translateX(35px) rotateZ(45deg);
     background: #80d6ff;
 }
 
-.Calories__switch-slider.Calories__switch-round{
+.switch_slider{
     border-radius: 35px;
 }
 
-.Calories__switch-slider.Calories__switch-round:before{
+.switch_slider:before{
     width: 43%;
     height: 43%;
     border-top-left-radius: 50px;
@@ -90,7 +99,7 @@ input:checked + .Calories__switch-slider:before{
     transform: rotateZ(-45deg);
 }
 
-.Calories__weight__data {
+.weight_data {
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 2em;
@@ -98,16 +107,16 @@ input:checked + .Calories__switch-slider:before{
     margin: 1.5em 0 0 0;
 }
 
-.Calories__weight__data .data {
+.weight_data .data {
     text-align: center;
 }
 
-.Calories__weight__data .title {
+.weight_data .title {
     font-family: sans-serif;
     font-weight: 500;
 }
 
-.Calories__plan {
+.plan {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 2em;
@@ -115,27 +124,27 @@ input:checked + .Calories__switch-slider:before{
     margin: 1.5em 0 0 0;
 }
 
-.Calories__plan .header,
-.Calories__plan .data {
+.plan .header,
+.plan .data {
     text-align: center;
 }
 
-.Calories__plan .data {
+.plan .data {
     font-size: 1.6rem;
     font-weight: 600;
 }
 
-.Calories__plan .title {
+.plan .title {
     font-family: sans-serif;
     font-weight: 500;
 }
 
 @media (min-width: 600px) {
-    .Calories__plan .data {
+    .plan .data {
         font-size: 2.1rem;
     }
 
-    input[type='number'] {
+    .number_input {
         font-size: 1.2rem;
     }
 }

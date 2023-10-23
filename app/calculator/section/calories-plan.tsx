@@ -4,6 +4,7 @@ import CaloriesSection from './calories-section'
 import { Gender, BodyData } from '../bmr-utils';
 import { calories, gainWeightCalories, loseWeightCalories, NONE, LOW, NORMAL, HIGH, PhysicalActivity } from '../daily-calories-utils';
 import { WeightClass } from '../bmi-utils';
+import styles from './calories.module.css'
 
 interface CaloriesPlanProps {
     gender: Gender;
@@ -53,22 +54,22 @@ export default function CaloriesPlan({ gender, body, status}: CaloriesPlanProps)
         <>
             <CaloriesSection>
                 <h2>Calories Plan</h2>
-                <div className="Calories__plan">
-                    <h3 className="header">Physical Activity</h3>
-                    <h3 className="header">Maintain Weight</h3>
-                    <h3 className="header">{header(status)}</h3>
-                    <h3 className="title">Inactive:</h3>
-                    <span className="data">{maintainCalories(NONE)}</span>
-                    <span className="data">{ajustCalories(NONE)}</span>
-                    <h3 className="title">Low Active:</h3>
-                    <span className="data">{maintainCalories(LOW)}</span>
-                    <span className="data">{ajustCalories(LOW)}</span>
-                    <h3 className="title">Active:</h3>
-                    <span className="data">{maintainCalories(NORMAL)}</span>
-                    <span className="data">{ajustCalories(NORMAL)}</span>
-                    <h3 className="title">High Active:</h3>
-                    <span className="data">{maintainCalories(HIGH)}</span>
-                    <span className="data">{ajustCalories(HIGH)}</span>
+                <div className={styles.plan}>
+                    <h3 className={styles.header}>Physical Activity</h3>
+                    <h3 className={styles.header}>Maintain Weight</h3>
+                    <h3 className={styles.header}>{header(status)}</h3>
+                    <h3 className={styles.title}>Inactive:</h3>
+                    <span className={styles.data}>{maintainCalories(NONE)}</span>
+                    <span className={styles.data}>{ajustCalories(NONE)}</span>
+                    <h3 className={styles.title}>Low Active:</h3>
+                    <span className={styles.data}>{maintainCalories(LOW)}</span>
+                    <span className={styles.data}>{ajustCalories(LOW)}</span>
+                    <h3 className={styles.title}>Active:</h3>
+                    <span className={styles.data}>{maintainCalories(NORMAL)}</span>
+                    <span className={styles.data}>{ajustCalories(NORMAL)}</span>
+                    <h3 className={styles.title}>High Active:</h3>
+                    <span className={styles.data}>{maintainCalories(HIGH)}</span>
+                    <span className={styles.data}>{ajustCalories(HIGH)}</span>
                 </div>
             </CaloriesSection>
         </>
