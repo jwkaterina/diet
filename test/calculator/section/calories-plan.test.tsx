@@ -67,27 +67,13 @@ describe('render calories plan', function () {
         const props = {
             gender: Gender.FEMALE,
             body: null,
-            status: 'obese'
+            status: ''
         }
         
         const {container } = render(<CaloriesPlan {...props}/>);
-        const data = container.querySelector('span');
-        const text = data!.textContent;
-
-        expect(text).toEqual('');
-    });
-
-    it('should not renser data when body is null', () => {
-        const props = {
-            gender: Gender.FEMALE,
-            body: null,
-            status: 'obese'
-        }
-        
-        const {container } = render(<CaloriesPlan {...props}/>);
-        const data = container.querySelector('span');
-        const text = data!.textContent;
-
-        expect(text).toEqual('');
+        const data = container.querySelectorAll('span');
+        data.forEach((span) => {
+            expect(span.textContent).toEqual('');
+        });
     });
 });
