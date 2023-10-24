@@ -74,11 +74,11 @@ export default function DataInputs({ submitBmi, submitStatus, submitRange, submi
                             <h3>M</h3>
                         </div>
                         <h3>Age (years):</h3>
-                        <input className={styles.number_input} type="number" name="age" placeholder="30" required min="1" max="120" ref={ageRef}/>
+                        <input className={styles.number_input} type="number" name="age" aria-label="age" placeholder="30" required min="1" max="120" ref={ageRef}/>
                         <h3>Weight (kg):</h3>
-                        <input className={styles.number_input}  type="number" name="weight" placeholder="71.5" required step="0.1" min="1.0"  max="300.0" ref={weightRef}></input>
+                        <input className={styles.number_input}  type="number" name="weight" aria-label="weight" placeholder="71.5" required step="0.1" min="1.0"  max="300.0" ref={weightRef}></input>
                         <h3>Height (m):</h3>
-                        <input className={styles.number_input}  type="number" name="height" placeholder="1.65" required step="0.01" min="0.10" max="3.00" ref={heightRef}></input>
+                        <input className={styles.number_input}  type="number" name="height" aria-label="height" placeholder="1.65" required step="0.01" min="0.10" max="3.00" ref={heightRef}></input>
                     </div>
                     <input type="submit" className={styles.btn}  value="Calculate" onClick={handleSubmit}></input>
                 </form>
