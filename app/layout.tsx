@@ -12,17 +12,15 @@ interface LayoutProps {
 }
 
 export default function RootLayout({ children }: LayoutProps): JSX.Element {
-  const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const handleClearClick = () => {
     setModalOpen(true);
-    setMenuOpen(false);
   }
 
   return (
     <html lang="en">
-      <body className={menuOpen ? styles.menu_open : ''}>
-        <NavBar onMenuClick={() => setMenuOpen(!menuOpen)} onClearClick={handleClearClick}/>
+      <body>
+        <NavBar onClearClick={handleClearClick}/>
         <Providers>
             {children}
             <Modal openState={{modalOpen, setModalOpen}}/>

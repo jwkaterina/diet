@@ -2,38 +2,31 @@
 
 import styles from './nav-bar.module.css'
 import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGear, faCalculator, faBroom } from '@fortawesome/free-solid-svg-icons'
 
 interface NavBarProps {
-    onMenuClick: () => void,
     onClearClick: () => void
 }
 
-export default function NavBar({ onMenuClick, onClearClick}: NavBarProps): JSX.Element {
+export default function NavBar({onClearClick}: NavBarProps): JSX.Element {
 
     return (
         <header className={styles.header}>
-            <div className={styles.app_title}>
-                <Link className={styles.icon} href="/"></Link>
+            <Link className={styles.app_title} href="/">
+                <i className={styles.main_icon}></i>
                 <h1> My Diet</h1>
-            </div>
-            <button className={styles.toggle} id="menu-toggle" onClick={onMenuClick}>
-                <span className={styles.hamburger}></span>
-            </button>
-            <div className={styles.menu}>
-                <ul className={styles.list}>
-                    <li className={styles.item}>
-                        <a className={styles.link} href="/">Main</a>
-                    </li>
-                    <li className={styles.item}>
-                        <a className={styles.link} href="/calculator">Calculator</a>
-                    </li>
-                    <li className={styles.item}>
-                        <a className={styles.link} href="/settings">Settings</a>
-                    </li>
-                    <li className={styles.item}>
-                        <span className={styles.link} onClick={onClearClick}>Clear Portions</span>
-                    </li>
-                </ul>
+            </Link>
+            <div className={styles.controls}>
+                <Link href="/calculator" className={styles.link}>
+                    <FontAwesomeIcon icon={faCalculator} className={styles.icon}/>
+                </Link>
+                <Link href="/settings" className={styles.link}>
+                    <FontAwesomeIcon icon={faGear}className={styles.icon}/>            
+                </Link>
+                <Link href="" className={styles.link}>
+                    <FontAwesomeIcon icon={faBroom} onClick={onClearClick} className={styles.icon}/>
+                </Link>
             </div>
         </header>
         )
