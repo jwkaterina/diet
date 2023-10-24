@@ -13,11 +13,10 @@ describe('render data inputs', function () {
         submitGender: jest.fn(),
         submitBody: jest.fn()
     }
-    
-    
-    render(<DataInputs {...props}/>);
 
     it('should render elements', () => {
+        
+        render(<DataInputs {...props}/>);
     
         const checkbox = screen.getByRole('checkbox');
         const headings = screen.getAllByRole('heading');
@@ -31,7 +30,8 @@ describe('render data inputs', function () {
     });
 
     it('should submit data', async () => {
-        screen.logTestingPlaygroundURL();
+    
+        render(<DataInputs {...props}/>);
 
         const checkbox = screen.getByRole('checkbox');
         const ageInput = screen.getByRole('spinbutton', { name: /age/i });
