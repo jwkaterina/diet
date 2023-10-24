@@ -1,9 +1,8 @@
-import { BodyData } from "./bmr-utils";
 
 const UPPER_LIMIT_MAX = 100000;
 
 export const calculateBmi = (weight: number, height: number): number => {
-    const index = (weight / (height * height));
+    const index = weight / (height * height);
     return Math.round(index * 10) / 10;
 }
 
@@ -30,28 +29,28 @@ interface WeightClassification {
     contains: (bmi: number) => boolean;
 }
 
-const UNDERWEIGHT: WeightClassification = {
+export const UNDERWEIGHT: WeightClassification = {
     class: WeightClass.UNDERWEIGHT,
     min: 0,
     max: 18.4,
     contains: (bmi: number) => bmi < 18.5 && bmi >= 0
 }
 
-const NORMAL: WeightClassification = {
+export const NORMAL: WeightClassification = {
     class: WeightClass.NORMAL,
     min: 18.5,
     max: 24.9,
     contains: (bmi: number) => bmi < 25.0 && bmi >= 18.5
 }
 
-const OVERWEIGHT: WeightClassification = {
+export const OVERWEIGHT: WeightClassification = {
     class: WeightClass.OVERWEIGHT,
     min: 25,
     max: 29.9,
     contains: (bmi: number) => bmi < 30.0 && bmi >= 25.0
 }
 
-const OBESE: WeightClassification = {
+export const OBESE: WeightClassification = {
     class: WeightClass.OBESE,
     min: 30,
     max: UPPER_LIMIT_MAX / 10,
@@ -71,25 +70,25 @@ export const getClassification = (bmi: number): WeightClassification => {
     throw new Error(`Invalid BMI: ${bmi}`);
 }
 
-export const getRecommendation = (WeightClassification: WeightClassification, body: BodyData): string => {
+export const getRecommendation = (WeightClassification: WeightClassification, weight: number, height: number): string => {
     switch(WeightClassification.class) {
         case WeightClass.UNDERWEIGHT:
-            return `gain ${calculateWeightDelta(NORMAL.min, body.height, body.weight)}kg`;
+            return `gain ${calculateWeightDelta(NORMAL.min, height, weight)}kg`;
         case WeightClass.NORMAL:
-            return 'you are in good shape';
+            return 'maintain your weight';
         case WeightClass.OVERWEIGHT:
         case WeightClass.OBESE:
-            return `lose ${calculateWeightDelta(NORMAL.max, body.height, body.weight)}kg`;
+            return `lose ${calculateWeightDelta(NORMAL.max, height, weight)}kg`;
     }
 }
 
-export const getRange = (body: BodyData): string => {
-    const min = calculateWeight(NORMAL.min, body.height);
-    const max = calculateWeight(NORMAL.max, body.height);
+export const getRange = (height: number): string => {
+    const min = calculateWeight(NORMAL.min, height);
+    const max = calculateWeight(NORMAL.max, height);
     return `${min}kg - ${max}kg`;
 }
 
-export const calculateWeight = (bmi: number, height: number): number => {
+const calculateWeight = (bmi: number, height: number): number => {
     const kg = height * height * bmi;
     return Math.round(kg * 10) / 10;
 }

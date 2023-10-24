@@ -34,7 +34,13 @@ export default function DataInputs({ submitBmi, submitStatus, submitRange, submi
         const age: number = parseInt(ageInput.value);
         const weight: number = parseFloat(weightInput.value);
         const height: number = parseFloat(heightInput.value);
-              
+
+        submitData(weight, height, age, gender);
+        e.preventDefault();
+    }
+
+    const submitData = (weight: number, height: number, age: number, gender: Gender): void => {
+
         const body: BodyData = {
             weight: weight,
             height: height,
@@ -43,16 +49,14 @@ export default function DataInputs({ submitBmi, submitStatus, submitRange, submi
 
         const bmi = calculateBmi(weight, height);
         const weightClassification = getClassification(bmi);
-        const recommendation = getRecommendation(weightClassification, body);
-        const range = getRange(body);
+        const recommendation = getRecommendation(weightClassification, weight, height);
+        const range = getRange(height);
         submitBody(body);
         submitBmi(bmi);
         submitStatus(weightClassification.class);
         submitRecommendation(recommendation);
         submitRange(range);
         submitGender(gender);
-
-        e.preventDefault();
     }
 
     return (

@@ -2,7 +2,7 @@
 
 import CaloriesSection from './calories-section'
 import { Gender, BodyData } from '../bmr-utils';
-import { calories, gainWeightCalories, loseWeightCalories, NONE, LOW, NORMAL, HIGH, PhysicalActivity } from '../daily-calories-utils';
+import { maintainWeightCalories, gainWeightCalories, loseWeightCalories, NONE, LOW, NORMAL, HIGH, PhysicalActivity } from '../daily-calories-utils';
 import { WeightClass } from '../bmi-utils';
 import styles from './calories.module.css'
 
@@ -31,7 +31,7 @@ export default function CaloriesPlan({ gender, body, status}: CaloriesPlanProps)
 
     const maintainCalories = (physicalActivity: PhysicalActivity): number | string => {
         if(!body) return '';
-        return calories(gender, body, physicalActivity);
+        return maintainWeightCalories(gender, body, physicalActivity);
     }
 
     const ajustCalories = (physicalActivity: PhysicalActivity): number | string => {

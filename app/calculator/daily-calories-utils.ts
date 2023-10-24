@@ -29,7 +29,7 @@ export const HIGH: PhysicalActivity = {
     value: 1.4
 }
 
-export const calories = (gender: Gender, body: BodyData, physicalActivity: PhysicalActivity): number => {
+export const maintainWeightCalories = (gender: Gender, body: BodyData, physicalActivity: PhysicalActivity): number => {
     const bmr = calculateBMR(gender, body);
     const result = bmr * physicalActivity.value;
     return ajustCalories(result, body.weight, body.height);
