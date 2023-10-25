@@ -44,6 +44,7 @@
     width: 60px;
     height: 60px;
     transform: scale(1.3);
+    color: var(--clr-secondary-font);
 }
 
 @media (max-width: 600px) {
