@@ -18,15 +18,15 @@ export default function NavBar({onClearClick}: NavBarProps): JSX.Element {
                 <h1> My Diet</h1>
             </Link>
             <div className={styles.controls}>
-                <Link href="/calculator" className={styles.link}>
-                    <FontAwesomeIcon icon={faCalculator} className={styles.icon}/>
-                </Link>
-                <Link href="/settings" className={styles.link}>
-                    <FontAwesomeIcon icon={faGear}className={styles.icon}/>            
-                </Link>
-                <Link href="" className={styles.link}>
-                    <FontAwesomeIcon icon={faBroom} onClick={onClearClick} className={styles.icon}/>
-                </Link>
+            <Link href="" className={styles.link}>
+                <FontAwesomeIcon icon={faBroom} onClick={onClearClick} className={styles.icon}/>
+            </Link>
+            <Link href="/calculator" className={styles.link}>
+                <FontAwesomeIcon icon={faCalculator} className={styles.icon}/>
+            </Link>
+            <Link href="/settings" className={styles.link}>
+                <FontAwesomeIcon icon={faGear}className={styles.icon}/>            
+            </Link>
             </div>
         </header>
         )
